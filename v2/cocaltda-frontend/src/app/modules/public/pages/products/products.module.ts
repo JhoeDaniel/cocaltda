@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Route, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { AccountsComponent } from './accounts/accounts.component';
 import { CreditsComponent } from './credits/credits.component';
-import { DepositsComponent } from './deposits/deposits.component';
 import { InvestmentsComponent } from './investments/investments.component';
 
 const productsRoutes: Route[] = [
@@ -17,8 +18,8 @@ const productsRoutes: Route[] = [
     component: CreditsComponent,
   },
   {
-    path: 'deposits',
-    component: DepositsComponent,
+    path: 'accounts',
+    component: AccountsComponent,
   },
   {
     path: 'investments',
@@ -30,11 +31,13 @@ const productsRoutes: Route[] = [
   imports: [
     RouterModule.forChild(productsRoutes),
     CommonModule,
+    MatTooltipModule,
+
     /**
      * Shared
      */
     SharedModule,
   ],
-  declarations: [CreditsComponent, DepositsComponent, InvestmentsComponent],
+  declarations: [CreditsComponent, AccountsComponent, InvestmentsComponent],
 })
 export class ProductsModule {}

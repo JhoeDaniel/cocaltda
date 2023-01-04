@@ -61,7 +61,6 @@ export class HeaderComponent implements OnInit {
   }
 
   mutateHeaderItems(headerItems: HeaderItem[]): void {
-    // console.log(this.router);
     let newArray: HeaderItem[] = [];
     /**
      * First level
@@ -96,14 +95,13 @@ export class HeaderComponent implements OnInit {
       newArray.push(item);
     });
 
-    // console.log(newArray);
-
     this.headerItems = newArray;
   }
-
+  /**
+   * openSideBar
+   */
   openSideBar() {
     this.activated = !this.activated;
-    // console.log(this.activated);
     this.statusMenu = false;
   }
   /**

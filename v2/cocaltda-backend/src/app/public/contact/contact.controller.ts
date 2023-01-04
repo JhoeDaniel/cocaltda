@@ -58,7 +58,7 @@ export const validation = (contact: Contact, url: string, token: string) => {
 								'message',
 								contact.message,
 								'string',
-								500
+								1000000
 							).catch((err) => {
 								validationStatus = true;
 								reject(err);

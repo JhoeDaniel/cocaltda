@@ -1,5 +1,6 @@
 import { angelAnimations } from '@angel/animations';
 import { AngelAlertType } from '@angel/components/alert';
+import { AngelMediaWatcherService } from '@angel/services/media-watcher';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
@@ -7,7 +8,7 @@ import {
   _creditsTerm,
   _daysOfTheYear,
   _minBalanceCredit,
-  _typeCreditProduct,
+  _typeCreditProduct
 } from 'app/modules/public/public.data';
 import {
   AmortizationTable,
@@ -15,10 +16,12 @@ import {
   CreditsTerm,
   FrenchDividend,
   GermanDividend,
-  TypeCreditProduct,
+  TypeCreditProduct
 } from 'app/modules/public/public.type';
 import { GlobalUtils } from 'app/utils/GlobalUtils';
 import { FullDate } from 'app/utils/utils.types';
+import { Subject, takeUntil } from 'rxjs';
+import { ModalSendInformationService } from '../modal-send-information/modal-send-information.service';
 
 @Component({
   selector: 'app-credits',
@@ -38,7 +41,18 @@ export class CreditsComponent implements OnInit {
   bodyTable: string = '';
   showBodyTable: boolean = false;
 
+  subject: string = 'Crédito';
+
+  idTimer: any = null;
+  statusBtnGains: boolean = false;
+  statusModal: boolean = false;
+  timeToShowModal: number = 3000;
+
   arrayPaymentDate: FullDate[] = [];
+
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
+
+  isScreenSmall: boolean = false;
   /**
    * Alert
    */
@@ -53,7 +67,9 @@ export class CreditsComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _globalUtils: GlobalUtils
+    private _globalUtils: GlobalUtils,
+    private _modalSendInformationService: ModalSendInformationService,
+    private _angelMediaWatcherService: AngelMediaWatcherService
   ) {}
 
   ngOnInit() {
@@ -68,7 +84,21 @@ export class CreditsComponent implements OnInit {
       term: ['', [Validators.required]],
       amortizationTable: ['', [Validators.required]],
       paymentDay: ['', [Validators.required]],
+      invalidControl: ['', [Validators.required]],
     });
+
+    this.setValidForm();
+    /**
+     * Subscribe to media changes
+     */
+    this._angelMediaWatcherService.onMediaChange$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(({ matchingAliases }) => {
+        /**
+         * Check if the screen is small
+         */
+        this.isScreenSmall = !matchingAliases.includes('sm');
+      });
   }
   /**
    * updateMaxBalance
@@ -84,11 +114,31 @@ export class CreditsComponent implements OnInit {
   updateMaxTerm() {
     const credits: CreditsForm = this.creditsForm.getRawValue();
 
-    if (credits.term.valueOfMonts > this.typeCreditProductSelect.maxTerm) {
-      this.showAlert = true;
-    } else {
-      this.showAlert = false;
+    if (credits.term && this.typeCreditProductSelect) {
+      if (credits.term.valueOfMonts > this.typeCreditProductSelect.maxTerm) {
+        this.setInvalidForm();
+      } else {
+        this.setValidForm();
+      }
     }
+  }
+  /**
+   * setInvalidForm
+   */
+  setInvalidForm() {
+    this.creditsForm.setValue({
+      ...this.creditsForm.getRawValue(),
+      invalidControl: '',
+    });
+  }
+  /**
+   * setValidForm
+   */
+  setValidForm() {
+    this.creditsForm.setValue({
+      ...this.creditsForm.getRawValue(),
+      invalidControl: 1,
+    });
   }
   /**
    * simulate
@@ -101,7 +151,7 @@ export class CreditsComponent implements OnInit {
      * Validate the informations
      */
     if (this.creditsForm.invalid) {
-      this.showAlert = true;
+      this.setInvalidForm();
     } else {
       /**
        * Get the variables
@@ -212,36 +262,72 @@ export class CreditsComponent implements OnInit {
           this.bodyTable =
             this.bodyTable +
             `<tr>
-          <td class="p-2">${_germanDividend[index].id + 1}</td>
-          <td class="p-2">${_paymentDate}</td>
-          <td class="p-2">${_germanDividend[index].capital!.toFixed(2)}</td>
-          <td class="p-2">${_germanDividend[index].calculateDays}</td>
-          <td class="p-2">${_germanDividend[index].balance!.toFixed(2)}</td>
-          <td class="p-2">${_germanDividend[index].interest!.toFixed(2)}</td>
-          <td class="p-2">${_germanDividend[index].cuota!.toFixed(
-            2
-          )}</td></tr>`;
+          <td class="p-2 text-sm sm:text-base">${
+            _germanDividend[index].id + 1
+          }</td>
+          <td class="p-2 text-sm sm:text-base">${_paymentDate}</td>
+          <td class="p-2 text-sm sm:text-base">${_germanDividend[
+            index
+          ].capital!.toFixed(2)}</td>
+          <td class="p-2 text-sm sm:text-base">${
+            _germanDividend[index].calculateDays
+          }</td>
+          <td class="p-2 text-sm sm:text-base">${_germanDividend[
+            index
+          ].balance!.toFixed(2)}</td>
+          <td class="p-2 text-sm sm:text-base">${_germanDividend[
+            index
+          ].interest!.toFixed(2)}</td>
+          <td class="p-2 text-sm sm:text-base">${_germanDividend[
+            index
+          ].cuota!.toFixed(2)}</td></tr>`;
         }
         /**
          * Put the header table
          */
         this.bodyTable = `<table class="w-full p-4 text-base font-normal text-gray-500 border-2 border-solid border-gray-300">
-              <tr>
-                <td class="p-2 text-green-600 font-bold">Dividendo</td>
-                <td class="p-2 text-green-600 font-bold">Fecha Pago</td>
-                <td class="p-2 text-green-600 font-bold">Capital</td>
-                <td class="p-2 text-green-600 font-bold">Días</td>
-                <td class="p-2 text-green-600 font-bold">Saldo</td>
-                <td class="p-2 text-green-600 font-bold">Interés</td>
-                <td class="p-2 text-green-600 font-bold">Cuota</td>
-              </tr>
-              ${this.bodyTable}
+              ${
+                this.isScreenSmall
+                  ? `<tr>
+              <td class="p-2 text-green-600 font-bold">D</td>
+              <td class="p-2 text-green-600 font-bold">F</td>
+              <td class="p-2 text-green-600 font-bold">CA</td>
+              <td class="p-2 text-green-600 font-bold">D</td>
+              <td class="p-2 text-green-600 font-bold">S</td>
+              <td class="p-2 text-green-600 font-bold">I</td>
+              <td class="p-2 text-green-600 font-bold">C</td>
+            </tr>`
+                  : ` <tr>
+                  <td class="p-2 text-green-600 font-bold">Dividendo</td>
+                  <td class="p-2 text-green-600 font-bold">Fecha Pago</td>
+                  <td class="p-2 text-green-600 font-bold">Capital</td>
+                  <td class="p-2 text-green-600 font-bold">Días</td>
+                  <td class="p-2 text-green-600 font-bold">Saldo</td>
+                  <td class="p-2 text-green-600 font-bold">Interés</td>
+                  <td class="p-2 text-green-600 font-bold">Cuota</td>
+                </tr>`
+              }${this.bodyTable}
               </table>
               `;
         /**
          * Show the table
          */
         this.showBodyTable = true;
+        /**
+         * Set timer for the modalSendInformation
+         */
+        this.idTimer = setTimeout(() => {
+          /**
+           * openModal
+           */
+          if (!this.statusModal && this.sendForm) {
+            this.openModal();
+          }
+          /**
+           * Show btn close gains
+           */
+          this.statusBtnGains = true;
+        }, this.timeToShowModal);
       } else {
         /**
          * French
@@ -342,23 +428,107 @@ export class CreditsComponent implements OnInit {
          * Put the header table
          */
         this.bodyTable = `<table class="w-full p-4 text-base font-normal text-gray-500 border-2 border-solid border-gray-300">
-               <tr>
-                 <td class="p-2 text-green-600 font-bold">Dividendo</td>
+        ${
+          this.isScreenSmall
+            ? `<tr>
+        <td class="p-2 text-green-600 font-bold">D</td>
+        <td class="p-2 text-green-600 font-bold">F</td>
+        <td class="p-2 text-green-600 font-bold">C</td>
+        <td class="p-2 text-green-600 font-bold">I</td>
+        <td class="p-2 text-green-600 font-bold">CA</td>
+        <td class="p-2 text-green-600 font-bold">S</td>
+      </tr>`
+            : ` <tr>
+            <td class="p-2 text-green-600 font-bold">Dividendo</td>
                  <td class="p-2 text-green-600 font-bold">Fecha Pago</td>
                  <td class="p-2 text-green-600 font-bold">Cuota</td>
                  <td class="p-2 text-green-600 font-bold">Interés</td>
                  <td class="p-2 text-green-600 font-bold">Capital</td>
                  <td class="p-2 text-green-600 font-bold">Saldo</td>
-               </tr>
-               ${this.bodyTable}
+          </tr>`
+        }${this.bodyTable}
                </table>
                `;
         /**
          * Show the table
          */
         this.showBodyTable = true;
+        /**
+         * Set timer for the modalSendInformation
+         */
+        this.idTimer = setTimeout(() => {
+          /**
+           * openModal
+           */
+          if (!this.statusModal && this.sendForm) {
+            this.openModal();
+          }
+          /**
+           * Show btn close gains
+           */
+          this.statusBtnGains = true;
+        }, this.timeToShowModal);
       }
     }
+  }
+  /**
+   * openModal
+   */
+  openModal() {
+    this.statusModal = true;
+    /**
+     * openModalSendInformation
+     */
+    this._modalSendInformationService
+      .openModalSendInformation(this.subject, this.bodyTable)
+      .afterClosed()
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(() => {
+        this.statusModal = false;
+      });
+  }
+  /**
+   * reset
+   */
+  reset(): void {
+    /**
+     * Re-enable the form
+     */
+    this.creditsForm.enable();
+    /**
+     * Reset the form
+     */
+    this.creditsForm.reset();
+    /**
+     * Reset sendForm
+     */
+    this.sendForm = false;
+    /**
+     * setValidForm
+     */
+    this.setValidForm();
+    /**
+     * Reset the show body table
+     */
+    this.showBodyTable = false;
+    /**
+     * Reset the status btn gains
+     */
+    this.statusBtnGains = false;
+  }
+  /**
+   * On destroy
+   */
+  ngOnDestroy(): void {
+    /**
+     * Unsubscribe from all subscriptions
+     */
+    this._unsubscribeAll.next(0);
+    this._unsubscribeAll.complete();
+    /**
+     * Clear timers
+     */
+    clearTimeout(this.idTimer);
   }
   /**
    * subtractDate

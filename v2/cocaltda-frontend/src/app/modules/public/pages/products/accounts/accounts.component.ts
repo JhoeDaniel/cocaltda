@@ -5,11 +5,11 @@ import { ItemToggle, Page } from 'app/modules/public/public.type';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-deposits',
-  templateUrl: './deposits.component.html',
-  styleUrls: ['./deposits.component.scss'],
+  selector: 'app-accounts',
+  templateUrl: './accounts.component.html',
+  styleUrls: ['./accounts.component.scss'],
 })
-export class DepositsComponent implements OnInit {
+export class AccountsComponent implements OnInit {
   _page: Page = _page;
 
   itemToggleDeposits: ItemToggle[] = _page.itemToggleDeposits;

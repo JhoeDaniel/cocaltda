@@ -1,0 +1,32 @@
+<div class="relative flex flex-col w-full h-full">
+
+  <!-- Header -->
+  <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+    <div class="text-lg text-center sm:text-start">Consejos de Seguridad de la Banca Virtual</div>
+    <button mat-icon-button (click)="closeModalVirtualBanking()" [tabIndex]="-1">
+      <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+    </button>
+  </div>
+  <div class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto">
+    <p class="text-gray-600 font-normal text-justify">
+      No ingreses a nuestra Banca Virtual a través de buscadores, ingresa a traves de la URL:
+      <strong>https://www.cocaltda.fin.ec/</strong><br><br>
+
+      Siempre escribe directamente en el navegador la dirección <strong>https://www.cocaltda.fin.ec/</strong> con el
+      prefijo <strong>"https"</strong> en
+      la barra de direcciones. <br><br>
+
+      <strong>No guardes o anotes</strong> tu usuario y clave de acceso a la Banca Virtual, solo memorízala. <br><br>
+
+      Recuerde que tu Cooperativa "COCA LTDA." <strong>no solicita usuario y claves de acceso</strong> por ningún medio
+      telefónico,
+      correo electrónico o mensaje de texto
+    </p>
+    <div class="w-full flex justify-center mt-4">
+      <a [matTooltip]="'Abrir banca virtual'" href="https://bancavirtual.cocaltda.fin.ec/" target="_blank"
+        [mat-dialog-close]
+        class="p-4 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Entrar
+        a la Banca VIrtual</a>
+    </div>
+  </div>
+</div>

@@ -7,14 +7,14 @@
       [image]="'assets/images/static/mobileTransference.jpg'" [visibleImage]="false"></app-page-title>
 
     <div #content
-      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-8 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
+      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-4 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
       <div class="w-full">
         <img class="h-30 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
       </div>
       <form [formGroup]="creditsForm" class="mb-8">
         <!-- Alert -->
-        <angel-alert class="mt-8" *ngIf="showAlert || (creditsForm.invalid && sendForm)" [appearance]="'outline'"
-          [showIcon]="true" [type]="alert.type" [@shake]="alert.type === 'error'">
+        <angel-alert class="mt-8" *ngIf="creditsForm.invalid && sendForm" [appearance]="'outline'" [showIcon]="true"
+          [type]="alert.type" [@shake]="alert.type === 'error'">
           <!-- MessageAPI if alert is actived for the component -->
           {{alert.message}}
           <!-- type -->
@@ -35,10 +35,12 @@
           <mat-error *ngIf="creditsForm.get('term')?.hasError('required')">
             • Seleccione el plazo
           </mat-error>
-          <mat-error *ngIf="creditsForm.getRawValue().term.valueOfMonts > typeCreditProductSelect.maxTerm">
-            • El plazo máximo para el crédito de {{typeCreditProductSelect.name}} es
-            {{typeCreditProductSelect.maxTerm}} meses
-          </mat-error>
+          <ng-container *ngIf="creditsForm.getRawValue().term">
+            <mat-error *ngIf="creditsForm.getRawValue().term.valueOfMonts > typeCreditProductSelect.maxTerm">
+              • El plazo máximo para el crédito de {{typeCreditProductSelect.name}} es
+              {{typeCreditProductSelect.maxTerm}} meses
+            </mat-error>
+          </ng-container>
           <!-- amortizationTable -->
           <mat-error *ngIf="creditsForm.get('amortizationTable')?.hasError('required')">
             • Seleccione la tabla de amortización
@@ -69,11 +71,11 @@
         <!-- balance -->
         <div class="mt-8">
           <mat-form-field class="angel-mat-no-subscript w-full">
-            <mat-label class="text-lg text-white">Balance</mat-label>
+            <mat-label class="text-lg text-white">Saldo</mat-label>
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:cash'">
             </mat-icon>
             <input class="dark:text-white dark:focus:text-white" matInput type="number" [min]="minBalance"
-              [max]="maxBalance" [formControlName]="'balance'" [placeholder]="'Ingrese el balance solicitado'">
+              [max]="maxBalance" [formControlName]="'balance'" [placeholder]="'Ingrese el saldo solicitado'">
           </mat-form-field>
         </div>
         <!-- term -->
@@ -115,7 +117,31 @@
         <button [matTooltip]="'Simular crédito'" (click)="simulate()"
           class="p-4 w-40 rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Calcular</button>
       </div>
-      <div class="w-full bg-white flex mt-8" *ngIf="showBodyTable" [innerHTML]="bodyTable">
+      <div class="w-full bg-white mt-8 rounded-lg" *ngIf="showBodyTable">
+        <div class="flex justify-end p-4 pb-0 sm:pb-4" *ngIf="statusBtnGains">
+          <div class="w-full pr-2">
+            <p class="text-green-600 font-normal text-lg text-center md:text-left">
+              Si te interesa aplicar para el crédito en la parte inferior de la tabla lo puedes hacer.
+            </p>
+          </div>
+          <mat-icon matPrefix [matTooltip]="'Restablecer'" (click)="reset()"
+            class="icon-size-6 text-green-600 hover:bg-green-600 hover:text-white rounded-md transition ease-in-out delay-150 hover:scale-150 duration-300"
+            [svgIcon]="'heroicons_outline:x'">
+          </mat-icon>
+        </div>
+        <div #glosary class="flex flex-col sm:hidden p-4">
+          <h6 class="text-green-600 w-full text-center text-lg font-bold">Glosario</h6>
+          <p class="text-green-600 font-normal text-lg text-center md:text-left">
+            <strong>D=</strong>Dividendo; <strong>F=</strong>Fecha de pago; <strong>CA=</strong>Capital;
+            <strong>D=</strong>Días; <strong>S=</strong>Saldo; <strong>I=</strong>Interés; <strong>C=</strong>Cuota;
+          </p>
+        </div>
+        <div class="text-center font-medium text-lg text-green-600" [innerHTML]="bodyTable">
+        </div>
+      </div>
+      <div class="w-full flex justify-center mt-8" *ngIf="showBodyTable && !statusModal">
+        <button [matTooltip]="'Quiero aplicar'" (click)="openModal()"
+          class="p-4 w-40 rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Aplicar</button>
       </div>
       <div class="bg-black opacity-70 p-5 flex flex-col mt-8 rounded-lg">
         <h4 class="text-white font-medium text-lg">INSTRUCCIONES DE USO:</h4>

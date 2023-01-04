@@ -15,6 +15,7 @@ import {
   InvestmentsTerm,
 } from 'app/modules/public/public.type';
 import { NotificationService } from 'app/shared/notification/notification.service';
+import { Subject, takeUntil } from 'rxjs';
 import { ModalSendInformationService } from '../modal-send-information/modal-send-information.service';
 
 @Component({
@@ -36,7 +37,11 @@ export class InvestmentsComponent implements OnInit {
 
   idTimer: any = null;
   statusBtnGains: boolean = false;
+  statusModal: boolean = false;
   timeToShowModal: number = 3000;
+
+  private _unsubscribeAll: Subject<any> = new Subject<any>();
+
   /**
    * Alert
    */
@@ -46,6 +51,7 @@ export class InvestmentsComponent implements OnInit {
   };
   showAlert: boolean = false;
 
+  sendForm: boolean = false;
   investmentsForm!: FormGroup;
 
   constructor(
@@ -63,17 +69,17 @@ export class InvestmentsComponent implements OnInit {
       capital: ['', [Validators.required]],
     });
   }
+
   /**
    * simulate
    * @returns
    */
   simulate(): void {
+    this.sendForm = true;
     /**
      * Validate the informations
      */
-    if (this.investmentsForm.invalid) {
-      this.showAlert = true;
-    } else {
+    if (!this.investmentsForm.invalid) {
       /**
        * Get the variables
        */
@@ -114,12 +120,11 @@ export class InvestmentsComponent implements OnInit {
            */
           this.idTimer = setTimeout(() => {
             /**
-             * openModalSendInformation
+             * openModal
              */
-            this._modalSendInformationService.openModalSendInformation(
-              this.subject,
-              this.textGains
-            );
+            if (!this.statusModal && this.sendForm) {
+              this.openModal();
+            }
             /**
              * Show btn close gains
              */
@@ -140,6 +145,22 @@ export class InvestmentsComponent implements OnInit {
     }
   }
   /**
+   * openModal
+   */
+  openModal() {
+    this.statusModal = true;
+    /**
+     * openModalSendInformation
+     */
+    this._modalSendInformationService
+      .openModalSendInformation(this.subject, this.textGains)
+      .afterClosed()
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(() => {
+        this.statusModal = false;
+      });
+  }
+  /**
    * reset
    */
   reset(): void {
@@ -152,9 +173,9 @@ export class InvestmentsComponent implements OnInit {
      */
     this.investmentsForm.reset();
     /**
-     * Reset the alert
+     * Reset sendForm
      */
-    this.showAlert = false;
+    this.sendForm = false;
     /**
      * Reset the gains
      */
@@ -168,6 +189,11 @@ export class InvestmentsComponent implements OnInit {
    * On destroy
    */
   ngOnDestroy(): void {
+    /**
+     * Unsubscribe from all subscriptions
+     */
+    this._unsubscribeAll.next(0);
+    this._unsubscribeAll.complete();
     /**
      * Clear timers
      */

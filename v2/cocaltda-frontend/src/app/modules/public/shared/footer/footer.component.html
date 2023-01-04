@@ -4,11 +4,12 @@
       <div class="md:flex md:justify-between">
         <div class="md:mb-0 place-self-center">
           <a [routerLink]="['/public/index']" target="_self" class="flex items-center justify-center">
-            <img class="h-20 w-auto sm:h-20 md:h-30" src="assets/images/logo/logo-text-on-dark.svg" alt="Logo">
+            <img class="h-20 w-auto sm:h-20 md:h-28 lg:h-36 xl:h-42" src="assets/images/logo/logo-text-on-dark.svg"
+              alt="Logo">
           </a>
-        </div>
-        <div class="py-6 text-center text-white text-lg place-self-center md:px-4 sm:py-4">
-          ¡Con la solidez y confianza de crecer juntos!
+          <div class="py-6 text-center text-white text-lg place-self-center md:px-4 sm:py-4">
+            ¡Con la solidez y confianza de crecer juntos!
+          </div>
         </div>
         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
@@ -37,11 +38,11 @@
 
             <ul>
               <li class="mb-4">
-                <a [routerLink]="['/public/products/deposits']" target="_self"
+                <a [routerLink]="['/public/products/accounts']" target="_self"
                   class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
                   <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_deposit'">
                   </mat-icon>
-                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Depósitos</h6>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Cuentas</h6>
                 </a>
               </li>
               <li class="mb-4">

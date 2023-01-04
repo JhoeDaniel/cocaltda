@@ -27,6 +27,12 @@
       <div class="w-full md:w-8/12 mt-4 md:mt-0 md:pl-4">
         <div class="text-gray-600 font-normal text-justify transition duration-500" [innerHTML]="selectedItem.html">
         </div>
+        <div class="w-full flex justify-center mt-4">
+          <button [matTooltip]="'Utiliza nuestro simulador para ver tus ganancias'"
+            [routerLink]="['/public/simulators/investments']"
+            class="p-4 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Simula
+            tu inversión</button>
+        </div>
       </div>
     </div>
   </div>

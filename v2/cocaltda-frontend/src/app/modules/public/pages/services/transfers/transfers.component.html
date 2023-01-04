@@ -28,6 +28,11 @@
         Institución, misma que se hará efectiva en 24 horas.<br>
         - Este es un servicio exclusivo para los socios de nuestra Cooperativa.<br><br>
       </p>
+      <div class="w-full flex justify-center mt-4">
+        <button [matTooltip]="'Abrir banca virtual'" (click)="openModalVirtualBanking()"
+          class="p-4 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Banca
+          virtual</button>
+      </div>
     </div>
   </div>
   <app-footer></app-footer>

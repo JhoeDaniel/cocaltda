@@ -1,7 +1,9 @@
+<!-- flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6 ng-tns-c318-9 -->
 <div class="h-auto w-full bg-transparent">
   <h1 class="h-auto mx-auto max-w-7xl text-white text-5xl py-4 pl-4 xl:pl-0">{{title}}</h1>
+  <!-- h-auto mx-4 md:mx-4 lg:mx-auto xl:mx-auto max-w-7xl bg-white p-6 xl:p-10 rounded-md -->
   <div
-    class="h-auto m-auto mx-4 xl:mx-auto max-w-7xl bg-white p-6 xl:p-10 rounded-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
+    class="h-auto mx-4 md:mx-4 lg:mx-auto xl:mx-auto max-w-7xl bg-white p-6 xl:p-10 rounded-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
     <ng-container *ngFor="let itemGallery of itemsGallery; trackBy: trackByFn">
       <!-- It is not externalLink -->
       <mat-card *ngIf="!itemGallery.externalLink" [routerLink]="[itemGallery.link]"

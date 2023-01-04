@@ -224,7 +224,6 @@ const config = {
                 'backgroundPageInsurance': "url('assets/images/static/backgroundPageInsurance.png')",
                 'backgroundPageSimulator': "url('assets/images/static/backgroundPageSimulator.png')",
                 'backgroundSimulator': "url('assets/images/static/backgroundSimulator.svg')",
-                'backgroundSimulator': "url('assets/images/static/backgroundSimulator.jpg')",
                 'backgroundPageContact': "url('assets/images/static/backgroundPageContact.png')",
                 'backgroundFormContact': "url('assets/images/static/backgroundFormContact.jpg')",
                 'backgroundFormContactWhite': "url('assets/images/static/backgroundFormContactWhite.jpg')",
