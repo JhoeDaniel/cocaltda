@@ -1,0 +1,306 @@
+<div class="w-full">
+
+    <!-- Form -->
+    <form [formGroup]="userForm">
+        <!-- Alert -->
+        <angel-alert class="mt-8" *ngIf="userForm.invalid || showAlert" [appearance]="'outline'" [showIcon]="false"
+            [type]="alert.type" [@shake]="alert.type === 'error'">
+            <!-- MessageAPI if alert is actived for the component -->
+            {{alert.message}}
+            <!-- name_user -->
+            <mat-error *ngIf="userForm.get('name_user')?.hasError('required')">
+                • Ingrese el correo del usuario
+            </mat-error>
+            <!-- password_user -->
+            <mat-error *ngIf="userForm.get('password_user')?.hasError('required')">
+                • Ingrese la contraseña del usuario
+            </mat-error>
+            <ng-container *ngIf="validationPassword">
+                <mat-error *ngIf="userForm.get('password_user')?.hasError('pattern')">
+                    • {{validationPassword.message_validation}}
+                </mat-error>
+            </ng-container>
+            <!-- status_user -->
+            <mat-error *ngIf="userForm.get('status_user')?.hasError('required')">
+                • Seleccione el estado del usuario
+            </mat-error>
+            <!-- id_company -->
+            <mat-error *ngIf="userForm.get('id_company')?.hasError('required')">
+                • Seleccione la empresa a la cual formara parte este usuario
+            </mat-error>
+            <!-- id_type_user -->
+            <mat-error *ngIf="userForm.get('id_type_user')?.hasError('required')">
+                • Seleccione el tipo de usuario
+            </mat-error>
+            <!-- dni_person -->
+            <mat-error *ngIf="userForm.get('dni_person')?.hasError('required')">
+                • Ingrese el numero de cedula
+            </mat-error>
+            <ng-container *ngIf="validationDNI">
+                <mat-error *ngIf="userForm.get('dni_person')?.hasError('pattern')">
+                    • {{validationDNI.message_validation}}
+                </mat-error>
+            </ng-container>
+            <mat-error
+                *ngIf="!userForm.get('dni_person')?.hasError('required') && userForm.get('dni_person')?.hasError('validarCedula')">
+                • El numero de cedula no paso el algoritmo de verificación
+            </mat-error>
+            <!-- name_person -->
+            <mat-error *ngIf="userForm.get('name_person')?.hasError('required')">
+                • Ingrese los nombres de la persona
+            </mat-error>
+            <!-- last_name_person -->
+            <mat-error *ngIf="userForm.get('last_name_person')?.hasError('required')">
+                • Ingrese los apellidos de la persona
+            </mat-error>
+            <!-- address_person -->
+            <mat-error *ngIf="userForm.get('address_person')?.hasError('required')">
+                • Ingrese la dirección de la persona
+            </mat-error>
+            <!-- phone_person -->
+            <mat-error *ngIf="userForm.get('phone_person')?.hasError('required')">
+                • Ingrese el teléfono de la persona
+            </mat-error>
+            <ng-container *ngIf="validationPhoneNumber">
+                <mat-error *ngIf="userForm.get('phone_person')?.hasError('pattern')">
+                    • {{validationPhoneNumber.message_validation}}
+                </mat-error>
+            </ng-container>
+            <!-- title_academic -->
+            <mat-error *ngIf="userForm.get('title_academic')?.hasError('required')">
+                • Ingrese el titulo académico de la persona
+            </mat-error>
+            <!-- abbreviation_academic -->
+            <mat-error *ngIf="userForm.get('abbreviation_academic')?.hasError('required')">
+                • Ingrese la abreviación del titulo académico
+            </mat-error>
+            <!-- level_academic -->
+            <mat-error *ngIf="userForm.get('level_academic')?.hasError('required')">
+                • Ingrese el nvel académico
+            </mat-error>
+            <!-- name_job -->
+            <mat-error *ngIf="userForm.get('name_job')?.hasError('required')">
+                • Ingrese nombre del trabajo
+            </mat-error>
+            <!-- address_job -->
+            <mat-error *ngIf="userForm.get('address_job')?.hasError('required')">
+                • Ingrese la dirección del trabajo
+            </mat-error>
+            <!-- phone_job -->
+            <mat-error *ngIf="userForm.get('phone_job')?.hasError('required')">
+                • Ingrese el numero de teléfono del trabajo
+            </mat-error>
+            <ng-container *ngIf="validationPhoneNumber && userForm.getRawValue().phone_job">
+                <mat-error *ngIf="userForm.get('phone_job')?.hasError('pattern')">
+                    • {{validationPhoneNumber.message_validation}}
+                </mat-error>
+            </ng-container>
+            <!-- position_job -->
+            <mat-error *ngIf="userForm.get('position_job')?.hasError('required')">
+                • Ingrese el cargo del trabajo
+            </mat-error>
+        </angel-alert>
+
+        <!-- Section -->
+        <div class="w-full mt-8">
+            <div class="text-xl">Información personal</div>
+            <div class="text-secondary">Detalla la información personal del usuario.</div>
+        </div>
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <!-- type_user -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Tipo de usuario</mat-label>
+                    <mat-select [formControlName]="'id_type_user'">
+                        <ng-container *ngFor="let element of listTypeUser">
+                            <mat-option [value]="element.id_type_user">
+                                {{element.name_type_user}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- status_user -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Estado</mat-label>
+                    <mat-select [formControlName]="'status_user'">
+                        <mat-option [value]="true">Activo</mat-option>
+                        <mat-option [value]="false">Inactivo</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- id_company -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Empresa</mat-label>
+                    <mat-select [formControlName]="'id_company'" [value]="selectedCompany.id_company">
+                        <ng-container *ngFor="let element of listCompany">
+                            <mat-option [value]="element.id_company">
+                                {{element.name_company}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- dni_person -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Cedula</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:hashtag'">
+                    </mat-icon>
+                    <input matInput maxlength="20" [formControlName]="'dni_person'" [placeholder]="'Ingrese la cedula'"
+                        [spellcheck]="false">
+                </mat-form-field>
+            </div>
+
+            <!-- name_user -->
+            <div class="sm:col-span-4">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Correo</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:mail'">
+                    </mat-icon>
+                    <input matInput maxlength="50" [formControlName]="'name_user'" [placeholder]="'Ingrese el correo'"
+                        [spellcheck]="false">
+                </mat-form-field>
+            </div>
+
+            <!-- name_person -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Nombres</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:identification'">
+                    </mat-icon>
+                    <input matInput maxlength="150" [formControlName]="'name_person'"
+                        [placeholder]="'Ingrese los nombres'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- last_name_person -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Apellidos</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:identification'">
+                    </mat-icon>
+                    <input matInput maxlength="150" [formControlName]="'last_name_person'"
+                        [placeholder]="'Ingrese los apellidos'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- address_person -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Dirección</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:location-marker'">
+                    </mat-icon>
+                    <input matInput maxlength="150" [formControlName]="'address_person'"
+                        [placeholder]="'Ingrese la dirección'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- phone_person -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Teléfono</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:phone'">
+                    </mat-icon>
+                    <input matInput maxlength="13" [formControlName]="'phone_person'"
+                        [placeholder]="'Ingrese el teléfono'" [spellcheck]="false">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="my-10 border-t"></div>
+
+        <div class="w-full">
+            <div class="text-xl">Información académica (Opcional)</div>
+            <div class="text-secondary">Detalla la información académica del usuario.</div>
+        </div>
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <!-- title_academic -->
+            <div class="sm:col-span-4">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Titulo académico</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:academic-cap'">
+                    </mat-icon>
+                    <input matInput maxlength="250" [formControlName]="'title_academic'"
+                        [placeholder]="'Ingrese el titulo académico'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- abbreviation_academic -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Abreviación del titulo</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'mat_solid:short_text'">
+                    </mat-icon>
+                    <input matInput maxlength="50" [formControlName]="'abbreviation_academic'"
+                        [placeholder]="'Ingrese la abreviación  del titulo'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- level_academic -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Nivel académico</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:menu-alt-2'">
+                    </mat-icon>
+                    <input matInput maxlength="100" [formControlName]="'level_academic'"
+                        [placeholder]="'Ingrese el nivel académico'" [spellcheck]="true">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="mt-11 mb-10 border-t"></div>
+
+
+        <div class="w-full">
+            <div class="text-xl">Información laboral (Opcional)</div>
+            <div class="text-secondary">Detalla la información laboral del usuario.</div>
+        </div>
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <!-- name_job -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Nombre del trabajo</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:office-building'">
+                    </mat-icon>
+                    <input matInput maxlength="200" [formControlName]="'name_job'"
+                        [placeholder]="'Ingrese el nombre del trabajo'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- address_job -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Dirección del trabajo</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:location-marker'">
+                    </mat-icon>
+                    <input matInput maxlength="200" [formControlName]="'address_job'"
+                        [placeholder]="'Ingrese la dirección del trabajo'" [spellcheck]="true">
+                </mat-form-field>
+            </div> <!-- phone_job -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Teléfono del trabajo</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:phone'">
+                    </mat-icon>
+                    <input matInput maxlength="13" [formControlName]="'phone_job'"
+                        [placeholder]="'Ingrese el teléfono del trabajo'" [spellcheck]="false">
+                </mat-form-field>
+            </div> <!-- position_job -->
+            <div class="sm:col-span-2">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Cargo</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:collection'">
+                    </mat-icon>
+                    <input matInput maxlength="150" [formControlName]="'position_job'"
+                        [placeholder]="'Ingrese el cargo que desempeña en su trabajo'" [spellcheck]="true">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="my-10 border-t"></div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end">
+            <button mat-stroked-button type="button" (click)="patchForm()">
+                Cancelar
+            </button>
+            <button class="ml-4" mat-flat-button type="button" [color]="'primary'" (click)="updateUser()"
+                [disabled]="userForm.invalid">Guardar
+            </button>
+        </div>
+    </form>
+
+</div>

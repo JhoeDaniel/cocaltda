@@ -1,0 +1,17 @@
+<div class="container-global relative flex flex-col w-full h-full">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg">Vista previa</div>
+        <button mat-icon-button (click)="closePreviewPdf()" [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    <!-- view scheme -->
+    <div class="container-viewer flex flex-col flex-auto overflow-y-auto" style="overflow-x: hidden">
+        <pdf-viewer [src]="src" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+            [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+            [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false" style="height: 80vh;">
+        </pdf-viewer>
+    </div>
+</div>

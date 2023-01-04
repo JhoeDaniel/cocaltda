@@ -1,0 +1,171 @@
+/* Variables */
+$angel-vertical-navigation-width: 280px;
+$angel-vertical-navigation-dense-width: 80px;
+
+angel-vertical-navigation {
+  /* Dense appearance overrides */
+  &.angel-vertical-navigation-appearance-dense {
+    &:not(.angel-vertical-navigation-mode-over) {
+      width: $angel-vertical-navigation-dense-width;
+      min-width: $angel-vertical-navigation-dense-width;
+      max-width: $angel-vertical-navigation-dense-width;
+
+      /* Left positioned */
+      &.angel-vertical-navigation-position-left {
+        /* Side mode */
+        &.angel-vertical-navigation-mode-side {
+          margin-left: -$angel-vertical-navigation-dense-width;
+        }
+
+        /* Opened */
+        &.angel-vertical-navigation-opened {
+          margin-left: 0;
+        }
+      }
+
+      /* Right positioned */
+      &.angel-vertical-navigation-position-right {
+        /* Side mode */
+        &.angel-vertical-navigation-mode-side {
+          margin-right: -$angel-vertical-navigation-dense-width;
+        }
+
+        /* Opened */
+        &.angel-vertical-navigation-opened {
+          margin-right: 0;
+        }
+
+        /* Aside wrapper */
+        .angel-vertical-navigation-aside-wrapper {
+          left: auto;
+          right: $angel-vertical-navigation-dense-width;
+        }
+
+        &.angel-vertical-navigation-hover {
+          .angel-vertical-navigation-aside-wrapper {
+            left: auto;
+            right: $angel-vertical-navigation-width;
+          }
+        }
+      }
+    }
+
+    /* Wrapper */
+    .angel-vertical-navigation-wrapper {
+      /* Content */
+      .angel-vertical-navigation-content {
+        angel-vertical-navigation-aside-item,
+        angel-vertical-navigation-basic-item,
+        angel-vertical-navigation-collapsable-item,
+        angel-vertical-navigation-group-item {
+          .angel-vertical-navigation-item-wrapper {
+            .angel-vertical-navigation-item {
+              width: $angel-vertical-navigation-dense-width - 24px;
+              min-width: $angel-vertical-navigation-dense-width - 24px;
+              max-width: $angel-vertical-navigation-dense-width - 24px;
+
+              .angel-vertical-navigation-item-arrow,
+              .angel-vertical-navigation-item-badge,
+              .angel-vertical-navigation-item-title-wrapper {
+                transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+              }
+            }
+          }
+        }
+
+        angel-vertical-navigation-group-item {
+          &:first-of-type {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    &:not(.angel-vertical-navigation-hover):not(.angel-vertical-navigation-mode-over) {
+      /* Wrapper */
+      .angel-vertical-navigation-wrapper {
+        /* Content */
+        .angel-vertical-navigation-content {
+          .angel-vertical-navigation-item-wrapper {
+            .angel-vertical-navigation-item {
+              padding: 10px 16px;
+
+              .angel-vertical-navigation-item-arrow,
+              .angel-vertical-navigation-item-badge,
+              .angel-vertical-navigation-item-title-wrapper {
+                white-space: nowrap;
+                opacity: 0;
+              }
+            }
+          }
+
+          angel-vertical-navigation-collapsable-item {
+            .angel-vertical-navigation-item-children {
+              display: none;
+            }
+          }
+
+          angel-vertical-navigation-group-item {
+            > .angel-vertical-navigation-item-wrapper {
+              .angel-vertical-navigation-item {
+                &:before {
+                  content: "";
+                  position: absolute;
+                  top: 20px;
+                  width: 23px;
+                  border-top-width: 2px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* Aside wrapper */
+    .angel-vertical-navigation-aside-wrapper {
+      left: $angel-vertical-navigation-dense-width;
+    }
+
+    /* Hover */
+    &.angel-vertical-navigation-hover {
+      .angel-vertical-navigation-wrapper {
+        width: $angel-vertical-navigation-width;
+
+        .angel-vertical-navigation-content {
+          .angel-vertical-navigation-item-wrapper {
+            .angel-vertical-navigation-item {
+              width: $angel-vertical-navigation-width - 24px;
+              min-width: $angel-vertical-navigation-width - 24px;
+              max-width: $angel-vertical-navigation-width - 24px;
+
+              .angel-vertical-navigation-item-arrow,
+              .angel-vertical-navigation-item-badge,
+              .angel-vertical-navigation-item-title-wrapper {
+                white-space: nowrap;
+                animation: removeWhiteSpaceNoWrap 1ms linear 350ms;
+                animation-fill-mode: forwards;
+              }
+            }
+          }
+        }
+      }
+
+      .angel-vertical-navigation-aside-wrapper {
+        left: $angel-vertical-navigation-width;
+      }
+    }
+  }
+}
+
+@keyframes removeWhiteSpaceNoWrap {
+  0% {
+    white-space: nowrap;
+  }
+  99% {
+    white-space: nowrap;
+  }
+  100% {
+    white-space: normal;
+  }
+}

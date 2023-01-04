@@ -1,0 +1,278 @@
+@use "sass:map";
+
+@use "@angular/material" as mat;
+// mat.$theme-ignore-duplication-warnings: true;
+
+@include mat.core();
+/** Include the core Angular Material styles */
+/** Prepare the Background and Foreground maps */
+$background-light: (
+    status-bar: #cbd5e1,
+    /* blueGray.300 */ app-bar: #ffffff,
+    background: #f1f5f9,
+    /* blueGray.100 */ hover: rgba(148, 163, 184, 0.12),
+    /* blueGray.400 + opacity */ card: #ffffff,
+    dialog: #ffffff,
+    disabled-button: rgba(148, 163, 184, 0.068),
+    /* blueGray.400 + opacity */ raised-button: #ffffff,
+    focused-button: #64748b,
+    /* blueGray.500 */ selected-button: #e2e8f0,
+    /* blueGray.200 */ selected-disabled-button: #e2e8f0,
+    /* blueGray.200 */ disabled-button-toggle: #cbd5e1,
+    /* blueGray.300 */ unselected-chip: #e2e8f0,
+    /* blueGray.200 */ disabled-list-option: #cbd5e1,
+    /* blueGray.300 */ tooltip: #1e293b /* blueGray.800 */,
+);
+
+$background-dark: (
+    status-bar: #0f172a,
+    /* blueGray.900 */ app-bar: #0f172a,
+    /* blueGray.900 */ background: #0f172a,
+    /* blueGray.900 */ hover: rgba(255, 255, 255, 0.05),
+    card: #1e293b,
+    /* blueGray.800 */ dialog: #1e293b,
+    /* blueGray.800 */ disabled-button: rgba(15, 23, 42, 0.38),
+    /* blueGray.900 + opacity */ raised-button: #0f172a,
+    /* blueGray.900 */ focused-button: #e2e8f0,
+    /* blueGray.200 */ selected-button: rgba(255, 255, 255, 0.05),
+    selected-disabled-button: #1e293b,
+    /* blueGray.800 */ disabled-button-toggle: #0f172a,
+    /* blueGray.900 */ unselected-chip: #475569,
+    /* blueGray.600 */ disabled-list-option: #e2e8f0,
+    /* blueGray.200 */ tooltip: #64748b /* blueGray.500 */,
+);
+
+$foreground-light: (
+    base: #000000,
+    divider: #e2e8f0,
+    /* blueGray.200 */ dividers: #e2e8f0,
+    /* blueGray.200 */ disabled: #94a3b8,
+    /* blueGray.400 */ disabled-button: #94a3b8,
+    /* blueGray.400 */ disabled-text: #94a3b8,
+    /* blueGray.400 */ elevation: #000000,
+    hint-text: #94a3b8,
+    /* blueGray.400 */ secondary-text: #64748b,
+    /* blueGray.500 */ icon: #64748b,
+    /* blueGray.500 */ icons: #64748b,
+    /* blueGray.500 */ mat-icon: #64748b,
+    /* blueGray.500 */ text: #0f172a,
+    /* blueGray.800 */ slider-min: #1e293b,
+    /* blueGray.800 */ slider-off: #cbd5e1,
+    /* blueGray.300 */ slider-off-active: #94a3b8 /* blueGray.400 */,
+);
+
+$foreground-dark: (
+    base: #ffffff,
+    divider: rgba(241, 245, 249, 0.12),
+    /* blueGray.100 + opacity */ dividers: rgba(241, 245, 249, 0.12),
+    /* blueGray.100 + opacity */ disabled: #475569,
+    /* blueGray.600 */ disabled-button: #1e293b,
+    /* blueGray.800 */ disabled-text: #475569,
+    /* blueGray.600 */ elevation: #000000,
+    hint-text: #64748b,
+    /* blueGray.500 */ secondary-text: #94a3b8,
+    /* blueGray.400 */ icon: #f1f5f9,
+    /* blueGray.100 */ icons: #f1f5f9,
+    /* blueGray.100 */ mat-icon: #94a3b8,
+    /* blueGray.400 */ text: #ffffff,
+    slider-min: #ffffff,
+    slider-off: #64748b,
+    /* blueGray.500 */ slider-off-active: #94a3b8 /* blueGray.400 */,
+);
+
+/** Generate Primary, Accent and Warn palettes primary, accent, warn */
+$angel-primary: (
+    50: var(--angel-primary-50),
+    100: var(--angel-primary-100),
+    200: var(--angel-primary-200),
+    300: var(--angel-primary-300),
+    400: var(--angel-primary-400),
+    500: var(--angel-primary-500),
+    600: var(--angel-primary-600),
+    700: var(--angel-primary-700),
+    800: var(--angel-primary-800),
+    900: var(--angel-primary-900),
+    contrast: (
+        50: var(--angel-on-primary-50),
+        100: var(--angel-on-primary-100),
+        200: var(--angel-on-primary-200),
+        300: var(--angel-on-primary-300),
+        400: var(--angel-on-primary-400),
+        500: var(--angel-on-primary-500),
+        600: var(--angel-on-primary-600),
+        700: var(--angel-on-primary-700),
+        800: var(--angel-on-primary-800),
+        900: var(--angel-on-primary-900),
+    ),
+    default: var(--angel-primary),
+    lighter: var(--angel-primary-100),
+    darker: var(--angel-primary-700),
+    text: var(--angel-primary),
+    default-contrast: var(--angel-on-primary),
+    lighter-contrast: var(--angel-on-primary-100),
+    darker-contrast: var(--angel-on-primary-700),
+);
+
+$angel-accent: (
+    50: var(--angel-accent-50),
+    100: var(--angel-accent-100),
+    200: var(--angel-accent-200),
+    300: var(--angel-accent-300),
+    400: var(--angel-accent-400),
+    500: var(--angel-accent-500),
+    600: var(--angel-accent-600),
+    700: var(--angel-accent-700),
+    800: var(--angel-accent-800),
+    900: var(--angel-accent-900),
+    contrast: (
+        50: var(--angel-on-accent-50),
+        100: var(--angel-on-accent-100),
+        200: var(--angel-on-accent-200),
+        300: var(--angel-on-accent-300),
+        400: var(--angel-on-accent-400),
+        500: var(--angel-on-accent-500),
+        600: var(--angel-on-accent-600),
+        700: var(--angel-on-accent-700),
+        800: var(--angel-on-accent-800),
+        900: var(--angel-on-accent-900),
+    ),
+    default: var(--angel-accent),
+    lighter: var(--angel-accent-100),
+    darker: var(--angel-accent-700),
+    text: var(--angel-accent),
+    default-contrast: var(--angel-on-accent),
+    lighter-contrast: var(--angel-on-accent-100),
+    darker-contrast: var(--angel-on-accent-700),
+);
+
+$angel-warn: (
+    50: var(--angel-warn-50),
+    100: var(--angel-warn-100),
+    200: var(--angel-warn-200),
+    300: var(--angel-warn-300),
+    400: var(--angel-warn-400),
+    500: var(--angel-warn-500),
+    600: var(--angel-warn-600),
+    700: var(--angel-warn-700),
+    800: var(--angel-warn-800),
+    900: var(--angel-warn-900),
+    contrast: (
+        50: var(--angel-on-warn-50),
+        100: var(--angel-on-warn-100),
+        200: var(--angel-on-warn-200),
+        300: var(--angel-on-warn-300),
+        400: var(--angel-on-warn-400),
+        500: var(--angel-on-warn-500),
+        600: var(--angel-on-warn-600),
+        700: var(--angel-on-warn-700),
+        800: var(--angel-on-warn-800),
+        900: var(--angel-on-warn-900),
+    ),
+    default: var(--angel-warn),
+    lighter: var(--angel-warn-100),
+    darker: var(--angel-warn-700),
+    text: var(--angel-warn),
+    default-contrast: var(--angel-on-warn),
+    lighter-contrast: var(--angel-on-warn-100),
+    darker-contrast: var(--angel-on-warn-700),
+);
+
+$my-primary: mat.define-palette($angel-primary, 500);
+$my-accent: mat.define-palette($angel-accent, 500);
+$my-warn: mat.define-palette($angel-warn, 500);
+
+/** Generate Angular Material themes. Since we are using CSS Custom Properties,
+    we don't have to generate a separate Angular Material theme for each color
+    set. We can just create one light and one dark theme and then switch the
+    CSS Custom Properties to dynamically switch the colors. */
+
+/** custom components */
+body.light,
+body .light {
+    $base-light-theme: mat.define-light-theme(
+        (
+            color: (
+                primary: $my-primary,
+                accent: $my-accent,
+                warn: $my-warn,
+            ),
+        )
+    );
+
+    $light-theme: (
+        color: (
+            primary: map.get(map.get($base-light-theme, color), primary),
+            accent: map.get(map.get($base-light-theme, color), accent),
+            warn: map.get(map.get($base-light-theme, color), warn),
+            is-dark: map.get(map.get($base-light-theme, color), is-dark),
+            foreground: $foreground-light,
+            background: $background-light,
+        ),
+        typography: null,
+        density: null,
+        primary: map.get(map.get($base-light-theme, color), primary),
+        accent: map.get(map.get($base-light-theme, color), accent),
+        warn: map.get(map.get($base-light-theme, color), warn),
+        is-dark: map.get(map.get($base-light-theme, color), is-dark),
+        foreground: $foreground-light,
+        background: $background-light,
+    );
+
+    .notification-overlay {
+        background: #0f172a !important;
+    }
+
+    .mat-flat-button {
+        color: white !important;
+    }
+
+    .mat-flat-button.mat-warn {
+        color: white !important;
+    }
+
+    @include mat.all-component-typographies($light-theme);
+    @include mat.all-component-colors($light-theme);
+}
+
+body.dark,
+body .dark {
+    $base-dark-theme: mat.define-dark-theme(
+        (
+            color: (
+                primary: $my-primary,
+                accent: $my-accent,
+                warn: $my-warn,
+            ),
+        )
+    );
+
+    $dark-theme: (
+        color: (
+            primary: map.get(map.get($base-dark-theme, color), primary),
+            accent: map.get(map.get($base-dark-theme, color), accent),
+            warn: map.get(map.get($base-dark-theme, color), warn),
+            is-dark: map.get(map.get($base-dark-theme, color), is-dark),
+            foreground: $foreground-dark,
+            background: $background-dark,
+        ),
+        typography: null,
+        density: null,
+        primary: map.get(map.get($base-dark-theme, color), primary),
+        accent: map.get(map.get($base-dark-theme, color), accent),
+        warn: map.get(map.get($base-dark-theme, color), warn),
+        is-dark: map.get(map.get($base-dark-theme, color), is-dark),
+        foreground: $foreground-dark,
+        background: $background-dark,
+    );
+
+    .notification-overlay {
+        background: white !important;
+    }
+
+    mat-error {
+        color: white !important;
+    }
+
+    @include mat.all-component-typographies($dark-theme);
+    @include mat.all-component-colors($dark-theme);
+}

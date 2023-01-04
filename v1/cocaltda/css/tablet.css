@@ -1,0 +1,74 @@
+:root {
+	--color-primary: #fbcd3c;
+	--color-secundary: #00a254;
+	--color-tertiary: #8292b3;
+	--font-size-title: 2.5rem;
+	--font-size-text: 2rem;
+	--font-size-paragraph: 1.6rem;
+	--font-family: 'Montserrat', sans-serif;
+}
+
+.products {
+	width: 50vw;
+	max-width: 400px;
+	border: solid 0.5px var(--color-tertiary);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.services {
+	width: 50vw;
+	max-width: 400px;
+	border: solid 0.5px var(--color-tertiary);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.section-information {
+	display: none;
+}
+
+.contact-desktop {
+	display: none;
+}
+
+.container-contact
+	> .container-contact-section
+	> .bg-contact-section
+	> .contact-section-logo
+	> figure
+	> img {
+	width: 200px;
+	margin-top: 20px;
+}
+
+.container-contact
+	> .container-contact-section
+	> .bg-contact-section
+	> .form-contact {
+	margin-top: 20px;
+}
+
+.container-contact > .container-contact-section > .bg-contact-section {
+	background-image: url('../img/fondoSeccionContaco.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.container-contact > .container-contact-section {
+	width: 100%;
+	height: 100vw;
+}
+
+.container-contact
+	> .container-contact-section
+	> .bg-contact-section
+	> .form-contact
+	> label
+	> input {
+	height: 40px;
+}

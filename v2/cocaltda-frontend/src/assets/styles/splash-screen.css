@@ -1,0 +1,84 @@
+body angel-splash-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #16a34a;
+  color: #f9fafb;
+  z-index: 999999;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body angel-splash-screen img {
+  width: 120px;
+  max-width: 120px;
+}
+
+body angel-splash-screen .spinner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  width: 56px;
+}
+
+body angel-splash-screen .spinner > div {
+  width: 12px;
+  height: 12px;
+  background-color: #f8d53a;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: angel-bouncedelay 1s infinite ease-in-out both;
+  animation: angel-bouncedelay 1s infinite ease-in-out both;
+}
+
+body angel-splash-screen .spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+body angel-splash-screen .spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes angel-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes angel-bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+body:not(.angel-splash-screen-hidden) {
+  overflow: hidden;
+}
+
+body.angel-splash-screen-hidden angel-splash-screen {
+  visibility: hidden;
+  opacity: 0;
+}

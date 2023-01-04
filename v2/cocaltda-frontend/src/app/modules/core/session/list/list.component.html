@@ -1,0 +1,93 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent" (backdropClick)="onBackdropClicked()">
+
+        <!-- Drawer -->
+        <mat-drawer class="w-full md:w-160 dark:bg-gray-900" [mode]="drawerMode" [opened]="false" [position]="'end'"
+            [disableClose]="true" #matDrawer>
+            <router-outlet></router-outlet>
+        </mat-drawer>
+
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row md:flex-col flex-auto justify-between py-8 px-6 md:px-8 border-b">
+
+                    <!-- Title -->
+                    <div>
+                        <div class="text-4xl font-extrabold tracking-tight leading-none">Sesiones</div>
+                        <div class="ml-0.5 font-medium text-secondary">
+                            <ng-container *ngIf="count > 0">
+                                {{count}}
+                            </ng-container>
+                            {{count | i18nPlural: {
+                            '=0' : 'No hay sesiones',
+                            '=1' : 'Sesión',
+                            'other': 'Sesiones'
+                            } }}
+                        </div>
+                    </div>
+
+                    <!-- Main actions -->
+                    <div class="flex items-center mt-4">
+                        <!-- Search -->
+                        <div class="flex-auto">
+                            <mat-form-field class="angel-mat-dense angel-mat-no-subscript w-full min-w-50">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                                <input matInput [formControl]="searchInputControl" [autocomplete]="'off'"
+                                    [placeholder]="'Buscar por IP del host'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <!-- list -->
+                <div class="relative">
+                    <ng-container *ngIf="sessions$ | async as sessions">
+                        <ng-container *ngIf="sessions.length; else noResults">
+                            <ng-container *ngFor="let session of sessions; let i = index; trackBy: trackByFn">
+                                <!-- Entity -->
+                                <div class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer hover:bg-hover border-b"
+                                    [ngClass]="{'bg-primary-50 dark:bg-hover': selectedSession && selectedSession.id_session === session.id_session}"
+                                    [routerLink]="['./', session.id_session]">
+                                    <div
+                                        class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                                        <ng-container *ngIf="session.user.avatar_user">
+                                            <img class="object-cover w-full h-full"
+                                                [src]="_urlPathAvatar + session.user.avatar_user" alt="Avatar User" />
+                                        </ng-container>
+                                        <ng-container *ngIf="!session.user.avatar_user">
+                                            <div
+                                                class="flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200">
+                                                {{session.user.person.name_person.charAt(0)}}
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="min-w-0 ml-4">
+                                        <div class="font-medium leading-5 truncate">{{session.user.name_user}}
+                                        </div>
+                                        <div class="leading-5 truncate text-secondary">
+                                            {{session.host_session}}</div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- No Results -->
+                    <ng-template #noResults>
+                        <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">¡No hay
+                            resultados!</div>
+                    </ng-template>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

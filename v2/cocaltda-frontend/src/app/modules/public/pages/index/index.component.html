@@ -1,0 +1,10 @@
+<div class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPage.png')]">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <app-carousel [items]="carouselData" [msToChange]="5000"></app-carousel>
+  <app-items-gallery [title]="'Productos'" [itemsGallery]="itemsGalleryProducts"></app-items-gallery>
+  <app-items-gallery [title]="'Servicios'" [itemsGallery]="itemsGalleryServices" class="mb-4"></app-items-gallery>
+  <app-information-section class="mb-8"></app-information-section>
+  <app-contact-section></app-contact-section>
+  <app-footer></app-footer>
+</div>

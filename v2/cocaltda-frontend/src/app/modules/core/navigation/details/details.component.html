@@ -1,0 +1,219 @@
+<div class="flex flex-col w-full">
+    <!-- View mode -->
+    <ng-container *ngIf="!editMode">
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <div class="w-full h-40 bg-black z-10 opacity-0">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}
+            </h1>
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+        </div>
+        <!-- Entity -->
+        <div class="relative flex flex-col flex-auto items-center p-6 pt-0 sm:p-12 sm:pt-0">
+            <div class="w-full max-w-3xl">
+                <!-- Actions -->
+                <div
+                    class="flex items-center -mx-6 sm:-mx-12 py-4 pr-6 pl-6 sm:pr-12 sm:pl-12 border-t bg-gray-100 dark:bg-transparent rounded-t-none rounded-b-2xl">
+                    <button mat-stroked-button (click)="toggleEditMode(true)">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
+                        <span class="ml-1">Editar</span>
+                    </button>
+                    <button mat-stroked-button class="ml-auto" [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                        <span class="ml-1">Cerrar</span>
+                    </button>
+                </div>
+                <div class="flex flex-col mt-4 pt-6 space-y-8">
+                    <!-- name_navigation -->
+                    <ng-container *ngIf="navigation.name_navigation">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:credit-card'"></mat-icon>
+                            <div class="ml-6 leading-6">{{navigation.name_navigation}}</div>
+                        </div>
+                    </ng-container>
+                    <!-- description_navigation -->
+                    <ng-container *ngIf="navigation.description_navigation">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:tag'"></mat-icon>
+                            <div class="ml-6 leading-6">{{navigation.description_navigation}}</div>
+                        </div>
+                    </ng-container>
+                    <!-- type_navigation -->
+                    <!-- Type Enum -->
+                    <ng-container *ngIf="navigation.type_navigation">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'mat_outline:category'"></mat-icon>
+                            <div class="ml-6 leading-6">{{typeNavigationSelect.name_type}}</div>
+                        </div>
+                    </ng-container>
+                    <!-- status_navigation -->
+                    <ng-container>
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:status-online'"></mat-icon>
+                            <div *ngIf="navigation.status_navigation"
+                                class="ml-6 mt-1 w-3 h-3 bg-green-700 rounded-full">
+                            </div>
+                            <div *ngIf="!navigation.status_navigation"
+                                class="ml-6 mt-1 w-3 h-3 bg-red-600 rounded-full">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- Content -->
+                    <div class="mt-8" *ngIf="navigation.content_navigation">
+                        <mat-form-field class="angel-mat-textarea angel-mat-no-subscript w-full">
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_outline:menu-alt-2'"></mat-icon>
+                            <textarea matInput matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="30" disabled
+                                [value]="parseJsonToText(navigation.content_navigation)"
+                                [placeholder]="'Estructura de la nevegación'" [spellcheck]="false"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Edit mode -->
+    <ng-container *ngIf="editMode">
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <div class="w-full h-40 bg-black z-10 opacity-25">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}
+            </h1>
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+        </div>
+        <!-- form -->
+        <div class="relative flex flex-col flex-auto items-center px-6 sm:px-12">
+            <div class="w-full max-w-3xl">
+                <!-- Actions -->
+                <div
+                    class="flex items-center -mx-6 sm:-mx-12 py-4 pr-6 pl-6 sm:pr-12 sm:pl-12 border-t bg-gray-100 dark:bg-transparent rounded-t-none rounded-b-2xl">
+                    <!-- Save -->
+                    <button mat-flat-button [color]="'primary'" [disabled]="navigationForm.invalid"
+                        [matTooltip]="'Guardar'" (click)="updateNavigation()">
+                        Guardar
+                    </button>
+                    <!-- Delete -->
+                    <button mat-stroked-button class="ml-2" [color]="'warn'" [matTooltip]="'Eliminar'"
+                        (click)="deleteNavigation()">
+                        Eliminar
+                    </button>
+                    <!-- Cancel -->
+                    <button mat-stroked-button class="ml-2 mr-2" [matTooltip]="'Cancelar'"
+                        (click)="toggleEditMode(false)">
+                        Cancelar
+                    </button>
+
+                    <button mat-stroked-button class="ml-auto" [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                        <span class="ml-1">Cerrar</span>
+                    </button>
+                </div>
+                <form [formGroup]="navigationForm" class="mb-8">
+                    <!-- Alert -->
+                    <angel-alert class="mt-8" *ngIf="navigationForm.invalid || showAlert" [appearance]="'outline'"
+                        [showIcon]="false" [type]="alert.type" [@shake]="alert.type === 'error'">
+                        <!-- MessageAPI if alert is actived for the component -->
+                        {{alert.message}}
+                        <!-- name_navigation -->
+                        <mat-error *ngIf="navigationForm.get('name_navigation')?.hasError('required')">
+                            • Ingrese el nombre de la navegación
+                        </mat-error>
+                        <!-- description_navigation -->
+                        <mat-error *ngIf="navigationForm.get('description_navigation')?.hasError('required')">
+                            • Ingrese la descripción de la navegación
+                        </mat-error>
+                        <!-- type_navigation -->
+                        <mat-error *ngIf="navigationForm.get('type_navigation')?.hasError('required')">
+                            • Seleccione el tipo de la navegación
+                        </mat-error>
+                        <!-- status_navigation -->
+                        <mat-error *ngIf="navigationForm.get('status_navigation')?.hasError('required')">
+                            • Seleccione el estado de la navegación
+                        </mat-error>
+                        <!-- content_navigation -->
+                        <mat-error *ngIf="navigationForm.get('content_navigation')?.hasError('required')">
+                            • Ingrese el contenido de la navegación
+                        </mat-error>
+                    </angel-alert>
+                    <!-- Alert -->
+                    <!-- name_navigation -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Nombre</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_solid:credit-card'">
+                            </mat-icon>
+                            <input matInput maxlength="100" [formControlName]="'name_navigation'"
+                                [placeholder]="'Ingrese el nombre'" [spellcheck]="true">
+                        </mat-form-field>
+                    </div> <!-- description_navigation -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Descripción</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:tag'">
+                            </mat-icon>
+                            <input matInput maxlength="250" [formControlName]="'description_navigation'"
+                                [placeholder]="'Ingrese la descripción'" [spellcheck]="true">
+                        </mat-form-field>
+                    </div><!-- type_navigation -->
+                    <!-- Type Enum -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Tipo de navegación</mat-label>
+                            <mat-select [formControlName]="'type_navigation'">
+                                <ng-container *ngFor="let type of typeNavigation">
+                                    <mat-option [value]="type.value_type">
+                                        {{type.name_type}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- status_navigation -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Estado</mat-label>
+                            <mat-select [formControlName]="'status_navigation'">
+                                <mat-option [value]="true">Activo</mat-option>
+                                <mat-option [value]="false">Inactivo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- content_navigation -->
+                    <div class="relative flex mt-8">
+                        <mat-form-field class="angel-mat-textarea angel-mat-no-subscript w-full">
+                            <mat-label>Contenido</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_solid:menu-alt-2'"></mat-icon>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="30" [formControlName]="'content_navigation'"
+                                [placeholder]="'Ingrese el contenido'" [spellcheck]="false"></textarea>
+                        </mat-form-field>
+                        <ng-container>
+                            <div class="flex items-center w-10 pl-2">
+                                <button class="w-8 h-8 min-h-8" mat-icon-button (click)="viewSchema()"
+                                    matTooltip="Ver esquema">
+                                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:information-circle'">
+                                    </mat-icon>
+                                </button>
+                            </div>
+                        </ng-container>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-container>
+</div>

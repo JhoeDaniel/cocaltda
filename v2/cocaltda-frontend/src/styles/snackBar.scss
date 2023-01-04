@@ -1,0 +1,17 @@
+.notification-info {
+  border-bottom: 6px solid #03a9f4;
+}
+.notification-success {
+  border-bottom: 6px solid #66bb6a;
+}
+.notification-warn {
+  border-bottom: 6px solid #ffca28;
+}
+.notification-error {
+  border-bottom: 6px solid #c62f5e;
+}
+
+.mat-dialog-cont > mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 10px !important;
+}

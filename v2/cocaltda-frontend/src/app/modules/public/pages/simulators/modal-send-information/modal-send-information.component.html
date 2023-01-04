@@ -1,0 +1,74 @@
+<div class="relative flex flex-col w-full h-full">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg text-center sm:text-start">¿Le gustaría que nuestro equipo se contacte con usted?</div>
+        <button mat-icon-button (click)="closeModalSendInformation()" [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    <form class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto" [formGroup]="contactForm">
+        <!-- Alert -->
+        <angel-alert class="mb-8" *ngIf="showAlert && contactForm.invalid" [appearance]="'outline'" [showIcon]="false"
+            [type]="alert.type" [@shake]="alert.type === 'error'">
+            <!-- MessageAPI if alert is actived for the component -->
+            {{alert.message}}
+            <!-- name -->
+            <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+                • Ingrese su nombre completo
+            </mat-error>
+            <!-- email -->
+            <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+                • Ingrese su correo electrónico
+            </mat-error>
+            <!-- email -->
+            <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+                • Ingrese un correo electrónico válido
+            </mat-error>
+            <!-- phone -->
+            <mat-error *ngIf="contactForm.get('phone')?.hasError('required')">
+                • Ingrese su número de teléfono
+            </mat-error>
+        </angel-alert>
+        <!-- name -->
+        <div>
+            <mat-form-field class="angel-mat-no-subscript w-full">
+                <mat-label class="text-gray-600">Nombre completo</mat-label>
+                <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:credit-card'">
+                </mat-icon>
+                <input class="dark:text-gray-600 dark:focus:text-white uppercase placeholder:normal-case" matInput
+                    maxlength="100" [formControlName]="'name'" [placeholder]="'Ingrese su nombre completo'"
+                    [spellcheck]="true">
+            </mat-form-field>
+        </div>
+        <!-- email -->
+        <div class="mt-8">
+            <mat-form-field class="angel-mat-no-subscript w-full">
+                <mat-label class="text-gray-600">Correo electrónico</mat-label>
+                <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:mail'">
+                </mat-icon>
+                <input class="dark:text-gray-600 dark:focus:text-white lowercase placeholder:normal-case" matInput
+                    maxlength="100" [formControlName]="'email'" [placeholder]="'Ingrese su correo electrónico'"
+                    [spellcheck]="false">
+            </mat-form-field>
+        </div>
+        <!-- phone -->
+        <div class="mt-8">
+            <mat-form-field class="angel-mat-no-subscript w-full">
+                <mat-label class="text-gray-600">Teléfono</mat-label>
+                <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:phone'">
+                </mat-icon>
+                <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="100"
+                    [formControlName]="'phone'" [placeholder]="'Ingrese su número de teléfono'" [spellcheck]="true">
+            </mat-form-field>
+        </div>
+        <div class="flex items-center justify-center sm:justify-end py-2 space-x-3 ng-star-inserted br-10 pt-6">
+            <!-- sendInformation -->
+            <button
+                class="p-2 w-40 rounded-lg bg-green-600 text-white font-normal text-base hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600"
+                (click)="sendInformation()">
+                Enviar información
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="relative flex flex-col w-full h-full">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg">Seleccionar un empresa</div>
+        <button mat-icon-button (click)="closeModalSelectCompany()" [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    <!-- Edit company -->
+    <form class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto" [formGroup]="selectCompanyForm">
+        <!-- company -->
+        <div>
+            <mat-form-field class="angel-mat-no-subscript w-full">
+                <mat-label>Empresas</mat-label>
+                <mat-select [formControlName]="'id_company'" (selectionChange)="changeSelect()">
+                    <mat-option *ngFor="let element of listCompany" [value]="element.id_company"
+                        [matTooltip]="element.id_company">
+                        {{element.id_company}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="flex items-center justify-center sm:justify-end py-2 space-x-3 ng-star-inserted br-10 pt-6">
+            <!-- Cancel -->
+            <button mat-flat-button
+                class="mat-focus-indicator mat-flat-button mat-button-base mat-warn ng-star-inserted"
+                (click)="closeModalSelectCompany()">
+                Cancelar
+            </button>
+            <!-- Send -->
+            <button class="order-first sm:order-last" mat-stroked-button [color]="'primary'"
+                [disabled]="selectCompanyForm.invalid" [mat-dialog-close]="id_company">
+                Aceptar
+            </button>
+        </div>
+    </form>
+</div>

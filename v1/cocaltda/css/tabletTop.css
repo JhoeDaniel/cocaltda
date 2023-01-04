@@ -1,0 +1,510 @@
+:root {
+	--color-primary: #fbcd3c;
+	--color-secundary: #00a254;
+	--color-tertiary: #8292b3;
+	--font-size-title: 2.5rem;
+	--font-size-text: 2rem;
+	--font-size-paragraph: 1.6rem;
+	--font-family: 'Montserrat', sans-serif;
+}
+
+.menu-footer div {
+	width: 100%;
+	max-width: 400px;
+	height: auto;
+}
+
+.item-footer1 h4 {
+	color: white;
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+.container-all-dos {
+	display: none;
+}
+
+.section-contact {
+	display: none;
+}
+.separator {
+	display: none;
+}
+
+.section-information {
+	display: initial;
+	width: 100vw;
+	height: auto;
+	background-color: white;
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-top: 30px !important;
+}
+
+.sabias {
+	width: 100%;
+	height: auto;
+}
+
+.sabias figure img {
+	width: 100%;
+	padding: 10px;
+}
+
+.video {
+	width: 50%;
+	height: auto;
+}
+
+.video video {
+	width: 100%;
+	padding: 10px;
+}
+
+.contact-desktop {
+	display: initial;
+	width: 100vw;
+	height: auto;
+	background-image: url('../img/contactanos.jpg');
+	background-size: 100vw auto;
+	background-repeat: no-repeat;
+	margin-top: 30px;
+}
+
+.container-button-desktop {
+	width: 100%;
+	height: 27vw;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.button-contact-desktop {
+	width: 20vw;
+	height: auto;
+	border-radius: 60px;
+	background-color: transparent;
+	font-size: 2rem;
+	border: 2px solid var(--color-tertiary);
+	color: var(--color-tertiary);
+	margin-bottom: 5vw;
+	margin-right: 22vw;
+	font-family: var(--font-family);
+	padding: 10px;
+}
+
+.button-contact-desktop:hover {
+	background-color: var(--color-tertiary);
+	color: white;
+}
+
+.credito-consumo-bg {
+	background-image: url('../img/fondoConsumo.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.credito-vivienda-bg {
+	background-image: url('../img/fondoVivienda.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.microcredito-bg {
+	background-image: url('../img/fondoMicrocredito.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.ahorro-bg {
+	background-image: url('../img/fondoAhorro.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.sonar-bg {
+	background-image: url('../img/fondoSonar.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.estudiantil-bg {
+	background-image: url('../img/fondoEstudiantil.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.inversiones-bg {
+	background-image: url('../img/fondoPlazofijo.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.transferencia-bg {
+	background-image: url('../img/fondoTransferencia.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.pagos-bg {
+	background-image: url('../img/fondoPagos.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.cajeros-bg {
+	background-image: url('../img/fondoCajero.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.atencionmedica-bg {
+	background-image: url('../img/fondoAtencionMedica.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.seguros-bg {
+	background-image: url('../img/fondoSeguros.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.contacto-bg {
+	background-image: url('../img/fondoContactoFinal.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.product-service-title-section {
+	display: none;
+}
+
+.product-service-section {
+	background-color: rgb(255, 255, 255, 0.95);
+	margin-top: 30px;
+	width: 84%;
+	margin-left: 8%;
+	margin-right: 8%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.product-service-section {
+	border-radius: 20px;
+}
+
+.product-service-section-image-ahorro {
+	display: none;
+}
+
+.product-service-section-image-sonar {
+	display: none;
+}
+
+.product-service-section-image-estudiantil {
+	display: none;
+}
+
+.product-service-section-image-microcredito {
+	display: none;
+}
+
+.product-service-section-image-consumo {
+	display: none;
+}
+
+.product-service-section-image-vivienda {
+	display: none;
+}
+
+.product-service-section-image-inversiones {
+	display: none;
+}
+
+.product-service-section-image-transferencias {
+	display: none;
+}
+
+.product-service-section-image-pagos {
+	display: none;
+}
+
+.product-service-section-image-cajeros {
+	display: none;
+}
+
+.product-service-section-image-atencionmedica {
+	display: none;
+}
+
+.product-service-section-image-seguros {
+	display: none;
+}
+
+.product-service-section-title {
+	display: none;
+}
+
+.product-service-section-menu {
+	flex-direction: column;
+	width: 30%;
+}
+
+.container-product-services {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+}
+.container-product-services > .product-service-section-title-two {
+	width: 70%;
+	height: 150px;
+	justify-content: flex-start;
+	background-color: initial;
+}
+
+.product-service-section-title-two > h4 {
+	font-size: 2rem;
+}
+
+.product-service-section-text > p {
+	width: 100%;
+	margin: 0;
+	padding-left: 40px;
+}
+
+.product-service-section-menu {
+	justify-content: initial;
+	align-items: center;
+	padding-top: 150px;
+}
+
+.product-service-section-menu > .product-service-section-menu-option {
+	background-color: white;
+	width: 70%;
+}
+
+.product-service-section-menu > .select-option {
+	width: 70%;
+}
+
+.select-option > h4 {
+	font-size: 1.8rem;
+}
+
+.product-service-section-title-two {
+	background-color: white;
+}
+
+.product-service-section-title-two > h4 {
+	color: var(--color-tertiary);
+	font-size: 3rem;
+}
+
+.product-service-section-text > p {
+	padding-top: 0;
+}
+
+.container-complete {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.transferencia-Gris {
+	content: url('../img/transferenciaGris.svg');
+}
+
+.pagos-Gris {
+	content: url('../img/pagosGris.svg');
+}
+.cajeros-Gris {
+	content: url('../img/cajerosGris.svg');
+}
+.atencionmedica-Gris {
+	content: url('../img/atencionmedicaGris.svg');
+}
+.seguros-Gris {
+	content: url('../img/segurosGris.svg');
+}
+
+.consumo-Gris {
+	content: url('../img/consumoGris.svg');
+}
+
+.vivienda-Gris {
+	content: url('../img/viviendaGris.svg');
+}
+
+.microcredito-Gris {
+	content: url('../img/microcreditoGris.svg');
+}
+
+.ahorro-Gris {
+	content: url('../img/ahorroGris.svg');
+}
+
+.sonar-Gris {
+	content: url('../img/sonarGris.svg');
+}
+
+.estudiantil-Gris {
+	content: url('../img/ahorroGris.svg');
+}
+
+.inversiones-Gris {
+	content: url('../img/plazofijoGris.svg');
+}
+
+.ocult-section {
+	display: none;
+}
+
+.title-pago {
+	background-color: initial;
+}
+
+.title-pago > h4 {
+	font-size: 2rem;
+	color: var(--color-tertiary);
+	font-family: var(--font-family);
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-weight: 500;
+}
+
+.title-seguros {
+	background-color: initial;
+}
+.title-seguros > h4 {
+	font-size: 2rem;
+	color: var(--color-tertiary);
+	font-family: var(--font-family);
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-weight: 500;
+}
+
+.mb-30 {
+	margin-bottom: 30px;
+}
+
+.container-contact > .container-contact-section {
+	width: 84%;
+	height: 92vw;
+	margin-left: 8%;
+	margin-right: 8%;
+	margin-top: 30px;
+}
+
+.title-contact {
+	display: none;
+}
+
+.container-contact
+	> .container-contact-section
+	> .bg-contact-section
+	> .contact-section-logo
+	> figure
+	> img {
+	width: 250px;
+	margin-top: 75px;
+}
+
+.container-contact
+	> .container-contact-section
+	> .bg-contact-section
+	> .form-contact {
+	margin-top: 20px;
+}
+
+.container-simulador {
+	height: 70vw;
+}
+
+.container-simulador > .container-simulador-bg {
+	display: flex;
+	flex-direction: row;
+	border-radius: 20px;
+	background-color: white;
+	width: 84%;
+	margin: 0 auto;
+	background-color: white;
+}
+
+.container-simulador > .container-simulador-bg > .simulador {
+	width: 48%;
+	height: 98%;
+	margin: auto;
+	border-radius: 10px;
+	background-image: url('../img/fondoSimulador.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.container-simulador > .container-simulador-bg > .results {
+	width: 48%;
+	height: 98%;
+	margin: auto;
+}
+
+.form-simulador > label {
+	font-size: 2.5rem;
+}
+
+.form-simulador > label > select {
+	font-size: 2.5rem;
+}
+
+.form-simulador > label > input {
+	font-size: 2.5rem;
+}
+
+.results > .results-interes > span > h4 {
+	padding: 20px;
+}
+
+.results-simulador > label {
+	width: 33%;
+}
+
+.instrucciones {
+	display: none;
+}
+
+.container-simulador
+	> .container-simulador-bg
+	> .simulador
+	> .form-simulador
+	> button {
+	font-size: 1.4rem;
+}
+
+.container-simulador
+	> .container-simulador-bg
+	> .simulador
+	> .form-simulador
+	> button
+	> img {
+	width: 15px;
+}
+
+.results-simulador > label {
+	width: 32.8%;
+}
+
+.container-products > .container-products-left {
+	justify-content: center;
+}
+
+.container-services > .container-products-left {
+	justify-content: center;
+}
+
+.simulador-bg {
+	background-image: url('../img/fondo.png');
+	background-repeat: no-repeat;
+	overflow-x: hidden;
+}

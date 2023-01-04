@@ -1,0 +1,103 @@
+/* Variables */
+$angel-vertical-navigation-compact-width: 112px;
+
+angel-vertical-navigation {
+  /* Compact appearance overrides */
+  &.angel-vertical-navigation-appearance-compact {
+    width: $angel-vertical-navigation-compact-width;
+    min-width: $angel-vertical-navigation-compact-width;
+    max-width: $angel-vertical-navigation-compact-width;
+
+    /* Left positioned */
+    &.angel-vertical-navigation-position-left {
+      /* Side mode */
+      &.angel-vertical-navigation-mode-side {
+        margin-left: -$angel-vertical-navigation-compact-width;
+      }
+
+      /* Opened */
+      &.angel-vertical-navigation-opened {
+        margin-left: 0;
+      }
+    }
+
+    /* Right positioned */
+    &.angel-vertical-navigation-position-right {
+      /* Side mode */
+      &.angel-vertical-navigation-mode-side {
+        margin-right: -$angel-vertical-navigation-compact-width;
+      }
+
+      /* Opened */
+      &.angel-vertical-navigation-opened {
+        margin-right: 0;
+      }
+
+      /* Aside wrapper */
+      .angel-vertical-navigation-aside-wrapper {
+        left: auto;
+        right: $angel-vertical-navigation-compact-width;
+      }
+    }
+
+    /* Wrapper */
+    .angel-vertical-navigation-wrapper {
+      /* Content */
+      .angel-vertical-navigation-content {
+        > angel-vertical-navigation-aside-item,
+        > angel-vertical-navigation-basic-item {
+          .angel-vertical-navigation-item-wrapper {
+            margin: 4px 8px 0 8px;
+
+            .angel-vertical-navigation-item {
+              flex-direction: column;
+              justify-content: center;
+              padding: 12px;
+              border-radius: 6px;
+
+              .angel-vertical-navigation-item-icon {
+                margin-right: 0;
+              }
+
+              .angel-vertical-navigation-item-title-wrapper {
+                margin-top: 8px;
+
+                .angel-vertical-navigation-item-title {
+                  font-size: 12px;
+                  font-weight: 500;
+                  text-align: center;
+                  line-height: 16px;
+                }
+
+                .angel-vertical-navigation-item-subtitle {
+                  display: none !important;
+                }
+              }
+
+              .angel-vertical-navigation-item-badge {
+                position: absolute;
+                top: 12px;
+                left: 64px;
+              }
+            }
+          }
+
+          > angel-vertical-navigation-collapsable-item {
+            display: none;
+          }
+
+          > angel-vertical-navigation-group-item {
+            > .angel-vertical-navigation-item-wrapper {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    /* Aside wrapper */
+    .angel-vertical-navigation-aside-wrapper {
+      left: $angel-vertical-navigation-compact-width;
+    }
+  }
+}

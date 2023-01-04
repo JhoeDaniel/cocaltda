@@ -1,0 +1,159 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPageContact.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Contacto'" [icon]="'heroicons_outline:phone'"
+      [image]="'assets/images/static/mobileTransference.jpg'" [visibleImage]="false"></app-page-title>
+    <div #content
+      class="w-full bg-[url('assets/images/static/backgroundFormContactWhite.jpg')] bg-cover bg-no-repeat p-8 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
+      <div class="w-full">
+        <img class="h-30 mb-8" src="assets/images/logo/logoHistory.svg" alt="Logotipo de la cooperativa COCA LTDA">
+      </div>
+      <form [formGroup]="contactForm" class="mb-8">
+        <!-- Alert -->
+        <angel-alert class="mt-8" *ngIf="showAlert && contactForm.invalid" [appearance]="'outline'" [showIcon]="true"
+          [type]="alert.type" [@shake]="alert.type === 'error'">
+          <!-- MessageAPI if alert is actived for the component -->
+          {{alert.message}}
+          <!-- name -->
+          <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+            • Ingrese su nombre completo
+          </mat-error>
+          <!-- email -->
+          <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+            • Ingrese su correo electrónico
+          </mat-error>
+          <!-- email -->
+          <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+            • Ingrese un correo electrónico válido
+          </mat-error>
+          <!-- phone -->
+          <mat-error *ngIf="contactForm.get('phone')?.hasError('required')">
+            • Ingrese su número de teléfono
+          </mat-error>
+          <!-- subject -->
+          <mat-error *ngIf="contactForm.get('subject')?.hasError('required')">
+            • Ingrese el asunto
+          </mat-error>
+          <!-- message -->
+          <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
+            • Ingrese una pequeña descripción de la solicitud
+          </mat-error>
+        </angel-alert>
+        <!-- name -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-gray-600">Nombre completo</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:credit-card'">
+            </mat-icon>
+            <input class="dark:text-gray-600 dark:focus:text-white uppercase placeholder:normal-case" matInput
+              maxlength="100" [formControlName]="'name'" [placeholder]="'Ingrese su nombre completo'"
+              [spellcheck]="true">
+          </mat-form-field>
+        </div>
+        <!-- email -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-gray-600">Correo electrónico</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:mail'">
+            </mat-icon>
+            <input class="dark:text-gray-600 dark:focus:text-white lowercase placeholder:normal-case" matInput
+              maxlength="100" [formControlName]="'email'" [placeholder]="'Ingrese su correo electrónico'"
+              [spellcheck]="false">
+          </mat-form-field>
+        </div>
+        <!-- phone -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-gray-600">Teléfono</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:phone'">
+            </mat-icon>
+            <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="100" [formControlName]="'phone'"
+              [placeholder]="'Ingrese su número de teléfono'" [spellcheck]="false">
+          </mat-form-field>
+        </div>
+        <!-- subject -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-gray-600">Asunto</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:annotation'">
+            </mat-icon>
+            <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="100"
+              [formControlName]="'subject'" [placeholder]="'Ingrese el asunto'" [spellcheck]="true">
+          </mat-form-field>
+        </div>
+        <!-- message -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-gray-600">Mensaje</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5 self-start mt-3"
+              [svgIcon]="'heroicons_outline:view-list'">
+            </mat-icon>
+            <textarea class="dark:text-gray-600 dark:focus:text-white" matInput cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="30"
+              [formControlName]="'message'" [placeholder]="'Ingrese una pequeña descripción de la solicitud'"
+              [spellcheck]="true"></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+      <div class="w-full flex justify-center">
+        <button [matTooltip]="'Enviar información'" (click)="formSend()"
+          class="p-4 w-40 rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Enviar</button>
+      </div>
+      <div class="w-full bg-white mt-8 rounded-lg">
+        <div class="p-8">
+          <h1 class="text-lg font-medium text-center">Medios de contacto</h1>
+          <a class="flex mt-1 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300 group"
+            href="https://goo.gl/maps/Zjm5AeX6bVWLYAQi7">
+            <mat-icon class="w-10 text-gray-600 group-hover:text-green-600"
+              [svgIcon]="'heroicons_outline:location-marker'">
+            </mat-icon>
+            <h6 class="text-gray-600 group-hover:text-green-600"><strong>Matriz:</strong> Calle Quito y Bolívar
+              Francisco de Orellana
+              Ecuador</h6>
+          </a>
+          <a href="https://goo.gl/maps/DCPVSizbZszQ23wZ9">
+            <h6
+              class="ml-10 mt-1 text-gray-600 hover:text-green-600 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300">
+              <strong>Agencia Sacha:</strong> Calle Jaime
+              Roldos Y Mision Capuchina
+            </h6>
+          </a>
+          <a href="https://goo.gl/maps/8fnTuUpYWbXutTTh6">
+            <h6
+              class="ml-10 mt-1 text-gray-600 hover:text-green-600 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300">
+              <strong>Agencia Loreto:</strong> Av Rafael Andrade Y Andres Conteros
+            </h6>
+          </a>
+          <a href="https://goo.gl/maps/EnWkfBmEW5aXGJK87">
+            <h6
+              class="ml-10 mt-1 text-gray-600 hover:text-green-600 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300">
+              <strong>Ventanilla Shushufindi:</strong> Av Unidad Nacional Y Mexico
+            </h6>
+          </a>
+          <a class="flex mt-1 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300 group"
+            href="tel:063700260">
+            <mat-icon class="w-10 text-gray-600 group-hover:text-green-600" [svgIcon]="'heroicons_outline:phone'">
+            </mat-icon>
+            <h6 class="text-center text-gray-600 group-hover:text-green-600">06-370-0260</h6>
+          </a>
+          <a class="flex mt-1 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300 group"
+            href="mailto:info@cocaltda.fin.ec?subject=Info&body=necesito%20informaci%C3%B3n">
+            <mat-icon class="w-10 text-gray-600 group-hover:text-green-600" [svgIcon]="'heroicons_outline:mail'">
+            </mat-icon>
+            <h6 class="text-center text-gray-600 group-hover:text-green-600">info@cocaltda.fin.ec</h6>
+          </a>
+          <a class="flex mt-1 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300 group"
+            href="https://www.facebook.com/cocaltda">
+            <mat-icon class="w-10 text-gray-600 group-hover:text-green-600" [svgIcon]="'mat_outline:facebook'">
+            </mat-icon>
+            <h6 class="text-center text-gray-600 group-hover:text-green-600">Facebook</h6>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

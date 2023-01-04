@@ -1,0 +1,43 @@
+#mat-menu-panel-0 > div {
+  padding: 0px !important;
+}
+
+div.mat-menu-content {
+  padding: 0px !important;
+}
+
+.header-mobile {
+  background: rgba(1, 49, 29, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(1, 49, 29, 1) 0%,
+    rgba(6, 76, 34, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(1, 49, 29, 1)),
+    color-stop(100%, rgba(6, 76, 34, 1))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(1, 49, 29, 1) 0%,
+    rgba(6, 76, 34, 1) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(1, 49, 29, 1) 0%,
+    rgba(6, 76, 34, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(1, 49, 29, 1) 0%,
+    rgba(6, 76, 34, 1) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(1, 49, 29, 1) 0%,
+    rgba(6, 76, 34, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01311d', endColorstr='#064c22', GradientType=1 );
+}

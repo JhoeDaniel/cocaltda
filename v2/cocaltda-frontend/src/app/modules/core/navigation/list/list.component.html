@@ -1,0 +1,96 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent" (backdropClick)="onBackdropClicked()">
+
+        <!-- Drawer -->
+        <mat-drawer class="w-full md:w-160 dark:bg-gray-900" [mode]="drawerMode" [opened]="false" [position]="'end'"
+            [disableClose]="true" #matDrawer>
+            <router-outlet></router-outlet>
+        </mat-drawer>
+
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row md:flex-col flex-auto justify-between py-8 px-6 md:px-8 border-b">
+
+                    <!-- Title -->
+                    <div>
+                        <div class="text-4xl font-extrabold tracking-tight leading-none">Navegaciones</div>
+                        <div class="ml-0.5 font-medium text-secondary">
+                            <ng-container *ngIf="count > 0">
+                                {{count}}
+                            </ng-container>
+                            {{count | i18nPlural: {
+                            '=0' : 'No hay navegaciones',
+                            '=1' : 'Navegación',
+                            'other': 'Navegaciones'
+                            } }}
+                        </div>
+                    </div>
+
+                    <!-- Main actions -->
+                    <div class="flex items-center mt-4">
+                        <!-- Search -->
+                        <div class="flex-auto">
+                            <mat-form-field class="angel-mat-dense angel-mat-no-subscript w-full min-w-50">
+                                <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                                <input matInput [formControl]="searchInputControl" [autocomplete]="'off'"
+                                    [placeholder]="'Buscar por nombre de la navegación'">
+                            </mat-form-field>
+                        </div>
+                        <!-- Add button -->
+                        <button class="ml-4" mat-flat-button [color]="'primary'" (click)="createNavigation()">
+                            <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                            <span class="ml-2 mr-1">Añadir</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- list -->
+                <div class="relative">
+                    <ng-container *ngIf="navigations$ | async as navigations">
+                        <ng-container *ngIf="navigations.length; else noResults">
+                            <ng-container *ngFor="let navigation of navigations; let i = index; trackBy: trackByFn">
+                                <!-- Entity -->
+                                <div class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer hover:bg-hover border-b"
+                                    [ngClass]="{'bg-primary-50 dark:bg-hover': selectedNavigation && selectedNavigation.id_navigation === navigation.id_navigation}"
+                                    [routerLink]="['./', navigation.id_navigation]">
+                                    <div
+                                        class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                                        <ng-container *ngIf="true">
+                                            <div
+                                                class="flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200">
+                                                {{navigation.name_navigation.charAt(0)}}
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="min-w-0 ml-4">
+                                        <div class="font-medium leading-5 truncate">{{navigation.name_navigation}}
+                                        </div>
+                                        <div class="leading-5 truncate text-secondary"
+                                            *ngIf="navigation.type_navigation">
+                                            {{getTypeNavigationEnum(navigation.type_navigation).name_type}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- No Results -->
+                    <ng-template #noResults>
+                        <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">¡No hay
+                            resultados!</div>
+                    </ng-template>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

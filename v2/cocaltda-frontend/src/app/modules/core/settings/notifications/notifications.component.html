@@ -1,0 +1,96 @@
+<div class="w-full">
+
+    <!-- Form -->
+    <form [formGroup]="notificationsForm">
+
+        <!-- Section -->
+        <div class="w-full text-xl">Alertas</div>
+        <div class="grid grid-cols-1 gap-6 w-full mt-8">
+            <!-- Communication -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto cursor-pointer" (click)="communication.toggle()">
+                    <div class="leading-6 font-medium">Comunicación</div>
+                    <div class="text-md text-secondary">Obtenga noticias, anuncios y actualizaciones de productos.</div>
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'communication'" #communication>
+                </mat-slide-toggle>
+            </div>
+            <!-- Security -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto cursor-pointer" (click)="securityToggle.toggle()">
+                    <div class="leading-6 font-medium">Seguridad</div>
+                    <div class="text-md text-secondary">
+                        Recibe notificaciones importantes sobre la seguridad de tu cuenta.
+                    </div>
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'security'" #securityToggle>
+                </mat-slide-toggle>
+            </div>
+            <!-- Meetups -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto cursor-pointer" (click)="meetupsToggle.toggle()">
+                    <div class="leading-6 font-medium">Reuniones</div>
+                    <div class="text-md text-secondary">
+                        Recibir un correo electrónico cuando se publique un Meetup cerca de mi ubicación.
+                    </div>
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'meetups'" #meetupsToggle>
+                </mat-slide-toggle>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="my-10 border-t"></div>
+
+        <!-- Section -->
+        <div class="w-full text-xl">Actividad de la cuenta</div>
+        <div class="w-full mt-8 font-medium">Envíame un correo electrónico cuando:</div>
+        <div class="grid grid-cols-1 gap-4 w-full mt-4">
+            <!-- Comments -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto leading-6 cursor-pointer" (click)="comments.toggle()">
+                    alguien comenta uno de mis artículos
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'comments'" #comments>
+                </mat-slide-toggle>
+            </div>
+            <!-- Mention -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto leading-6 cursor-pointer" (click)="mention.toggle()">
+                    alguien me menciona
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'mention'" #mention>
+                </mat-slide-toggle>
+            </div>
+            <!-- Follow -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto leading-6 cursor-pointer" (click)="follow.toggle()">
+                    alguien me sigue
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'follow'" #follow>
+                </mat-slide-toggle>
+            </div>
+            <!-- Inquiry -->
+            <div class="flex items-center justify-between">
+                <div class="flex-auto leading-6 cursor-pointer" (click)="inquiry.toggle()">
+                    alguien responde a mi publicación de trabajo
+                </div>
+                <mat-slide-toggle class="ml-2" [color]="'primary'" [formControlName]="'inquiry'" #inquiry>
+                </mat-slide-toggle>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="my-10 border-t"></div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end">
+            <button mat-stroked-button type="button">
+                Cancelar
+            </button>
+            <button class="ml-4" mat-flat-button type="button" [color]="'primary'">Guardar
+            </button>
+        </div>
+    </form>
+
+</div>

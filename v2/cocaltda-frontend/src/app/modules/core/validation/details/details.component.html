@@ -1,0 +1,182 @@
+<div class="flex flex-col w-full">
+    <!-- View mode -->
+    <ng-container *ngIf="!editMode">
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <div class="w-full h-40 bg-black z-10 opacity-0">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}
+            </h1>
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+        </div>
+        <!-- Entity -->
+        <div class="relative flex flex-col flex-auto items-center p-6 pt-0 sm:p-12 sm:pt-0">
+            <div class="w-full max-w-3xl">
+                <!-- Actions -->
+                <div
+                    class="flex items-center -mx-6 sm:-mx-12 py-4 pr-6 pl-6 sm:pr-12 sm:pl-12 border-t bg-gray-100 dark:bg-transparent rounded-t-none rounded-b-2xl">
+                    <button mat-stroked-button (click)="toggleEditMode(true)">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
+                        <span class="ml-1">Editar</span>
+                    </button>
+                    <button mat-stroked-button class="ml-auto" [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                        <span class="ml-1">Cerrar</span>
+                    </button>
+                </div>
+                <div class="flex flex-col mt-4 pt-6 space-y-8">
+                    <!-- type_validation -->
+                    <!-- Type Enum -->
+                    <ng-container *ngIf="validation.type_validation">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'mat_outline:category'"></mat-icon>
+                            <div class="ml-6 leading-6">{{typeValidationSelect.name_type}}</div>
+                        </div>
+                    </ng-container>
+                    <!-- status_validation -->
+                    <ng-container>
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:status-online'"></mat-icon>
+                            <div *ngIf="validation.status_validation"
+                                class="ml-6 mt-1 w-3 h-3 bg-green-700 rounded-full">
+                            </div>
+                            <div *ngIf="!validation.status_validation"
+                                class="ml-6 mt-1 w-3 h-3 bg-red-600 rounded-full">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- pattern_validation -->
+                    <ng-container *ngIf="validation.pattern_validation">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'mat_outline:pattern'"></mat-icon>
+                            <div class="ml-6 leading-6">{{validation.pattern_validation}}</div>
+                        </div>
+                    </ng-container> <!-- message_validation -->
+                    <ng-container *ngIf="validation.message_validation">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'mat_outline:message'"></mat-icon>
+                            <div class="ml-6 leading-6">{{validation.message_validation}}</div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Edit mode -->
+    <ng-container *ngIf="editMode">
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <div class="w-full h-40 bg-black z-10 opacity-25">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}
+            </h1>
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+        </div>
+        <!-- form -->
+        <div class="relative flex flex-col flex-auto items-center px-6 sm:px-12">
+            <div class="w-full max-w-3xl">
+                <!-- Actions -->
+                <div
+                    class="flex items-center -mx-6 sm:-mx-12 py-4 pr-6 pl-6 sm:pr-12 sm:pl-12 border-t bg-gray-100 dark:bg-transparent rounded-t-none rounded-b-2xl">
+                    <!-- Save -->
+                    <button mat-flat-button [color]="'primary'" [disabled]="validationForm.invalid"
+                        [matTooltip]="'Guardar'" (click)="updateValidation()">
+                        Guardar
+                    </button>
+                    <!-- Delete -->
+                    <button mat-stroked-button class="ml-2" [color]="'warn'" [matTooltip]="'Eliminar'"
+                        (click)="deleteValidation()">
+                        Eliminar
+                    </button>
+                    <!-- Cancel -->
+                    <button mat-stroked-button class="ml-2 mr-2" [matTooltip]="'Cancelar'"
+                        (click)="toggleEditMode(false)">
+                        Cancelar
+                    </button>
+
+                    <button mat-stroked-button class="ml-auto" [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                        <span class="ml-1">Cerrar</span>
+                    </button>
+                </div>
+                <form [formGroup]="validationForm" class="mb-8">
+                    <!-- Alert -->
+                    <angel-alert class="mt-8" *ngIf="validationForm.invalid || showAlert" [appearance]="'outline'"
+                        [showIcon]="false" [type]="alert.type" [@shake]="alert.type === 'error'">
+                        <!-- MessageAPI if alert is actived for the component -->
+                        {{alert.message}}
+                        <!-- type_validation -->
+                        <mat-error *ngIf="validationForm.get('type_validation')?.hasError('required')">
+                            • Seleccione el tipo de la validación
+                        </mat-error>
+                        <!-- status_validation -->
+                        <mat-error *ngIf="validationForm.get('status_validation')?.hasError('required')">
+                            • Seleccione el estado de la validación
+                        </mat-error>
+                        <!-- pattern_validation -->
+                        <mat-error *ngIf="validationForm.get('pattern_validation')?.hasError('required')">
+                            • Ingrese la expresión regular de la validación
+                        </mat-error>
+                        <!-- message_validation -->
+                        <mat-error *ngIf="validationForm.get('message_validation')?.hasError('required')">
+                            • Ingrese el mensaje de la validación
+                        </mat-error>
+                    </angel-alert>
+                    <!-- Alert -->
+                    <!-- Type Enum -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Tipo de validación</mat-label>
+                            <mat-select [formControlName]="'type_validation'">
+                                <ng-container *ngFor="let type of typeValidation">
+                                    <mat-option [value]="type.value_type">
+                                        {{type.name_type}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- status_validation -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Estado</mat-label>
+                            <mat-select [formControlName]="'status_validation'" [value]="false">
+                                <mat-option [value]="true">Activo</mat-option>
+                                <mat-option [value]="false">Inactivo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- pattern_validation -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Expresión regular</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'mat_solid:pattern'">
+                            </mat-icon>
+                            <input matInput maxlength="500" [formControlName]="'pattern_validation'"
+                                [placeholder]="'Ingrese la expresión regular'" [spellcheck]="false">
+                        </mat-form-field>
+                    </div> <!-- message_validation -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Mensaje</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'mat_solid:message'">
+                            </mat-icon>
+                            <input matInput maxlength="250" [formControlName]="'message_validation'"
+                                [placeholder]="'Ingrese el mensaje'" [spellcheck]="true">
+                        </mat-form-field>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-container>
+</div>

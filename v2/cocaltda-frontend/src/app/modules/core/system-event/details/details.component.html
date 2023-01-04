@@ -1,0 +1,62 @@
+<div class="flex flex-col w-full">
+    <!-- View mode -->
+    <ng-container>
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+            <div class="absolute w-full h-40 bg-black inset-0 opacity-0">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}</h1>
+            <!-- Close button -->
+            <div class="absolute z-20 top-6 right-6">
+                <button mat-icon-button [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                    <mat-icon class="text-gray" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                </button>
+            </div>
+        </div>
+        <!-- Entity -->
+        <div class="relative flex flex-col flex-auto items-center p-6 pt-0 sm:p-12 sm:pt-0">
+            <div class="w-full max-w-3xl">
+                <div class="flex flex-col pt-6 space-y-8">
+                    <!-- id_user -->
+                    <ng-container *ngIf="systemEvent.user.person.name_person">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                            <div class="ml-6 leading-6">{{systemEvent.user.person.name_person + " " +
+                                systemEvent.user.person.last_name_person}}</div>
+                        </div>
+                    </ng-container> <!-- table_system_event -->
+                    <ng-container *ngIf="systemEvent.table_system_event">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_solid:table'"></mat-icon>
+                            <div class="ml-6 leading-6">{{systemEvent.table_system_event.toUpperCase()}}</div>
+                        </div>
+                    </ng-container> <!-- row_system_event -->
+                    <ng-container *ngIf="systemEvent.row_system_event">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'mat_solid:table_rows'"></mat-icon>
+                            <div class="ml-6 leading-6">{{systemEvent.row_system_event}}</div>
+                        </div>
+                    </ng-container> <!-- action_system_event -->
+                    <ng-container *ngIf="systemEvent.action_system_event">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_solid:cube-transparent'"></mat-icon>
+                            <div class="ml-6 leading-6">{{systemEvent.action_system_event}}</div>
+                        </div>
+                    </ng-container> <!-- date_system_event -->
+                    <ng-container *ngIf="systemEvent.date_system_event">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
+                            <div class="ml-6 leading-6">{{systemEvent.date_system_event | date:'medium'}}</div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

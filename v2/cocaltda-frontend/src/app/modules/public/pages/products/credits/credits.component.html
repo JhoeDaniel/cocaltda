@@ -1,0 +1,34 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPageCredits.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Créditos'" [icon]="'static:i_credit'" (click)="resetSelectItem()"
+      [image]="selectedItem.images!.mobile!"></app-page-title>
+    <div #content
+      class="flex flex-col md:flex-row w-full h-auto bg-white p-8 sm:px-16 md:pl-0 md:w-8/12 md:rounded-xl opacity-95">
+      <div class="w-auto md:w-4/12 overflow-x-auto md:overflow-hidden md:self-center">
+        <div class="w-max mx-auto md:w-4/12 md:mx-auto h-auto flex flex-row md:flex-col justify-evenly self-center">
+          <ng-container *ngFor="let item of itemToggleCredits; trackBy: trackByFn">
+            <div (click)="selectItem(item)" [ngClass]="item.selected ? 'bg-green-600':'bg-white'"
+              class="ml-4 w-auto max-w-30 md:min-w-30 h-auto md:mx-auto py-4 px-4 my-5 rounded-xl flex flex-col items-center justify-center shadow-lg cursor-pointer hover:bg-green-500 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500">
+              <mat-icon [ngClass]="item.selected ? 'text-white':'text-green-600'"
+                class="w-10 group-hover:text-white transition duration-500" [svgIcon]="item.icon!">
+              </mat-icon>
+              <h4 [ngClass]="item.selected ? 'text-white':'text-green-600'"
+                class="text-lg font-semibold mt-1 group-hover:text-white transition duration-500">
+                {{item.title}}
+              </h4>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="w-full md:w-8/12 mt-4 md:mt-0 md:pl-4">
+        <div class="text-gray-600 font-normal text-justify transition duration-500" [innerHTML]="selectedItem.html">
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

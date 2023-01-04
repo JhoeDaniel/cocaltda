@@ -1,0 +1,84 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPageSimulator.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Simulador de inversión'" [icon]="'static:i_investment'"
+      [image]="'assets/images/static/mobileTransference.jpg'" [visibleImage]="false"></app-page-title>
+    <div #content
+      class="w-full bg-[url('assets/images/static/backgroundSimulator.jpg')] bg-cover bg-no-repeat p-8 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
+      <div class="w-full">
+        <img class="h-30 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
+      </div>
+      <form [formGroup]="investmentsForm" class="mb-8">
+        <!-- Alert -->
+        <angel-alert class="mt-8" *ngIf="showAlert && investmentsForm.invalid" [appearance]="'outline'"
+          [showIcon]="true" [type]="alert.type" [@shake]="alert.type === 'error'">
+          <!-- MessageAPI if alert is actived for the component -->
+          {{alert.message}}
+          <!-- term -->
+          <mat-error *ngIf="investmentsForm.get('term')?.hasError('required')">
+            • Seleccione el plazo
+          </mat-error>
+          <!-- capital -->
+          <mat-error *ngIf="investmentsForm.get('capital')?.hasError('required')">
+            • Ingrese su capital
+          </mat-error>
+          <mat-error *ngIf="investmentsForm.get('capital')?.hasError('min')">
+            • El capital mínimo es {{minCapital}}
+          </mat-error>
+          <mat-error *ngIf="investmentsForm.get('capital')?.hasError('max')">
+            • El capital máximo es {{maxCapital}}
+          </mat-error>
+        </angel-alert>
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Plazo</mat-label>
+            <mat-select [formControlName]="'term'">
+              <ng-container *ngFor="let term of terms">
+                <mat-option [value]="term">
+                  {{term.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- capital -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Capital</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:cash'">
+            </mat-icon>
+            <input class="dark:text-white dark:focus:text-white" matInput [formControlName]="'capital'" type="number"
+              [min]="minCapital" [max]="maxCapital" [placeholder]="'Ingrese su capital a invertir'">
+          </mat-form-field>
+        </div>
+      </form>
+      <div class="w-full flex justify-center">
+        <button [matTooltip]="'Simular inversión'" (click)="simulate()"
+          class="p-4 w-40 rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Calcular</button>
+      </div>
+      <div class="w-full p-4 bg-white mt-4 rounded-lg" *ngIf="showGains">
+        <div class="flex justify-end">
+          <mat-icon matPrefix [matTooltip]="'Restablecer'" (click)="reset()" *ngIf="statusBtnGains"
+            class="mb-2 icon-size-6 text-green-600 hover:bg-green-600 hover:text-white rounded-md transition ease-in-out delay-150 hover:scale-150 duration-300"
+            [svgIcon]="'heroicons_outline:x'">
+          </mat-icon>
+        </div>
+        <div class="text-center font-medium text-lg text-green-600" [innerHTML]="textGains">
+        </div>
+      </div>
+      <div class="bg-black opacity-70 p-5 flex flex-col mt-8 rounded-lg">
+        <h4 class="text-white font-medium text-lg">INSTRUCCIONES DE USO:</h4>
+        <p class="text-white font-thin text-lg text-justify">
+          Esta herramienta te permite realizar simulación de créditos según: tipo, método, pago,
+          cuotas y monto. Las tablas presuntivas mostradas como resultado son solo referenciales,
+          difieren de las tablas de amortización de los créditos otorgados por la Cooperativa de
+          Ahorro y Crédito "COCA" Ltda.<br>
+          Ya que estamos sujetos a cambios de tasas de interés y parametros adicionales como seguro de
+          desgravamen, etc.
+        </p>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

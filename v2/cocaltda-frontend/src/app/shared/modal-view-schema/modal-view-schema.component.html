@@ -1,0 +1,21 @@
+<div class="relative flex flex-col w-full h-full">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg">Esquema de validación</div>
+        <button mat-icon-button (click)="close()" [tabIndex]="-1">
+            <mat-icon class="text-current" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+    <!-- view scheme -->
+    <div class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto">
+        <!-- Content -->
+        <div *ngIf="schema">
+            <mat-form-field class="angel-mat-textarea angel-mat-no-subscript w-full">
+                <textarea matInput matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="30" disabled [value]="parseJsonToText(schema)"
+                    [placeholder]="'Estructura de la nevegación'" [spellcheck]="false"></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,514 @@
+{
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "aside",
+            "basic",
+            "collapsable",
+            "divider",
+            "group",
+            "spacer"
+          ]
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "tooltip": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "externalLink": {
+          "type": "string"
+        },
+        "target": {
+          "enum": ["_blank", "_self", "_parent", "_top"]
+        },
+        "exactMatch": {
+          "type": "boolean"
+        },
+        "classes": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "subtitle": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            },
+            "wrapper": {
+              "type": "string"
+            }
+          }
+        },
+        "icon": {
+          "type": "string"
+        },
+        "badge": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "classes": {
+              "type": "string"
+            }
+          }
+        },
+        "children": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "subtitle": {
+                  "type": "string"
+                },
+                "type": {
+                  "enum": [
+                    "aside",
+                    "basic",
+                    "collapsable",
+                    "divider",
+                    "group",
+                    "spacer"
+                  ]
+                },
+                "active": {
+                  "type": "boolean"
+                },
+                "disabled": {
+                  "type": "boolean"
+                },
+                "tooltip": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "string"
+                },
+                "externalLink": {
+                  "type": "string"
+                },
+                "target": {
+                  "enum": ["_blank", "_self", "_parent", "_top"]
+                },
+                "exactMatch": {
+                  "type": "boolean"
+                },
+                "classes": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "icon": {
+                      "type": "string"
+                    },
+                    "wrapper": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "badge": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "classes": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "children": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "subtitle": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "aside",
+                            "basic",
+                            "collapsable",
+                            "divider",
+                            "group",
+                            "spacer"
+                          ]
+                        },
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "disabled": {
+                          "type": "boolean"
+                        },
+                        "tooltip": {
+                          "type": "string"
+                        },
+                        "link": {
+                          "type": "string"
+                        },
+                        "externalLink": {
+                          "type": "string"
+                        },
+                        "target": {
+                          "enum": ["_blank", "_self", "_parent", "_top"]
+                        },
+                        "exactMatch": {
+                          "type": "boolean"
+                        },
+                        "classes": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "subtitle": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "wrapper": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "icon": {
+                          "type": "string"
+                        },
+                        "badge": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "classes": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "children": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "subtitle": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "aside",
+                                    "basic",
+                                    "collapsable",
+                                    "divider",
+                                    "group",
+                                    "spacer"
+                                  ]
+                                },
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "disabled": {
+                                  "type": "boolean"
+                                },
+                                "tooltip": {
+                                  "type": "string"
+                                },
+                                "link": {
+                                  "type": "string"
+                                },
+                                "externalLink": {
+                                  "type": "string"
+                                },
+                                "target": {
+                                  "enum": ["_blank", "_self", "_parent", "_top"]
+                                },
+                                "exactMatch": {
+                                  "type": "boolean"
+                                },
+                                "classes": {
+                                  "type": "object",
+                                  "properties": {
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "subtitle": {
+                                      "type": "string"
+                                    },
+                                    "icon": {
+                                      "type": "string"
+                                    },
+                                    "wrapper": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "icon": {
+                                  "type": "string"
+                                },
+                                "badge": {
+                                  "type": "object",
+                                  "properties": {
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "classes": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "children": {
+                                  "type": "array",
+                                  "items": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "title": {
+                                          "type": "string"
+                                        },
+                                        "subtitle": {
+                                          "type": "string"
+                                        },
+                                        "type": {
+                                          "enum": [
+                                            "aside",
+                                            "basic",
+                                            "collapsable",
+                                            "divider",
+                                            "group",
+                                            "spacer"
+                                          ]
+                                        },
+                                        "active": {
+                                          "type": "boolean"
+                                        },
+                                        "disabled": {
+                                          "type": "boolean"
+                                        },
+                                        "tooltip": {
+                                          "type": "string"
+                                        },
+                                        "link": {
+                                          "type": "string"
+                                        },
+                                        "externalLink": {
+                                          "type": "string"
+                                        },
+                                        "target": {
+                                          "enum": [
+                                            "_blank",
+                                            "_self",
+                                            "_parent",
+                                            "_top"
+                                          ]
+                                        },
+                                        "exactMatch": {
+                                          "type": "boolean"
+                                        },
+                                        "classes": {
+                                          "type": "object",
+                                          "properties": {
+                                            "title": {
+                                              "type": "string"
+                                            },
+                                            "subtitle": {
+                                              "type": "string"
+                                            },
+                                            "icon": {
+                                              "type": "string"
+                                            },
+                                            "wrapper": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        },
+                                        "icon": {
+                                          "type": "string"
+                                        },
+                                        "badge": {
+                                          "type": "object",
+                                          "properties": {
+                                            "title": {
+                                              "type": "string"
+                                            },
+                                            "classes": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        },
+                                        "children": {
+                                          "type": "array",
+                                          "items": [
+                                            {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "string"
+                                                },
+                                                "title": {
+                                                  "type": "string"
+                                                },
+                                                "subtitle": {
+                                                  "type": "string"
+                                                },
+                                                "type": {
+                                                  "enum": [
+                                                    "aside",
+                                                    "basic",
+                                                    "collapsable",
+                                                    "divider",
+                                                    "group",
+                                                    "spacer"
+                                                  ]
+                                                },
+                                                "active": {
+                                                  "type": "boolean"
+                                                },
+                                                "disabled": {
+                                                  "type": "boolean"
+                                                },
+                                                "tooltip": {
+                                                  "type": "string"
+                                                },
+                                                "link": {
+                                                  "type": "string"
+                                                },
+                                                "externalLink": {
+                                                  "type": "string"
+                                                },
+                                                "target": {
+                                                  "enum": [
+                                                    "_blank",
+                                                    "_self",
+                                                    "_parent",
+                                                    "_top"
+                                                  ]
+                                                },
+                                                "exactMatch": {
+                                                  "type": "boolean"
+                                                },
+                                                "classes": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string"
+                                                    },
+                                                    "subtitle": {
+                                                      "type": "string"
+                                                    },
+                                                    "icon": {
+                                                      "type": "string"
+                                                    },
+                                                    "wrapper": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "icon": {
+                                                  "type": "string"
+                                                },
+                                                "badge": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "title": {
+                                                      "type": "string"
+                                                    },
+                                                    "classes": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "required": [
+                                                "id",
+                                                "title",
+                                                "type",
+                                                "link",
+                                                "icon"
+                                              ]
+                                            }
+                                          ],
+                                          "maxItems": 30
+                                        }
+                                      },
+                                      "required": ["id", "title", "type"]
+                                    }
+                                  ],
+                                  "maxItems": 30
+                                }
+                              },
+                              "required": ["id", "title", "type"]
+                            }
+                          ],
+                          "maxItems": 30
+                        }
+                      },
+                      "required": ["id", "title", "type"]
+                    }
+                  ],
+                  "maxItems": 30
+                }
+              },
+              "required": ["id", "title", "type"]
+            }
+          ],
+          "maxItems": 30
+        }
+      },
+      "required": ["id", "title", "type"]
+    }
+  ],
+  "maxItems": 30
+}

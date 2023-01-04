@@ -1,0 +1,235 @@
+<div class="flex flex-col w-full">
+    <!-- View mode -->
+    <ng-container *ngIf="!editMode">
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <div class="w-full h-40 bg-black z-10 opacity-0">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}
+            </h1>
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+        </div>
+        <!-- Entity -->
+        <div class="relative flex flex-col flex-auto items-center p-6 pt-0 sm:p-12 sm:pt-0">
+            <div class="w-full max-w-3xl">
+                <!-- Actions -->
+                <div
+                    class="flex items-center -mx-6 sm:-mx-12 py-4 pr-6 pl-6 sm:pr-12 sm:pl-12 border-t bg-gray-100 dark:bg-transparent rounded-t-none rounded-b-2xl">
+                    <button mat-stroked-button (click)="toggleEditMode(true)">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
+                        <span class="ml-1">Editar</span>
+                    </button>
+                    <button mat-stroked-button class="ml-auto" [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                        <span class="ml-1">Cerrar</span>
+                    </button>
+                </div>
+                <div class="flex flex-col mt-4 pt-6 space-y-8">
+                    <!-- type_profile -->
+                    <!-- Type Enum -->
+                    <ng-container *ngIf="profile.type_profile">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'mat_outline:category'"></mat-icon>
+                            <div class="ml-6 leading-6">{{typeProfileSelect.name_type}}</div>
+                        </div>
+                    </ng-container>
+                    <!-- name_profile -->
+                    <ng-container *ngIf="profile.name_profile">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:credit-card'"></mat-icon>
+                            <div class="ml-6 leading-6">{{profile.name_profile}}</div>
+                        </div>
+                    </ng-container> <!-- description_profile -->
+                    <ng-container *ngIf="profile.description_profile">
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:tag'"></mat-icon>
+                            <div class="ml-6 leading-6">{{profile.description_profile}}</div>
+                        </div>
+                    </ng-container>
+                    <!-- status_profile -->
+                    <ng-container>
+                        <div class="flex sm:items-center">
+                            <mat-icon [svgIcon]="'heroicons_outline:status-online'"></mat-icon>
+                            <div *ngIf="profile.status_profile" class="ml-6 mt-1 w-3 h-3 bg-green-700 rounded-full">
+                            </div>
+                            <div *ngIf="!profile.status_profile" class="ml-6 mt-1 w-3 h-3 bg-red-600 rounded-full">
+                            </div>
+                        </div>
+                    </ng-container>
+                    <div class="flex flex-col mt-4 pt-6 border-t space-y-8">
+                        <!-- navigations -->
+                        <ng-container *ngIf="profileNavigations.length">
+                            <div class="flex">
+                                <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+                                <div class="min-w-0 ml-6 space-y-1">
+                                    <ng-container
+                                        *ngFor="let _profileNavigation of profileNavigations; trackBy: trackByFn">
+                                        <div class="flex items-center leading-6">
+                                            <div>{{_profileNavigation.navigation!.name_navigation}}</div>
+                                            <div class="text-md truncate text-secondary"
+                                                *ngIf="_profileNavigation.navigation!.name_navigation">
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Edit mode -->
+    <ng-container *ngIf="editMode">
+        <!-- Header -->
+        <div class="relative w-full h-40 flex items-center bg-accent-100 dark:bg-accent-700 place-content-center">
+            <!-- Background -->
+            <div class="w-full h-40 bg-black z-10 opacity-25">
+            </div>
+            <h1 class="absolute z-20 text-dark text-3xl">{{nameEntity}}
+            </h1>
+            <!-- Light version -->
+            <img class="dark:hidden absolute inset-0 object-cover w-full h-full" src="assets/images/background.svg">
+            <!-- Dark version -->
+            <img class="hidden dark:flex absolute inset-0 object-cover w-full h-full"
+                src="assets/images/background-on-dark.svg">
+        </div>
+        <!-- form -->
+        <div class="relative flex flex-col flex-auto items-center px-6 sm:px-12">
+            <div class="w-full max-w-3xl">
+                <!-- Actions -->
+                <div
+                    class="flex items-center -mx-6 sm:-mx-12 py-4 pr-6 pl-6 sm:pr-12 sm:pl-12 border-t bg-gray-100 dark:bg-transparent rounded-t-none rounded-b-2xl">
+                    <!-- Save -->
+                    <button mat-flat-button [color]="'primary'" [disabled]="profileForm.invalid"
+                        [matTooltip]="'Guardar'" (click)="updateProfile()">
+                        Guardar
+                    </button>
+                    <!-- Delete -->
+                    <button mat-stroked-button class="ml-2" [color]="'warn'" [matTooltip]="'Eliminar'"
+                        (click)="deleteProfile()">
+                        Eliminar
+                    </button>
+                    <!-- Cancel -->
+                    <button mat-stroked-button class="ml-2 mr-2" [matTooltip]="'Cancelar'"
+                        (click)="toggleEditMode(false)">
+                        Cancelar
+                    </button>
+
+                    <button mat-stroked-button class="ml-auto" [matTooltip]="'Cerrar'" [routerLink]="['../']">
+                        <mat-icon class="icon-size-5" [svgIcon]="'heroicons_outline:x'"></mat-icon>
+                        <span class="ml-1">Cerrar</span>
+                    </button>
+                </div>
+                <form [formGroup]="profileForm" class="mb-8">
+                    <!-- Alert -->
+                    <angel-alert class="mt-8" *ngIf="profileForm.invalid || showAlert" [appearance]="'outline'"
+                        [showIcon]="false" [type]="alert.type" [@shake]="alert.type === 'error'">
+                        <!-- MessageAPI if alert is actived for the component -->
+                        {{alert.message}}
+                        <!-- name_profile -->
+                        <mat-error *ngIf="profileForm.get('name_profile')?.hasError('required')">
+                            • Ingrese el nombre del perfil
+                        </mat-error>
+                        <!-- description_profile -->
+                        <mat-error *ngIf="profileForm.get('description_profile')?.hasError('required')">
+                            • Ingrese la descripción del perfil
+                        </mat-error>
+                        <!-- status_profile -->
+                        <mat-error *ngIf="profileForm.get('status_profile')?.hasError('required')">
+                            • Ingrese el estado del perfil
+                        </mat-error>
+                    </angel-alert>
+                    <!-- Alert -->
+                    <!-- id_company -->
+                    <!-- type_profile -->
+                    <!-- Type Enum -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Tipo de perfil</mat-label>
+                            <mat-select [formControlName]="'type_profile'">
+                                <ng-container *ngFor="let type of typeProfile">
+                                    <mat-option [value]="type.value_type">
+                                        {{type.name_type}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- name_profile -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Nombre</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_solid:credit-card'">
+                            </mat-icon>
+                            <input matInput maxlength="100" [formControlName]="'name_profile'"
+                                [placeholder]="'Ingrese el nombre'" [spellcheck]="true">
+                        </mat-form-field>
+                    </div> <!-- description_profile -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Descripción</mat-label>
+                            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_solid:tag'">
+                            </mat-icon>
+                            <input matInput maxlength="250" [formControlName]="'description_profile'"
+                                [placeholder]="'Ingrese la descripción'" [spellcheck]="true">
+                        </mat-form-field>
+                    </div>
+                    <!-- status_profile -->
+                    <div class="mt-8">
+                        <mat-form-field class="angel-mat-no-subscript w-full">
+                            <mat-label>Estado</mat-label>
+                            <mat-select [formControlName]="'status_profile'" [value]="false">
+                                <mat-option [value]="true">Activo</mat-option>
+                                <mat-option [value]="false">Inactivo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <!-- Navigations -->
+                    <div class="mt-8">
+                        <div class="space-y-4">
+                            <ng-container
+                                *ngFor="let navigation of formArrayNavigations.controls; let i = index; let first = first; let last = last; trackBy: trackByFn">
+                                <div class="relative flex">
+                                    <mat-form-field class="angel-mat-no-subscript w-full">
+                                        <mat-label *ngIf="first">Navegación</mat-label>
+                                        <mat-select
+                                            [formControl]="getFromControl(formArrayNavigations, i, 'name_navigation')"
+                                            (selectionChange)="updateNavigationField(i)">
+                                            <mat-option
+                                                *ngFor="let navigation of categoriesNavigations; trackBy: trackByFn"
+                                                [value]="navigation.name_navigation" [disabled]="navigation.isSelected">
+                                                {{navigation.name_navigation}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <ng-container *ngIf="!(first && last)">
+                                        <div class="flex items-center w-10 pl-2" [ngClass]="{'mt-6': first}">
+                                            <button class="w-8 h-8 min-h-8" mat-icon-button
+                                                (click)="removeNavigationField(i)" matTooltip="Eliminar">
+                                                <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:trash'">
+                                                </mat-icon>
+                                            </button>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div *ngIf="!isSelectedAll"
+                            class="group inline-flex items-center mt-2 -ml-4 py-2 px-4 rounded cursor-pointer"
+                            (click)="addNavigationField()">
+                            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:plus-circle'"></mat-icon>
+                            <span class="ml-2 font-medium text-secondary group-hover:underline">Añadir navegación</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-container>
+</div>

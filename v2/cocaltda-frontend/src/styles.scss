@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/deeppurple-amber.css";
+@import "./styles/snackBar.scss";
+
+/* style for the svg */
+.opacity_20 {
+  opacity: 0.2;
+}
+
+.color_334155 {
+  fill: #334155;
+}
+
+.t-r-25 {
+  top: 25px;
+  right: 25px;
+}
+/* style for the svg */
+.b-r-25 {
+  bottom: 25px;
+  right: 25px;
+}
+
+.t-l-25 {
+  top: 25px;
+  left: 25px;
+}
+/* Delete arrow of input type number suport -> Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: rgba(var(--angel-primary-rgb), var(--tw-bg-opacity)) !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(var(--angel-primary-rgb), var(--tw-bg-opacity)) !important;
+  border-radius: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+  width: 6px;
+  border: solid 2px;
+  border-color: rgba(241, 245, 249, 0.12);
+  border-radius: 6px;
+}

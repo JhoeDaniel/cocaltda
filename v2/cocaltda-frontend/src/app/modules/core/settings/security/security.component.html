@@ -1,0 +1,115 @@
+<div class="w-full">
+
+    <!-- Form -->
+    <form [formGroup]="userForm">
+        <!-- Alert -->
+        <angel-alert class="mt-8" *ngIf="userForm.invalid || showAlert" [appearance]="'outline'" [showIcon]="false"
+            [type]="alert.type" [@shake]="alert.type === 'error'">
+            <!-- MessageAPI if alert is actived for the component -->
+            {{alert.message}}
+            <!-- password_user -->
+            <mat-error *ngIf="userForm.get('current_password')?.hasError('required')">
+                • Ingrese la contraseña actual del usuario
+            </mat-error>
+            <!-- new_password -->
+            <mat-error *ngIf="userForm.get('new_password')?.hasError('required')">
+                • Ingrese la contraseña nueva del usuario
+            </mat-error>
+            <ng-container *ngIf="validationPassword">
+                <mat-error *ngIf="userForm.get('new_password')?.hasError('pattern')">
+                    • {{validationPassword.message_validation}}
+                </mat-error>
+            </ng-container>
+        </angel-alert>
+
+        <!-- Section -->
+        <div class="w-full mt-8">
+            <div class="text-xl">Cambia tu contraseña</div>
+            <div class="text-secondary">¡Ingresa tu nueva actual y nueva contraseña!</div>
+        </div>
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <!-- Current password -->
+            <div class="sm:col-span-4">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Contraseña actual</mat-label>
+                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:key'" matPrefix></mat-icon>
+                    <input id="current_password" matInput type="password" [formControlName]="'current_password'"
+                        placeholder="Ingresa tu contraseña actual" #passwordFieldCP>
+                    <button mat-icon-button type="button"
+                        (click)="passwordFieldCP.type === 'password' ? passwordFieldCP.type = 'text' : passwordFieldCP.type = 'password'"
+                        matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordFieldCP.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordFieldCP.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+            <!-- New password -->
+            <div class="sm:col-span-4">
+                <mat-form-field class="angel-mat-no-subscript w-full">
+                    <mat-label>Nueva contraseña</mat-label>
+                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:key'" matPrefix></mat-icon>
+                    <input id="new_password" matInput type="password" [formControlName]="'new_password'"
+                        placeholder="Ingresa tu nueva contraseña" #passwordField>
+                    <button mat-icon-button type="button"
+                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                        matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <!-- <div class="my-10 border-t"></div> -->
+
+        <!-- Section -->
+        <!-- <div class="w-full">
+            <div class="text-xl">Preferencias de seguridad</div>
+            <div class="text-secondary">Mantenga su cuenta más segura con las siguientes preferencias.</div>
+        </div>
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+            <div class="sm:col-span-4 flex items-center justify-between">
+                <div class="flex-auto cursor-pointer" (click)="twoStepToggle.toggle()">
+                    <div class="leading-6 font-medium">Habilitar autenticación de 2 pasos</div>
+                    <div class="text-md text-secondary">
+                        Lo protege contra el robo de contraseña al solicitar un código de autenticación por SMS en cada
+                        inicio de sesión.
+                    </div>
+                </div>
+                <mat-slide-toggle class="ml-4" [color]="'primary'" [formControlName]="'twoStep'" #twoStepToggle>
+                </mat-slide-toggle>
+            </div>
+            <div class="sm:col-span-4 flex items-center justify-between">
+                <div class="flex-auto cursor-pointer" (click)="askPasswordChangeToggle.toggle()">
+                    <div class="leading-6 font-medium">Pide cambiar la contraseña cada 6 meses</div>
+                    <div class="text-md text-secondary">
+                        Una forma simple pero efectiva de estar protegido contra la fuga de datos y el robo de
+                        contraseñas.
+                    </div>
+                </div>
+                <mat-slide-toggle class="ml-4" [color]="'primary'" [formControlName]="'askPasswordChange'"
+                    #askPasswordChangeToggle>
+                </mat-slide-toggle>
+            </div>
+        </div> -->
+
+        <!-- Divider -->
+        <div class="my-10 border-t"></div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end">
+            <button mat-stroked-button type="button" (click)="patchForm()">
+                Cancelar
+            </button>
+            <button class="ml-4" mat-flat-button type="button" [color]="'primary'" (click)="updateUser()"
+                [disabled]="userForm.invalid">Guardar
+            </button>
+        </div>
+    </form>
+
+</div>

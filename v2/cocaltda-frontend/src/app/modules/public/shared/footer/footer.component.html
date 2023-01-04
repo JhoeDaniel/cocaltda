@@ -1,0 +1,140 @@
+<div class="w-full bg-green-600 h-auto">
+  <div class="w-full bg-green-600 mx-auto max-w-7xl px-4 sm:px-6">
+    <footer class="p-4 bg-green-600 sm:p-6">
+      <div class="md:flex md:justify-between">
+        <div class="md:mb-0 place-self-center">
+          <a [routerLink]="['/public/index']" target="_self" class="flex items-center justify-center">
+            <img class="h-20 w-auto sm:h-20 md:h-30" src="assets/images/logo/logo-text-on-dark.svg" alt="Logo">
+          </a>
+        </div>
+        <div class="py-6 text-center text-white text-lg place-self-center md:px-4 sm:py-4">
+          ¡Con la solidez y confianza de crecer juntos!
+        </div>
+        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+          <div>
+            <h3 class="text-lg font-semibold text-white uppercase dark:text-white mb-4">Simuladores</h3>
+            <ul>
+              <li class="mb-4">
+                <a [routerLink]="['/public/simulators/investments']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_investment'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Inversiones</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/simulators/credits']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_credit'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Créditos</h6>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white uppercase dark:text-white mb-4">Productos</h3>
+
+            <ul>
+              <li class="mb-4">
+                <a [routerLink]="['/public/products/deposits']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_deposit'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Depósitos</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/products/credits']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_credit'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Créditos</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/products/investments']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_investment'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Inversiones</h6>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white uppercase dark:text-white mb-4">Servicios</h3>
+            <ul>
+              <li class="mb-4">
+                <a [routerLink]="['/public/services/transfers']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_transfer'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Transferencias</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/services/payments']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_payments'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Pagos</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/services/debit-card']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_debit_card'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Tarjetas de débito</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/services/medical-care']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_medical_care'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Atención Médica</h6>
+                </a>
+              </li>
+              <li class="mb-4">
+                <a [routerLink]="['/public/services/insurance']" target="_self"
+                  class="flex items-center group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+                  <mat-icon class="text-white group-hover:text-yellow-400" [svgIcon]="'static:i_insurance'">
+                  </mat-icon>
+                  <h6 class="text-white ml-2 group-hover:text-yellow-400">Seguros</h6>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"> -->
+
+    </footer>
+  </div>
+  <div class="w-full h-40 sm:h-30 md:h-20 bg-[url('assets/images/static/navbar.jpg')]">
+    <div
+      class="py-4 h-40 sm:h-30 md:h-20 flex flex-col items-center sm:flex-col md:flex-row justify-between mx-auto max-w-7xl px-4 sm:px-6">
+      <span class="font-medium text-center text-white">Copyright © 2020 Cooperativa de Ahorro y
+        Crédito "Coca Ltda.
+      </span>
+      <a [routerLink]="['/public/privacy-policy-cookies']"
+        class="group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+        <span class="group-hover:text-yellow-400 font-medium text-white sm:text-center">Políticas de privacidad &
+          Cookies
+        </span>
+      </a>
+      <a [routerLink]="['/public/terms-Conditions']"
+        class="group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+        <span class="group-hover:text-yellow-400 font-medium text-white sm:text-center">Términos y Condiciones
+        </span>
+      </a>
+      <a href="https://angelloor.dev/" target="_blank"
+        class="group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300">
+        <span class="group-hover:text-yellow-400 font-medium text-white sm:text-center">Developed by Angel Loor
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

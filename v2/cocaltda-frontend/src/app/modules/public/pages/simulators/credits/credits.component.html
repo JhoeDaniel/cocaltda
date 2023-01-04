@@ -1,0 +1,134 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPageSimulator.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Simulador de crédito'" [icon]="'static:i_credit'"
+      [image]="'assets/images/static/mobileTransference.jpg'" [visibleImage]="false"></app-page-title>
+
+    <div #content
+      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-8 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
+      <div class="w-full">
+        <img class="h-30 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
+      </div>
+      <form [formGroup]="creditsForm" class="mb-8">
+        <!-- Alert -->
+        <angel-alert class="mt-8" *ngIf="showAlert || (creditsForm.invalid && sendForm)" [appearance]="'outline'"
+          [showIcon]="true" [type]="alert.type" [@shake]="alert.type === 'error'">
+          <!-- MessageAPI if alert is actived for the component -->
+          {{alert.message}}
+          <!-- type -->
+          <mat-error *ngIf="creditsForm.get('type')?.hasError('required')">
+            • Seleccione el tipo de crédito
+          </mat-error>
+          <!-- balance -->
+          <mat-error *ngIf="creditsForm.get('balance')?.hasError('required')">
+            • Seleccione su balance
+          </mat-error>
+          <mat-error *ngIf="creditsForm.get('balance')?.hasError('min')">
+            • El balance mínimo es {{minBalance}}
+          </mat-error>
+          <mat-error *ngIf="creditsForm.get('balance')?.hasError('max')">
+            • El balance máximo para el crédito de {{typeCreditProductSelect.name}} es {{maxBalance}}
+          </mat-error>
+          <!-- term -->
+          <mat-error *ngIf="creditsForm.get('term')?.hasError('required')">
+            • Seleccione el plazo
+          </mat-error>
+          <mat-error *ngIf="creditsForm.getRawValue().term.valueOfMonts > typeCreditProductSelect.maxTerm">
+            • El plazo máximo para el crédito de {{typeCreditProductSelect.name}} es
+            {{typeCreditProductSelect.maxTerm}} meses
+          </mat-error>
+          <!-- amortizationTable -->
+          <mat-error *ngIf="creditsForm.get('amortizationTable')?.hasError('required')">
+            • Seleccione la tabla de amortización
+          </mat-error>
+          <!-- paymentDay -->
+          <mat-error *ngIf="creditsForm.get('paymentDay')?.hasError('required')">
+            • Ingrese su fecha tentativa de pago
+          </mat-error>
+          <mat-error *ngIf="creditsForm.get('paymentDay')?.hasError('min')">
+            • La fecha tentativa mínima de pago es 1
+          </mat-error>
+          <mat-error *ngIf="creditsForm.get('paymentDay')?.hasError('max')">
+            • La fecha tentativa máxima de pago es 28
+          </mat-error>
+        </angel-alert>
+        <!-- type -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Tipo de credito</mat-label>
+            <mat-select [formControlName]="'type'" (selectionChange)="updateMaxBalance(); updateMaxTerm()">
+              <ng-container *ngFor="let type of typeCreditProduct">
+                <mat-option [value]="type" [matTooltip]="type.description">
+                  {{type.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- balance -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Balance</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:cash'">
+            </mat-icon>
+            <input class="dark:text-white dark:focus:text-white" matInput type="number" [min]="minBalance"
+              [max]="maxBalance" [formControlName]="'balance'" [placeholder]="'Ingrese el balance solicitado'">
+          </mat-form-field>
+        </div>
+        <!-- term -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Plazo</mat-label>
+            <mat-select [formControlName]="'term'" (selectionChange)="updateMaxTerm()">
+              <ng-container *ngFor="let term of creditsTerm">
+                <mat-option [value]="term">
+                  {{term.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- amortizationTable -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Tabla de amortizacion</mat-label>
+            <mat-select [formControlName]="'amortizationTable'">
+              <ng-container *ngFor="let table of amortizationTable">
+                <mat-option [value]="table" [matTooltip]="table.description">
+                  {{table.name}}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <!-- paymentDay -->
+        <div class="mt-8">
+          <mat-form-field class="angel-mat-no-subscript w-full">
+            <mat-label class="text-lg text-white">Fecha de pago</mat-label>
+            <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:calendar'">
+            </mat-icon>
+            <input class="dark:text-white dark:focus:text-white" matInput type="number" [min]="1" [max]="28"
+              [formControlName]="'paymentDay'" [placeholder]="'Ingrese su fecha tentativa de pago'">
+          </mat-form-field>
+        </div>
+      </form>
+      <div class="w-full flex justify-center">
+        <button [matTooltip]="'Simular crédito'" (click)="simulate()"
+          class="p-4 w-40 rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Calcular</button>
+      </div>
+      <div class="w-full bg-white flex mt-8" *ngIf="showBodyTable" [innerHTML]="bodyTable">
+      </div>
+      <div class="bg-black opacity-70 p-5 flex flex-col mt-8 rounded-lg">
+        <h4 class="text-white font-medium text-lg">INSTRUCCIONES DE USO:</h4>
+        <p class="text-white font-thin text-lg text-justify">
+          Esta herramienta te permite realizar simulación de créditos según: tipo, método, pago,
+          cuotas y monto. Las tablas presuntivas mostradas como resultado son solo referenciales,
+          difieren de las tablas de amortización de los créditos otorgados por la Cooperativa de
+          Ahorro y Crédito "COCA" Ltda.<br>
+          Ya que estamos sujetos a cambios de tasas de interés y parametros adicionales como seguro de
+          desgravamen, etc.
+        </p>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

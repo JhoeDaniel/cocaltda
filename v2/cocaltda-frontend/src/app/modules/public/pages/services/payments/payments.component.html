@@ -1,0 +1,43 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPagePayments.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Pagos'" [icon]="'static:i_payments'"
+      [image]="'assets/images/static/mobilePayments.jpg'"></app-page-title>
+    <div #content class="w-full h-auto bg-white p-8 sm:px-16 md:w-8/12 md:rounded-xl opacity-95">
+      <div class="text-gray-600 font-normal text-justify">
+        <p>
+          El Sistema de Pagos Interbancario es un servicio que presta el BCE, a través de las
+          instituciones del sistema financiero, que permite que clientes de una institución financiera
+          transfieran, en forma electrónica, recursos de su cuenta a un cliente de otra entidad del
+          sistema financiero.<br><br>
+
+          <strong>Características</strong><br><br>
+
+          - Únicamente para socios de nuestra Institución.<br>
+          - Valor por la prestación del servicio $0.46ctvs.<br><br>
+
+          <strong>Pagos de servicio</strong><br><br>
+
+          Realizamos los pagos de todos los tipos de servicio de manera ágil y segura.<br>
+        </p>
+        <h1 #title
+          class="md:hidden w-full bg-green-600 md:bg-transparent py-4 md:py-0 rounded-md text-white  text-center my-4 font-medium text-2xl md:text-gray-600">
+          Recargas
+        </h1>
+        <div class="md:hidden">
+          <img [src]="'assets/images/static/mobileRecharge.jpg'" alt="Imagen de bono">
+        </div>
+        <h1 #title
+          class="md:hidden w-full bg-green-600 md:bg-transparent py-4 md:py-0 rounded-md text-white  text-center my-4 font-medium text-2xl md:text-gray-600">
+          Giros Wester Union
+        </h1>
+        <div class="md:hidden">
+          <img [src]="'assets/images/static/mobileWesternUnion.jpg'" alt="Imagen de bono">
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

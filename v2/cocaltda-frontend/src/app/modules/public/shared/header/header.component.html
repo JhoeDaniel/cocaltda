@@ -1,0 +1,199 @@
+<nav class="z-50 h-20 fixed top-0 left-0 w-full shadow bg-[url('assets/images/static/navbar.jpg')]">
+    <div class="h-20 container m-auto flex justify-between items-center mx-auto max-w-7xl px-4 sm:px-6">
+        <a [routerLink]="['/public/index']" (click)="setRouter('/public/index')">
+            <img class="h-8 w-auto sm:h-10" src="assets/images/logo/logo-text-on-dark.svg" alt="Logo">
+        </a>
+        <ul class="hidden md:flex items-center  text-base font-semibold cursor-pointer">
+            <ng-container *ngFor="let item of headerItems; trackBy: trackByFn">
+                <!-- hasChildren -->
+                <button *ngIf="item.hasChildren"
+                    class="py-4 px-6 text-white group inline-flex items-center rounded-md font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+                    [matMenuTriggerFor]="options" (click)="setItem(item)">
+                    <span>{{item.title}}</span>
+                    <svg class="text-white ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <!-- It is not hasChildren -->
+                <ng-container *ngIf="!item.hasChildren">
+                    <!-- It is not externalLink -->
+                    <ng-container *ngIf="!item.externalLink">
+                        <a [routerLink]="[item.link]" (click)="setRouter(item.link!)" [target]="item.target!"
+                            class="py-4 px-6 text-white group inline-flex items-center rounded-md font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                            {{item.title}}</a>
+                    </ng-container>
+                    <!-- externalLink -->
+                    <ng-container *ngIf="item.externalLink">
+                        <a [href]="item.link" [target]="item.target!"
+                            class="py-4 px-6 text-white group inline-flex items-center rounded-md font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                            {{item.title}}</a>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+            <mat-menu #options="matMenu" class="bg-white mt-1 w-screen max-w-md transform sm:px-0 lg:left-1/2 lg:ml-0">
+                <div class="overflow-hidden">
+
+                    <div class="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8">
+                        <ng-container *ngIf="itemSelected && itemSelected.hasChildren">
+                            <ng-container *ngFor=" let item of itemSelected.children trackBy: trackByFn">
+                                <!-- It is not externalLink -->
+                                <ng-container *ngIf="!item.externalLink">
+                                    <a [routerLink]="[item.link]" (click)="setRouter(item.link!)"
+                                        [target]="item.target!"
+                                        class="group -m-3 flex items-start rounded-lg p-3 hover:bg-green-600 hover:text-white">
+                                        <ng-container *ngIf="item.icon">
+                                            <mat-icon
+                                                class="angel-vertical-navigation-item-icon text-green-600 group-hover:text-white mt-1"
+                                                [svgIcon]="item.icon">
+                                            </mat-icon>
+                                        </ng-container>
+                                        <div class="ml-4">
+                                            <p class="text-base font-medium text-gray-900 group-hover:text-white">
+                                                {{item.title}}</p>
+                                            <p class="mt-1 text-sm text-gray-500 group-hover:text-white">
+                                                {{item.subtitle}}</p>
+                                        </div>
+                                    </a>
+                                </ng-container>
+                                <!-- externalLink -->
+                                <ng-container *ngIf="item.externalLink">
+                                    <a [href]="item.link" [target]="item.target"
+                                        class="group -m-3 flex items-start rounded-lg p-3 hover:bg-green-600 hover:text-white">
+                                        <ng-container *ngIf="item.icon">
+                                            <mat-icon
+                                                class="angel-vertical-navigation-item-icon text-green-600 group-hover:text-white mt-1"
+                                                [svgIcon]="item.icon">
+                                            </mat-icon>
+                                        </ng-container>
+                                        <div class="ml-4">
+                                            <p class="text-base font-medium text-gray-900 group-hover:text-white">
+                                                {{item.title}}</p>
+                                            <p class="mt-1 text-sm text-gray-500 group-hover:text-white">
+                                                {{item.subtitle}}</p>
+                                        </div>
+                                    </a>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+            </mat-menu>
+        </ul>
+        <!-- Mobile -->
+        <button [ngClass]="{'bg-white': activated}"
+            class="flex md:hidden py-3 px-3 rounded focus:outline-none hover:bg-white group-focus:bg-white group"
+            (click)="openSideBar()">
+            <mat-icon *ngIf="!activated"
+                class="angel-vertical-navigation-item-icon text-white group-hover:text-green-600"
+                svgIcon="heroicons_outline:menu">
+            </mat-icon>
+            <mat-icon *ngIf="activated"
+                class="angel-vertical-navigation-item-icon text-green-600 group-hover:text-green-600 group-focus:text-green-600 "
+                svgIcon="heroicons_outline:x">
+            </mat-icon>
+        </button>
+        <!-- Mobile (Menu) -->
+        <div [ngClass]="{'transition-all duration-300 left-0': activated, '-left-full transition-all duration-1000': !activated}"
+            class="absolute top-0  h-screen w-8/12 bg-gradient-to-l from-green-900 to-green-700">
+            <ul class="flex flex-col items-center w-full text-base cursor-pointer pt-10 px-2">
+                <ng-container *ngFor="let item of headerItems; trackBy: trackByFn">
+                    <!-- hasChildren -->
+                    <ng-container *ngIf="item.hasChildren">
+                        <button (click)="setItem(item)"
+                            class="w-full py-4 px-6 text-white group inline-flex items-center rounded-md font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                            <span>{{item.title}}</span>
+                            <svg class="text-white ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <!-- Menu -->
+                        <ng-container *ngIf="itemSelected && itemSelected.hasChildren">
+                            <ng-container *ngIf="statusMenu && item.id == itemSelected.id">
+                                <div class="bg-white w-full p-2 rounded-b-xl">
+                                    <ng-container *ngFor=" let item of itemSelected.children trackBy: trackByFn">
+                                        <!-- It is not externalLink -->
+                                        <ng-container *ngIf="!item.externalLink">
+                                            <a [routerLink]="[item.link]" (click)="setRouter(item.link!)"
+                                                [target]="item.target!"
+                                                class="w-full group flex items-start rounded-lg p-3 hover:bg-green-600 hover:text-white">
+                                                <ng-container *ngIf="item.icon">
+                                                    <mat-icon
+                                                        class="angel-vertical-navigation-item-icon text-green-600 group-hover:text-white mt-1"
+                                                        [svgIcon]="item.icon">
+                                                    </mat-icon>
+                                                </ng-container>
+                                                <div class="ml-4">
+                                                    <p
+                                                        class="text-base font-medium text-gray-900 group-hover:text-white">
+                                                        {{item.title}}</p>
+                                                    <p class="mt-1 text-sm text-gray-500 group-hover:text-white">
+                                                        {{item.subtitle}}</p>
+                                                </div>
+                                            </a>
+                                        </ng-container>
+                                        <!-- externalLink -->
+                                        <ng-container *ngIf="item.externalLink">
+                                            <a [href]="item.link" [target]="item.target"
+                                                class="w-full group flex items-start rounded-lg p-3 hover:bg-green-600 hover:text-white">
+                                                <ng-container *ngIf="item.icon">
+                                                    <mat-icon
+                                                        class="angel-vertical-navigation-item-icon text-green-600 group-hover:text-white mt-1"
+                                                        [svgIcon]="item.icon">
+                                                    </mat-icon>
+                                                </ng-container>
+                                                <div class="ml-4">
+                                                    <p
+                                                        class="text-base font-medium text-gray-900 group-hover:text-white">
+                                                        {{item.title}}</p>
+                                                    <p class="mt-1 text-sm text-gray-500 group-hover:text-white">
+                                                        {{item.subtitle}}</p>
+                                                </div>
+                                            </a>
+                                        </ng-container>
+
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- It is not hasChildren -->
+                    <ng-container *ngIf="!item.hasChildren">
+                        <!-- It is not externalLink -->
+                        <ng-container *ngIf="!item.externalLink">
+                            <a [routerLink]="[item.link]" (click)="setRouter(item.link!)" [target]="item.target!"
+                                class="w-full">
+                                <li
+                                    class="w-full py-4 px-6 text-white group inline-flex items-center rounded-md font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                                    {{item.title}}
+                                </li>
+                            </a>
+                        </ng-container>
+                        <!-- externalLink -->
+                        <ng-container *ngIf="item.externalLink">
+                            <a [href]="item.link" [target]="item.target!" class="w-full">
+                                <li
+                                    class="w-full py-4 px-6 text-white group inline-flex items-center rounded-md font-medium hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2">
+                                    {{item.title}}
+                                </li>
+                            </a>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </ul>
+            <!-- Logo Mobile (Menu) -->
+            <div class="w-ful flex items-center justify-center py-4">
+                <a [routerLink]="['/public/index']" (click)="setRouter('/public/index')" class="">
+                    <img class="h-10 w-auto sm:h-10" src="assets/images/logo/logo-text-on-dark.svg" alt="Logo">
+                </a>
+            </div>
+        </div>
+        <!-- Mobile (Menu) -->
+    </div>
+</nav>
