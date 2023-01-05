@@ -7,13 +7,13 @@
       [image]="'assets/images/static/mobileTransference.jpg'" [visibleImage]="false"></app-page-title>
 
     <div #content
-      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-4 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
+      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-4 py-8 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
       <div class="w-full">
-        <img class="h-30 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
+        <img class="h-16 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
       </div>
       <form [formGroup]="creditsForm" class="mb-8">
         <!-- Alert -->
-        <angel-alert class="mt-8" *ngIf="creditsForm.invalid && sendForm" [appearance]="'outline'" [showIcon]="true"
+        <angel-alert class="my-8" *ngIf="creditsForm.invalid && sendForm" [appearance]="'outline'" [showIcon]="true"
           [type]="alert.type" [@shake]="alert.type === 'error'">
           <!-- MessageAPI if alert is actived for the component -->
           {{alert.message}}
@@ -57,7 +57,7 @@
           </mat-error>
         </angel-alert>
         <!-- type -->
-        <div class="mt-8">
+        <div>
           <mat-form-field class="angel-mat-no-subscript w-full">
             <mat-label class="text-lg text-white">Tipo de credito</mat-label>
             <mat-select [formControlName]="'type'" (selectionChange)="updateMaxBalance(); updateMaxTerm()">
@@ -121,7 +121,7 @@
         <div class="flex justify-end p-4 pb-0 sm:pb-4" *ngIf="statusBtnGains">
           <div class="w-full pr-2">
             <p class="text-green-600 font-normal text-lg text-center md:text-left">
-              Si te interesa aplicar para el crédito en la parte inferior de la tabla lo puedes hacer.
+              Si te interesa <strong>aplicar</strong> para el crédito en la parte inferior de la tabla lo puedes hacer.
             </p>
           </div>
           <mat-icon matPrefix [matTooltip]="'Restablecer'" (click)="reset()"

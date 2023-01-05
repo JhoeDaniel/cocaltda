@@ -280,8 +280,8 @@ export const _page: Page = {
       subtitle: '',
       link: 'https://cocaltda.fin.ec/',
       images: {
-        desktop: 'assets/images/carousel/2.jpg',
-        mobile: 'assets/images/carousel/2Mobile.jpg',
+        desktop: 'assets/images/carousel/0.jpg',
+        mobile: 'assets/images/carousel/0Mobile.jpg',
       },
     },
     {

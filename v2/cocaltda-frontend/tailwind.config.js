@@ -213,6 +213,7 @@ const config = {
                 'contactMobile': "url('assets/images/static/contactMobile.jpg')",
                 'contactDesktop': "url('assets/images/static/contactDesktop.jpg')",
                 'backgroundPage': "url('assets/images/static/backgroundPage.png')",
+                'backgroundPageStandard': "url('assets/images/static/backgroundPageStandard.png')",
                 'backgroundPageCredits': "url('assets/images/static/backgroundPageCredits.png')",
                 'backgroundPageDeposits': "url('assets/images/static/backgroundPageDeposits.png]')",
                 'backgroundPageInvestments': "url('assets/images/static/backgroundPageInvestments.png')",

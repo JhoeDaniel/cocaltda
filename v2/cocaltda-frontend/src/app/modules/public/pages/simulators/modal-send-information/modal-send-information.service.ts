@@ -22,7 +22,7 @@ export class ModalSendInformationService {
       height: 'auto',
       width: '32rem',
       maxWidth: '',
-      panelClass: ['mat-dialog-cont'],
+      panelClass: ['mat-dialog-cont', 'mx-4'],
       data: {
         subject,
         textGains,

@@ -22,7 +22,7 @@ export class ModalVirtualBankingService {
       height: 'auto',
       width: '32rem',
       maxWidth: '',
-      panelClass: ['mat-dialog-cont'],
+      panelClass: ['mat-dialog-cont', 'mx-4'],
       disableClose: true,
     }));
   }

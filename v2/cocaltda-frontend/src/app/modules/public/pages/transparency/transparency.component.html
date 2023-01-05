@@ -1,0 +1,108 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPageStandard.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Transparencia'" [icon]="'heroicons_outline:document-text'"
+      [image]="'assets/images/static/mobilePageStandard.jpg'"></app-page-title>
+    <div #content class="w-full h-auto bg-white p-8 sm:px-16 md:w-8/12 md:rounded-xl opacity-95">
+      <p class="text-gray-600 font-normal text-justify">
+        Descarga nuestros Estatutos, Reglamentos, Informes Financiero, etc.<br><br>
+        <strong>Documentación Disponible para descargar:</strong><br>
+      </p>
+      <div #grid
+        class="h-auto md:mx-4 lg:mx-auto xl:mx-auto max-w-7xl bg-white py-6 xl:p-10 rounded-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
+        <a class="w-full" [href]="_urlPathPdf + 'estatutoFinal.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Estatutos</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Acuerdo
+              ministerial 0034 de enero 19 de 1998.</mat-card-subtitle>
+          </mat-card>
+        </a>
+        <a class="w-full" [href]="_urlPathPdf + 'codigo_etica_comportamiento_2022-03-31.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Código
+              de ética y comportamiento</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Reforma 31 de
+              marzo de 2022.</mat-card-subtitle>
+          </mat-card>
+        </a>
+        <a class="w-full" [href]="_urlPathPdf + 'informe_financiero_2021-06-30.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Informe
+              financiero</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Informe
+              financiero Junio 2021.</mat-card-subtitle>
+          </mat-card>
+        </a>
+        <a class="w-full" [href]="_urlPathPdf + 'reglamento_elecciones_2022-03-26.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Reglamento
+              de elecciones</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Eleeciones de
+              representantes a la asamblea y directivos.</mat-card-subtitle>
+          </mat-card>
+        </a>
+        <a class="w-full" [href]="_urlPathPdf + 'indicadores_buen_gobierno_2021-12-31.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Indicadores
+              de buen gobierno</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Fecha de
+              corte: diciembre 2021.</mat-card-subtitle>
+          </mat-card>
+        </a>
+        <a class="w-full" [href]="_urlPathPdf + 'distribucion_excedentes_2021-12-31.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Excedentes</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Distribucion
+              de excedentes 2021.</mat-card-subtitle>
+          </mat-card>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

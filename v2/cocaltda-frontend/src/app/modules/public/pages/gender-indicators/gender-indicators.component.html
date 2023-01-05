@@ -1,0 +1,50 @@
+<div
+  class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPageStandard.png')] bg-cover">
+  <app-header></app-header>
+  <app-header-block></app-header-block>
+  <div class="flex flex-col md:flex-row w-full h-auto md:h-full md:py-8 md:mx-auto md:max-w-7xl md:px-6">
+    <app-page-title class="md:w-4/12" [title]="'Indicadores de género'" [icon]="'heroicons_outline:document-text'"
+      [image]="'assets/images/static/mobilePageStandard.jpg'"></app-page-title>
+    <div #content class="w-full h-auto bg-white p-8 sm:px-16 md:w-8/12 md:rounded-xl opacity-95">
+      <p class="text-gray-600 font-normal text-justify">
+        Indicadores de Género para cumplimineto Norma de Control para protección de derechos de los socios, clientes y
+        usuarios Financieros desde la inclusión financiera con perspectiva de género.<br><br>
+        <strong>Cumplimiento de Resolución Nro. SEPS-IGT-IGS-INFMR-INGINT-2021-0017</strong><br>
+      </p>
+      <div #grid
+        class="h-auto md:mx-4 lg:mx-auto xl:mx-auto max-w-7xl bg-white py-6 xl:p-10 rounded-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
+        <a class="w-full" [href]="_urlPathResource + 'pdf/' + 'indicadores_genero_2021-12-31.pdf'" target="_blank"
+          [matTooltip]="'Descargar documento PDF'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Depósitos,
+              créditos y representación</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Estadisticas
+              de depósitos, créditos y representación de nuestra cooperativa.</mat-card-subtitle>
+          </mat-card>
+        </a>
+        <a class="w-full" [href]="_urlPathResource+ 'xlsx/' + 'educacion_financiera_2021-12-31.xlsx'" target="_blank"
+          [matTooltip]="'Descargar documento EXCEL'">
+          <mat-card
+            class="bg-white flex flex-col items-center justify-center h-60 w-full sm:w-auto sm:min-w-40 lg:min-w-44 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+            <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
+              [svgIcon]="'heroicons_outline:document-text'">
+            </mat-icon>
+            <mat-card-title
+              class="text-lg text-green-600 group-hover:text-white transition-all duration-500 mb-2 text-center">Educación
+              financiera</mat-card-title>
+            <mat-card-subtitle
+              class="text-md text-gray-600 text-center group-hover:text-white transition-all duration-500">Estadisticas
+              del programa de educación financiera y social de nuestra cooperativa.</mat-card-subtitle>
+          </mat-card>
+        </a>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

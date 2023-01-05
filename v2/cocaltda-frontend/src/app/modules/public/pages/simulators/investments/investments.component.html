@@ -6,13 +6,13 @@
     <app-page-title class="md:w-4/12" [title]="'Simulador de inversión'" [icon]="'static:i_investment'"
       [image]="'assets/images/static/mobileTransference.jpg'" [visibleImage]="false"></app-page-title>
     <div #content
-      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-4 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
+      class="w-full bg-[url('assets/images/static/backgroundSimulator.svg')] bg-cover bg-no-repeat p-4 py-8 sm:px-16 sm:py-20 md:w-8/12 md:rounded-xl opacity-95 xl:py-20">
       <div class="w-full">
-        <img class="h-30 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
+        <img class="h-16 mb-8" src="assets/images/logo/logoDegraded.svg" alt="Logotipo de la cooperativa COCA LTDA">
       </div>
       <form [formGroup]="investmentsForm" class="mb-8">
         <!-- Alert -->
-        <angel-alert class="mt-8" *ngIf="investmentsForm.invalid && sendForm" [appearance]="'outline'" [showIcon]="true"
+        <angel-alert class="my-8" *ngIf="investmentsForm.invalid && sendForm" [appearance]="'outline'" [showIcon]="true"
           [type]="alert.type" [@shake]="alert.type === 'error'">
           <!-- MessageAPI if alert is actived for the component -->
           {{alert.message}}
@@ -31,7 +31,7 @@
             • El capital máximo es {{maxCapital}}
           </mat-error>
         </angel-alert>
-        <div class="mt-8">
+        <div>
           <mat-form-field class="angel-mat-no-subscript w-full">
             <mat-label class="text-lg text-white">Plazo</mat-label>
             <mat-select [formControlName]="'term'">
