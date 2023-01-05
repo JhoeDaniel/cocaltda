@@ -1,0 +1,42 @@
+<div class="h-auto w-full bg-transparent">
+  <div *ngIf="position === 'Right'"
+    class="flex flex-col sm:flex-row h-auto mx-4 lg:mx-auto max-w-7xl pb-4 sm:py-8 sm:p-8 sm:pb-0">
+    <div class="w-full sm:w-6/12 flex justify-end sm:pr-8">
+      <img class="w-full sm:max-w-90 rounded-t-lg sm:rounded-md shadow-green-600" [src]="srcImage"
+        [alt]="'Imagen de' +  title">
+    </div>
+    <div class="w-full sm:w-6/12 p-8 bg-white rounded-b-lg sm:rounded-md flex items-center">
+      <div class="w-full h-fit text-center sm:text-start">
+        <h6 class="text-3xl font-medium text-green-600 text-center sm:text-start mb-1">{{title}}
+        </h6>
+        <p class="text-gray-600 font-normal text-center sm:text-justify mb-4">{{description}}</p>
+        <button *ngIf="!externalLink" [matTooltip]="matTooltipBtn" [routerLink]="link"
+          class="px-4 py-2 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">{{titleBtn}}</button>
+        <a *ngIf="externalLink" [matTooltip]="matTooltipBtn" [href]="link" [target]="target"
+          class="px-4 py-2 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">{{titleBtn}}</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="position === 'Left'"
+    class="flex flex-col sm:flex-row h-auto mx-4 lg:mx-auto max-w-7xl pb-4 sm:py-8 sm:p-8 sm:pb-0">
+    <div class="w-full sm:hidden sm:w-6/12 flex justify-start">
+      <img class="w-full sm:max-w-90 rounded-t-lg sm:rounded-md shadow-green-600" [src]="srcImage"
+        [alt]="'Imagen de' +  title">
+    </div>
+    <div class="w-full sm:w-6/12 p-8 bg-white rounded-b-lg sm:rounded-md flex items-center">
+      <div class="w-full h-fit text-center sm:text-end">
+        <h6 class="text-3xl font-medium text-green-600 text-center sm:text-end mb-1">{{title}}
+        </h6>
+        <p class="text-gray-600 font-normal text-center sm:text-end mb-4">{{description}}</p>
+        <button *ngIf="!externalLink" [matTooltip]="matTooltipBtn" [routerLink]="link"
+          class="px-4 py-2 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">{{titleBtn}}</button>
+        <a *ngIf="externalLink" [matTooltip]="matTooltipBtn" [href]="link" [target]="target"
+          class="px-4 py-2 w-auto rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">{{titleBtn}}</a>
+      </div>
+    </div>
+    <div class="w-full sm:w-6/12 hidden sm:flex justify-start sm:pl-8">
+      <img class="w-full sm:max-w-90 rounded-t-lg sm:rounded-md shadow-green-600" [src]="srcImage"
+        [alt]="'Imagen de' +  title">
+    </div>
+  </div>
+</div>

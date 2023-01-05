@@ -112,5 +112,9 @@ if (process.env.IS_SECURE === 'true') {
 console.log(
 	`The app is listening on http${
 		process.env.IS_SECURE === 'true' ? 's' : ''
-	}://localhost:${process.env.PORT} PID ${process.pid}`
+	}://localhost:${
+		process.env.IS_SECURE === 'true'
+			? process.env.PORT_SECURE
+			: process.env.PORT
+	} PID ${process.pid}`
 );

@@ -3,6 +3,7 @@ export interface Page {
   carouselItems: CarouselItem[];
   itemGalleryProducts: ItemGallery[];
   itemGalleryServices: ItemGallery[];
+  itemCard: ItemCard[];
   /**
    * Products
    */
@@ -60,6 +61,19 @@ export interface ItemToggle {
   images?: Images;
   selected: boolean;
   html?: string;
+}
+
+export interface ItemCard {
+  id: number;
+  title: string;
+  description?: string;
+  titleBtn?: string;
+  srcImage?: string;
+  matTooltipBtn?: string;
+  link?: string;
+  externalLink?: boolean;
+  target?: '_blank' | '_self' | '_parent' | '_top' | string;
+  position?: 'Left' | 'Right';
 }
 
 /**

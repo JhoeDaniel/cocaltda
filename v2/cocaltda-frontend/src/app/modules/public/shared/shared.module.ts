@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderBlockComponent } from './header-block/header-block.component';
 import { HeaderComponent } from './header/header.component';
 import { InformationSectionComponent } from './information-section/information-section.component';
+import { ItemCardComponent } from './item-card/item-card.component';
 import { ItemsGalleryComponent } from './items-gallery/items-gallery.component';
 import { PageTitleComponent } from './page-title/page-title.component';
 
@@ -29,6 +30,7 @@ import { PageTitleComponent } from './page-title/page-title.component';
     PageTitleComponent,
     CarouselComponent,
     ItemsGalleryComponent,
+    ItemCardComponent,
   ],
   imports: [
     RouterModule,
@@ -55,6 +57,7 @@ import { PageTitleComponent } from './page-title/page-title.component';
     ItemsGalleryComponent,
     MatIconModule,
     AngelAlertModule,
+    ItemCardComponent,
   ],
 })
 export class SharedModule {}
