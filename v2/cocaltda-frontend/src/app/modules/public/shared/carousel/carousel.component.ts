@@ -1,6 +1,7 @@
 import { AngelMediaWatcherService } from '@angel/services/media-watcher';
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { PublicService } from '../../public.service';
 import { CarouselItem } from '../../public.type';
 
 @Component({
@@ -28,11 +29,23 @@ export class CarouselComponent implements OnInit {
   public finalHeight: string | number = 0;
   public currentPosition = 0;
 
-  constructor(private _angelMediaWatcherService: AngelMediaWatcherService) {
+  constructor(
+    private _angelMediaWatcherService: AngelMediaWatcherService,
+    private _publicService: PublicService
+  ) {
     this.finalHeight = this.isFullScreen ? '100vh' : `${this.height}px`;
   }
 
   ngOnInit() {
+    /**
+     *  getPageData
+     */
+    this._publicService.pageDate$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((_page: any) => {
+        this.msToChange = _page.body.msToChangeCarousel;
+      });
+
     if (this.items) {
       this.items.map((i, index) => {
         i.id = index;

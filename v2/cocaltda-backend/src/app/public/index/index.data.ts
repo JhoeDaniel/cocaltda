@@ -2,7 +2,7 @@ import { Page } from './index.type';
 /**
  * Configuration
  */
-const msToChangeCarousel: number = 360;
+const msToChangeCarousel: number = 3000;
 const daysOfTheYear: number = 360;
 const minCapitalInvestments: number = 500;
 const maxCapitalInvestments: number = 1000000;
