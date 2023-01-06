@@ -35,7 +35,8 @@ export const _page: Page = {
         {
           id: 21,
           title: 'Cuentas',
-          subtitle: 'Obten tu...',
+          subtitle:
+            'Custodia tus ingresos de forma segura, destinado para realizar transacciones financieras y generando interés del ahorro.',
           link: '/public/products/accounts',
           externalLink: false,
           target: '_self',
@@ -59,7 +60,8 @@ export const _page: Page = {
         {
           id: 23,
           title: 'Inversiones',
-          subtitle: 'Obten tu...',
+          subtitle:
+            'Genera más ganancia de tus ahorros con una taza de interés mayor al ahorro, manejamos las mejores tazas de interés del mercado.',
           link: '/public/products/investments',
           externalLink: false,
           target: '_self',
@@ -96,7 +98,8 @@ export const _page: Page = {
         {
           id: 32,
           title: 'Pagos',
-          subtitle: 'Obten tu...',
+          subtitle:
+            'Punto de servicio de recaudación autorizada; cancela tus servicios básicos, entre otros.',
           link: '/public/services/payments',
           externalLink: false,
           target: '_self',
@@ -108,7 +111,8 @@ export const _page: Page = {
         {
           id: 33,
           title: 'Tarjetas de débito',
-          subtitle: 'Obten tu...',
+          subtitle:
+            'Retiro de efectivo en cualquier cajero band-red y compras con almacenes aliados a Visa.',
           link: '/public/services/debit-card',
           externalLink: false,
           target: '_self',
@@ -120,7 +124,8 @@ export const _page: Page = {
         {
           id: 34,
           title: 'Atención Médica',
-          subtitle: 'Obten tu...',
+          subtitle:
+            'Servicio de atención médica y odontológica con los doctores que mantenemos convenio.',
           link: '/public/services/medical-care',
           externalLink: false,
           target: '_self',
@@ -132,7 +137,7 @@ export const _page: Page = {
         {
           id: 35,
           title: 'Seguros',
-          subtitle: 'Obten tu...',
+          subtitle: 'Cobertura por siniestro.',
           link: '/public/services/insurance',
           externalLink: false,
           target: '_self',
@@ -459,7 +464,8 @@ export const _page: Page = {
     {
       id: 22,
       title: 'Pagos',
-      subtitle: 'Obten tu...',
+      subtitle:
+        'Punto de servicio de recaudación autorizada; cancela tus servicios básicos, entre otros.',
       link: '/public/services/payments',
       externalLink: false,
       target: '_blank',
@@ -469,7 +475,8 @@ export const _page: Page = {
     {
       id: 23,
       title: 'Tarjetas de débito',
-      subtitle: 'Obten tu...',
+      subtitle:
+        'Retiro de efectivo en cualquier cajero band-red y compras con almacenes aliados a Visa.',
       link: '/public/services/debit-card',
       externalLink: false,
       target: '_self',
@@ -479,7 +486,8 @@ export const _page: Page = {
     {
       id: 24,
       title: 'Atención Médica',
-      subtitle: 'Obten tu...',
+      subtitle:
+        'Servicio de atención médica y odontológica con los doctores que mantenemos convenio.',
       link: '/public/services/medical-care',
       externalLink: false,
       target: '_self',
@@ -489,7 +497,7 @@ export const _page: Page = {
     {
       id: 25,
       title: 'Seguros',
-      subtitle: 'Obten tu...',
+      subtitle: 'Cobertura por siniestro.',
       link: '/public/services/insurance',
       externalLink: false,
       target: '_self',
@@ -732,6 +740,26 @@ export const _page: Page = {
 				- Copia de la cédula de ciudadanía del Representante (actualizada).<br>
 				- Copia del Certificado de Votación del Representante (actualizado).<br>
 				- Copia de la última planilla de un servicio básico (luz, agua o teléfono).</p>
+        <h1 #title
+          class="w-full bg-green-600 md:bg-transparent py-4 md:py-0 rounded-md text-white  text-center my-4 font-medium text-2xl md:text-gray-600">
+          Tasas de interés
+        </h1>
+        <div class="w-full md:w-10/12 md:px-8 mx-auto">
+          <table class="w-full p-4 text-base font-normal text-gray-500 border-2 border-solid border-gray-300">
+            <tr class="bg-gray-100">
+              <th class="p-2">Rango</th>
+              <th class="p-2">Tasa</th>
+            </tr>
+            <tr>
+              <td class="p-2">de 0,01 a 10.000,00</td>
+              <td class="p-2">2%</td>
+            </tr>
+            <tr>
+              <td class="p-2">de 10.000,01 en adelante</td>
+              <td class="p-2">2.5%</td>
+            </tr>
+          </table>
+        </div>
       `,
     },
     {

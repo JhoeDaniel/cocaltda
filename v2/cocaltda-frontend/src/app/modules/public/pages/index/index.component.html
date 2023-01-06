@@ -4,7 +4,7 @@
   <app-carousel [items]="carouselData" [msToChange]="5000"></app-carousel>
   <app-items-gallery [title]="'Productos'" [itemsGallery]="itemsGalleryProducts"></app-items-gallery>
   <app-items-gallery [title]="'Servicios'" [itemsGallery]="itemsGalleryServices" class="mb-4"></app-items-gallery>
-  <app-information-section></app-information-section>
+  <!-- <app-information-section></app-information-section> -->
   <ng-container *ngFor="let item of itemsCard; trackBy: trackByFn" class="bg-white">
     <app-item-card [position]="item.position!" [srcImage]="item.srcImage!" [title]="item.title!"
       [description]="item.description!" [titleBtn]="item.titleBtn!" [matTooltipBtn]="item.matTooltipBtn!"
