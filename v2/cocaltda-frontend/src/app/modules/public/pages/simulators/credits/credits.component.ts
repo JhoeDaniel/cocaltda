@@ -3,20 +3,15 @@ import { AngelAlertType } from '@angel/components/alert';
 import { AngelMediaWatcherService } from '@angel/services/media-watcher';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  _amortizationTable,
-  _creditsTerm,
-  _daysOfTheYear,
-  _minBalanceCredit,
-  _typeCreditProduct
-} from 'app/modules/public/public.data';
+import { _page } from 'app/modules/public/public.data';
+import { PublicService } from 'app/modules/public/public.service';
 import {
   AmortizationTable,
   CreditsForm,
   CreditsTerm,
   FrenchDividend,
   GermanDividend,
-  TypeCreditProduct
+  TypeCreditProduct,
 } from 'app/modules/public/public.type';
 import { GlobalUtils } from 'app/utils/GlobalUtils';
 import { FullDate } from 'app/utils/utils.types';
@@ -30,13 +25,13 @@ import { ModalSendInformationService } from '../modal-send-information/modal-sen
   animations: angelAnimations,
 })
 export class CreditsComponent implements OnInit {
-  typeCreditProduct: TypeCreditProduct[] = _typeCreditProduct;
-  creditsTerm: CreditsTerm[] = _creditsTerm;
-  amortizationTable: AmortizationTable[] = _amortizationTable;
-
-  minBalance = _minBalanceCredit;
+  typeCreditProduct: TypeCreditProduct[] = _page.typeCreditProduct;
+  creditsTerm: CreditsTerm[] = _page.creditsTerm;
+  amortizationTable: AmortizationTable[] = _page.amortizationTable;
+  daysOfTheYear: number = _page.daysOfTheYear;
+  minBalance: number = _page.minBalanceCredit;
   maxBalance: number = 0;
-  typeCreditProductSelect: TypeCreditProduct = _typeCreditProduct[0];
+  typeCreditProductSelect: TypeCreditProduct = _page.typeCreditProduct[0];
 
   bodyTable: string = '';
   showBodyTable: boolean = false;
@@ -69,10 +64,24 @@ export class CreditsComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _globalUtils: GlobalUtils,
     private _modalSendInformationService: ModalSendInformationService,
-    private _angelMediaWatcherService: AngelMediaWatcherService
+    private _angelMediaWatcherService: AngelMediaWatcherService,
+    private _publicService: PublicService
   ) {}
 
   ngOnInit() {
+    /**
+     *  getPageData
+     */
+    this._publicService.pageDate$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((_page: any) => {
+        this.typeCreditProduct = _page.body.typeCreditProduct;
+        this.creditsTerm = _page.body.creditsTerm;
+        this.amortizationTable = _page.body.amortizationTable;
+        this.minBalance = _page.body.minBalanceCredit;
+        this.timeToShowModal = _page.body.timeToShowModalSimulators;
+      });
+
     this.subtractDate(new Date(), new Date());
 
     /**
@@ -231,7 +240,8 @@ export class CreditsComponent implements OnInit {
            * interest
            */
           interest =
-            (balance * calculateDays * (type.interest / 100)) / _daysOfTheYear;
+            (balance * calculateDays * (type.interest / 100)) /
+            this.daysOfTheYear;
           /**
            * cuota
            */

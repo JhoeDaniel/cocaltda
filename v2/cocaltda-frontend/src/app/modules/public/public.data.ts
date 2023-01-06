@@ -1,11 +1,10 @@
-import {
-  AmortizationTable,
-  CreditsTerm,
-  InvestmentsParameters,
-  InvestmentsTerm,
-  Page,
-  TypeCreditProduct,
-} from './public.type';
+import { Page } from './public.type';
+
+const daysOfTheYear: number = 360;
+const minCapitalInvestments: number = 100;
+const maxCapitalInvestments: number = 1000000;
+const minBalanceCredit: number = 500;
+const timeToShowModalSimulators: number = 3000;
 
 export const _page: Page = {
   headerItems: [
@@ -974,183 +973,182 @@ export const _page: Page = {
         Suscribir el documento representativo de su inversión.</p>`,
     },
   ],
+  /**
+   * Configuration
+   */
+  msToChangeCarousel: 10000,
+  daysOfTheYear,
+  minCapitalInvestments,
+  maxCapitalInvestments,
+  minBalanceCredit,
+  timeToShowModalSimulators,
+  /**
+   * Simulators
+   */
+  /**
+   * Investment
+   */
+  investmentsTerm: [
+    { id: 1, name: '30 Días', keyDay: 'I30', valueOfDays: 30 },
+    { id: 2, name: '60 Días', keyDay: 'I60', valueOfDays: 60 },
+    { id: 3, name: '90 Días', keyDay: 'I90', valueOfDays: 90 },
+    { id: 4, name: '180 Días', keyDay: 'I180', valueOfDays: 180 },
+    { id: 5, name: 'Más de 360 Días', keyDay: 'IM360', valueOfDays: 360 },
+  ],
+  investmentsParameters: [
+    {
+      id: 1,
+      from: minCapitalInvestments,
+      to: 3000,
+      I30: 4,
+      I60: 4.5,
+      I90: 4.5,
+      I180: 5,
+      IM360: 6.5,
+    },
+    {
+      id: 2,
+      from: 3001,
+      to: 10000,
+      I30: 4.5,
+      I60: 5,
+      I90: 5.5,
+      I180: 6,
+      IM360: 7.5,
+    },
+    {
+      id: 3,
+      from: 10000,
+      to: maxCapitalInvestments,
+      I30: 5,
+      I60: 5.5,
+      I90: 6,
+      I180: 7,
+      IM360: 8.5,
+    },
+  ],
+  /**
+   * Credits
+   */
+  typeCreditProduct: [
+    {
+      id: 1,
+      name: 'Inmobiliario',
+      description: 'Crédito inmobiliario',
+      interest: 9.9,
+      maxAmount: 60000,
+      maxTerm: 120,
+    },
+    {
+      id: 2,
+      name: 'Consumo',
+      description: 'Crédito consumo',
+      interest: 15.5,
+      maxAmount: 40000,
+      maxTerm: 48,
+    },
+    {
+      id: 3,
+      name: 'Micro minorista',
+      description: 'Crédito micro minorista',
+      interest: 23.0,
+      maxAmount: 45000,
+      maxTerm: 42,
+    },
+    {
+      id: 4,
+      name: 'Micro acumulación simple',
+      description: 'Crédito micro acumulación simple',
+      interest: 22.4,
+      maxAmount: 45000,
+      maxTerm: 42,
+    },
+    {
+      id: 5,
+      name: 'Micro acumulación ampliada',
+      description: 'Crédito micro acumulación ampliada',
+      interest: 20.05,
+      maxAmount: 45000,
+      maxTerm: 42,
+    },
+    {
+      id: 6,
+      name: 'PYMES',
+      description: 'Crédito PYMES',
+      interest: 10.7,
+      maxAmount: 45000,
+      maxTerm: 42,
+    },
+  ],
+  creditsTerm: [
+    {
+      id: 1,
+      name: '12 meses',
+      valueOfMonts: 12,
+    },
+    {
+      id: 2,
+      name: '24 meses',
+      valueOfMonts: 24,
+    },
+    {
+      id: 3,
+      name: '36 meses',
+      valueOfMonts: 36,
+    },
+    {
+      id: 4,
+      name: '42 meses',
+      valueOfMonts: 42,
+    },
+    {
+      id: 5,
+      name: '48 meses',
+      valueOfMonts: 48,
+    },
+    {
+      id: 6,
+      name: '60 meses',
+      valueOfMonts: 60,
+    },
+    {
+      id: 7,
+      name: '72 meses',
+      valueOfMonts: 72,
+    },
+    {
+      id: 8,
+      name: '84 meses',
+      valueOfMonts: 84,
+    },
+    {
+      id: 9,
+      name: '96 meses',
+      valueOfMonts: 96,
+    },
+    {
+      id: 10,
+      name: '108 meses',
+      valueOfMonts: 108,
+    },
+    {
+      id: 11,
+      name: '120 meses',
+      valueOfMonts: 120,
+    },
+  ],
+  amortizationTable: [
+    {
+      id: 1,
+      name: 'Tabla Alemana',
+      description: 'En esta tabla se...',
+      amortizationTable: 'German',
+    },
+    {
+      id: 2,
+      name: 'Tabla Francesa',
+      description: 'En esta tabla se...',
+      amortizationTable: 'French',
+    },
+  ],
 };
-
-/**
- * Simulators
- */
-
-export const _terms: InvestmentsTerm[] = [
-  { id: 1, name: '30 Días', keyDay: 'I30', valueOfDays: 30 },
-  { id: 2, name: '60 Días', keyDay: 'I60', valueOfDays: 60 },
-  { id: 3, name: '90 Días', keyDay: 'I90', valueOfDays: 90 },
-  { id: 4, name: '180 Días', keyDay: 'I180', valueOfDays: 180 },
-  { id: 5, name: 'Más de 360 Días', keyDay: 'IM360', valueOfDays: 360 },
-];
-
-export const _daysOfTheYear: number = 360;
-export const _minCapitalInvestments: number = 100;
-export const _maxCapitalInvestments: number = 1000000;
-
-export const _investmentsParameters: InvestmentsParameters[] = [
-  {
-    id: 1,
-    from: _minCapitalInvestments,
-    to: 3000,
-    I30: 4,
-    I60: 4.5,
-    I90: 4.5,
-    I180: 5,
-    IM360: 6.5,
-  },
-  {
-    id: 2,
-    from: 3001,
-    to: 10000,
-    I30: 4.5,
-    I60: 5,
-    I90: 5.5,
-    I180: 6,
-    IM360: 7.5,
-  },
-  {
-    id: 3,
-    from: 10000,
-    to: _maxCapitalInvestments,
-    I30: 5,
-    I60: 5.5,
-    I90: 6,
-    I180: 7,
-    IM360: 8.5,
-  },
-];
-
-/**
- * Credits
- */
-
-export const _minBalanceCredit: number = 500;
-
-export const _typeCreditProduct: TypeCreditProduct[] = [
-  {
-    id: 1,
-    name: 'Inmobiliario',
-    description: 'Crédito inmobiliario',
-    interest: 9.9,
-    maxAmount: 60000,
-    maxTerm: 120,
-  },
-  {
-    id: 2,
-    name: 'Consumo',
-    description: 'Crédito consumo',
-    interest: 15.5,
-    maxAmount: 40000,
-    maxTerm: 48,
-  },
-  {
-    id: 3,
-    name: 'Micro minorista',
-    description: 'Crédito micro minorista',
-    interest: 23.0,
-    maxAmount: 45000,
-    maxTerm: 42,
-  },
-  {
-    id: 4,
-    name: 'Micro acumulación simple',
-    description: 'Crédito micro acumulación simple',
-    interest: 22.4,
-    maxAmount: 45000,
-    maxTerm: 42,
-  },
-  {
-    id: 5,
-    name: 'Micro acumulación ampliada',
-    description: 'Crédito micro acumulación ampliada',
-    interest: 20.05,
-    maxAmount: 45000,
-    maxTerm: 42,
-  },
-  {
-    id: 6,
-    name: 'PYMES',
-    description: 'Crédito PYMES',
-    interest: 10.7,
-    maxAmount: 45000,
-    maxTerm: 42,
-  },
-];
-
-export const _creditsTerm: CreditsTerm[] = [
-  {
-    id: 1,
-    name: '12 meses',
-    valueOfMonts: 12,
-  },
-  {
-    id: 2,
-    name: '24 meses',
-    valueOfMonts: 24,
-  },
-  {
-    id: 3,
-    name: '36 meses',
-    valueOfMonts: 36,
-  },
-  {
-    id: 4,
-    name: '42 meses',
-    valueOfMonts: 42,
-  },
-  {
-    id: 5,
-    name: '48 meses',
-    valueOfMonts: 48,
-  },
-  {
-    id: 6,
-    name: '60 meses',
-    valueOfMonts: 60,
-  },
-  {
-    id: 7,
-    name: '72 meses',
-    valueOfMonts: 72,
-  },
-  {
-    id: 8,
-    name: '84 meses',
-    valueOfMonts: 84,
-  },
-  {
-    id: 9,
-    name: '96 meses',
-    valueOfMonts: 96,
-  },
-  {
-    id: 10,
-    name: '108 meses',
-    valueOfMonts: 108,
-  },
-  {
-    id: 11,
-    name: '120 meses',
-    valueOfMonts: 120,
-  },
-];
-
-export const _amortizationTable: AmortizationTable[] = [
-  {
-    id: 1,
-    name: 'Tabla Alemana',
-    description: 'En esta tabla se...',
-    amortizationTable: 'German',
-  },
-  {
-    id: 2,
-    name: 'Tabla Francesa',
-    description: 'En esta tabla se...',
-    amortizationTable: 'French',
-  },
-];

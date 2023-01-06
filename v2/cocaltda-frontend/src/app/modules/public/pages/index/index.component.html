@@ -1,11 +1,10 @@
 <div class="flex flex-col flex-auto min-w-0 bg-green-600 bg-[url('assets/images/static/backgroundPage.png')]">
-  <app-header></app-header>
+  <app-header [headerItems]="page.headerItems"></app-header>
   <app-header-block></app-header-block>
-  <app-carousel [items]="carouselData" [msToChange]="5000"></app-carousel>
-  <app-items-gallery [title]="'Productos'" [itemsGallery]="itemsGalleryProducts"></app-items-gallery>
-  <app-items-gallery [title]="'Servicios'" [itemsGallery]="itemsGalleryServices" class="mb-4"></app-items-gallery>
-  <!-- <app-information-section></app-information-section> -->
-  <ng-container *ngFor="let item of itemsCard; trackBy: trackByFn" class="bg-white">
+  <app-carousel [items]="page.carouselItems" [msToChange]="5000"></app-carousel>
+  <app-items-gallery [title]="'Productos'" [itemsGallery]="page.itemGalleryProducts"></app-items-gallery>
+  <app-items-gallery [title]="'Servicios'" [itemsGallery]="page.itemGalleryServices" class="mb-4"></app-items-gallery>
+  <ng-container *ngFor="let item of page.itemCard; trackBy: trackByFn" class="bg-white">
     <app-item-card [position]="item.position!" [srcImage]="item.srcImage!" [title]="item.title!"
       [description]="item.description!" [titleBtn]="item.titleBtn!" [matTooltipBtn]="item.matTooltipBtn!"
       [externalLink]="item.externalLink!" [link]="item.link!" [target]="item.target!"></app-item-card>

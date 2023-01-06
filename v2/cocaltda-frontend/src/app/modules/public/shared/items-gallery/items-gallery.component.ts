@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { _page } from '../../public.data';
 import { PublicService } from '../../public.service';
-import { Page } from '../../public.type';
+import { ItemGallery } from '../../public.type';
 
 @Component({
   selector: 'app-items-gallery',
@@ -9,10 +8,8 @@ import { Page } from '../../public.type';
   styleUrls: ['./items-gallery.component.scss'],
 })
 export class ItemsGalleryComponent implements OnInit {
-  page: Page = _page;
-
   @Input() title = 'Gallery Name';
-  @Input() itemsGallery = this.page.itemGalleryProducts;
+  @Input() itemsGallery: ItemGallery[] = [];
 
   constructor(private _publicService: PublicService) {}
 

@@ -10,6 +10,27 @@ export interface Page {
   itemToggleCredits: ItemToggle[];
   itemToggleDeposits: ItemToggle[];
   itemToggleInvestments: ItemToggle[];
+  /**
+   * Configuration
+   */
+  msToChangeCarousel: number;
+  daysOfTheYear: number;
+  minCapitalInvestments: number;
+  maxCapitalInvestments: number;
+  minBalanceCredit: number;
+  timeToShowModalSimulators: number;
+  /**
+   * Simulators
+   */
+
+  investmentsTerm: InvestmentsTerm[];
+  investmentsParameters: InvestmentsParameters[];
+  /**
+   * Credits
+   */
+  typeCreditProduct: TypeCreditProduct[];
+  creditsTerm: CreditsTerm[];
+  amortizationTable: AmortizationTable[];
 }
 
 export interface CarouselItem {

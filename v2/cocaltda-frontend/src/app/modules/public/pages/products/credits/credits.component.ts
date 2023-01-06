@@ -19,7 +19,7 @@ export class CreditsComponent implements OnInit {
    * Inicializing the selected item
    */
   idItemsGallery: number = 0;
-  selectedItem: ItemToggle = this.itemToggleCredits[0];
+  selectedItem: ItemToggle = _page.itemToggleCredits[0];
 
   constructor(private _publicService: PublicService) {}
 

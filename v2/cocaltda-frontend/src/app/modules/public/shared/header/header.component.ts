@@ -1,8 +1,8 @@
 import { AngelMediaWatcherService } from '@angel/services/media-watcher';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { _page } from '../../public.data';
-import { HeaderItem, Page } from '../../public.type';
+import { PublicService } from '../../public.service';
+import { HeaderItem } from '../../public.type';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +10,7 @@ import { HeaderItem, Page } from '../../public.type';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  page: Page = _page;
-
-  headerItems: HeaderItem[] = this.page.headerItems;
+  @Input() headerItems: HeaderItem[] = [];
   itemSelected!: HeaderItem;
   panelOpenState: boolean = false;
   activated: boolean = false;
@@ -23,9 +21,20 @@ export class HeaderComponent implements OnInit {
   private _unsubscribeAll: Subject<any> = new Subject<any>();
   isScreenSmall: boolean = false;
 
-  constructor(private _angelMediaWatcherService: AngelMediaWatcherService) {}
+  constructor(
+    private _angelMediaWatcherService: AngelMediaWatcherService,
+    private _publicService: PublicService
+  ) {}
 
   ngOnInit() {
+    /**
+     *  getPageData
+     */
+    this._publicService.pageDate$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((_page: any) => {
+        this.headerItems = _page.body.headerItems;
+      });
     // Subscribe to media changes
     this._angelMediaWatcherService.onMediaChange$
       .pipe(takeUntil(this._unsubscribeAll))
@@ -65,37 +74,38 @@ export class HeaderComponent implements OnInit {
     /**
      * First level
      */
-    headerItems.map((item: HeaderItem) => {
-      if (this.router === item.link) {
-        item = {
-          ...item,
-          actived: true,
-        };
-      }
-      /**
-       * Second level
-       */
-      if (item.hasChildren && item.children!.length > 0) {
-        let newArrayChildrenSecondLevel: HeaderItem[] = [];
-
-        item.children?.map((itemChildren: any) => {
-          if (this.router === itemChildren.link) {
-            itemChildren = {
-              ...itemChildren,
-              actived: true,
-            };
-          }
-          newArrayChildrenSecondLevel.push(itemChildren);
-        });
+    if (headerItems) {
+      headerItems.map((item: HeaderItem) => {
+        if (this.router === item.link) {
+          item = {
+            ...item,
+            actived: true,
+          };
+        }
         /**
-         * Remplazamos el segundo nivel de hijos
+         * Second level
          */
-        item.children = newArrayChildrenSecondLevel;
-      }
-      newArray.push(item);
-    });
+        if (item.hasChildren && item.children!.length > 0) {
+          let newArrayChildrenSecondLevel: HeaderItem[] = [];
 
-    this.headerItems = newArray;
+          item.children?.map((itemChildren: any) => {
+            if (this.router === itemChildren.link) {
+              itemChildren = {
+                ...itemChildren,
+                actived: true,
+              };
+            }
+            newArrayChildrenSecondLevel.push(itemChildren);
+          });
+          /**
+           * Remplazamos el segundo nivel de hijos
+           */
+          item.children = newArrayChildrenSecondLevel;
+        }
+        newArray.push(item);
+      });
+      this.headerItems = newArray;
+    }
   }
   /**
    * openSideBar

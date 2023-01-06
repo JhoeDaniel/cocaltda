@@ -13,7 +13,7 @@ export class CarouselComponent implements OnInit {
    * Custom Properties
    */
   @Input() height = 450;
-  @Input() msToChange = 30000;
+  @Input() msToChange = 10000;
   @Input() isFullScreen = false;
   @Input() items: CarouselItem[] = [];
 
@@ -33,10 +33,12 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.items.map((i, index) => {
-      i.id = index;
-      i.marginLeft = 0;
-    });
+    if (this.items) {
+      this.items.map((i, index) => {
+        i.id = index;
+        i.marginLeft = 0;
+      });
+    }
 
     // Subscribe to media changes
     this._angelMediaWatcherService.onMediaChange$

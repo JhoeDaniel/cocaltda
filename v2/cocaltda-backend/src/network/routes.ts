@@ -10,6 +10,7 @@
 // import { routerValidation } from '../app/core/validation/validation.network';
 import { routerAuth } from '../app/public/auth/auth.network';
 import { routerContact } from '../app/public/contact/contact.network';
+import { routerIndex } from '../app/public/index/index.network';
 import { routerReport } from '../app/report/report.network';
 
 export const appRoutes = (app: any) => {
@@ -34,6 +35,7 @@ export const appRoutes = (app: any) => {
 	 */
 	app.use('/app/public/contact', routerContact);
 	app.use('/app/public/auth', routerAuth);
+	app.use('/app/public/index', routerIndex);
 	/**
 	 * Report Route
 	 */

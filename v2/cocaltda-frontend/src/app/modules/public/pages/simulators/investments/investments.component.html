@@ -35,7 +35,7 @@
           <mat-form-field class="angel-mat-no-subscript w-full">
             <mat-label class="text-lg text-white">Plazo</mat-label>
             <mat-select [formControlName]="'term'">
-              <ng-container *ngFor="let term of terms">
+              <ng-container *ngFor="let term of investmentsTerm">
                 <mat-option [value]="term">
                   {{term.name}}</mat-option>
               </ng-container>
@@ -70,6 +70,12 @@
       <div class="w-full flex justify-center mt-8" *ngIf="showGains && !statusModal">
         <button [matTooltip]="'Quiero aplicar'" (click)="openModal()"
           class="p-4 w-40 rounded-lg bg-green-600 text-white font-medium text-xl hover:text-green-600 hover:bg-white transition duration-300 border-2 border-white hover:border-green-600">Aplicar</button>
+      </div>
+      <div class="bg-green-600 w-full h-auto rounded-lg p-4 mt-8"
+        *ngIf="investmentsForm.getRawValue().term.valueOfDays < 180">
+        <h6 class="text-white group-hover:text-green-600 text-center"><strong>Nota: </strong>Si la inversión es menor
+          de 180 días se generará
+          una retención del 2% por estipulación de la “ley de régimen tributario interno”</h6>
       </div>
       <div class="bg-black opacity-70 p-5 flex flex-col mt-8 rounded-lg">
         <h4 class="text-white font-medium text-lg">INSTRUCCIONES DE USO:</h4>

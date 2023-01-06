@@ -2,13 +2,8 @@ import { angelAnimations } from '@angel/animations';
 import { AngelAlertType } from '@angel/components/alert';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  _daysOfTheYear,
-  _investmentsParameters,
-  _maxCapitalInvestments,
-  _minCapitalInvestments,
-  _terms,
-} from 'app/modules/public/public.data';
+import { _page } from 'app/modules/public/public.data';
+import { PublicService } from 'app/modules/public/public.service';
 import {
   InvestmentsForm,
   InvestmentsParameters,
@@ -25,11 +20,11 @@ import { ModalSendInformationService } from '../modal-send-information/modal-sen
   animations: angelAnimations,
 })
 export class InvestmentsComponent implements OnInit {
-  terms: InvestmentsTerm[] = _terms;
-  minCapital = _minCapitalInvestments;
-  maxCapital = _maxCapitalInvestments;
-  daysOfTheYear = _daysOfTheYear;
-  investmentsParameters: InvestmentsParameters[] = _investmentsParameters;
+  investmentsTerm: InvestmentsTerm[] = _page.investmentsTerm;
+  minCapital: number = _page.minCapitalInvestments;
+  maxCapital: number = _page.maxCapitalInvestments;
+  daysOfTheYear: number = _page.daysOfTheYear;
+  investmentsParameters: InvestmentsParameters[] = _page.investmentsParameters;
   showGains: boolean = false;
   textGains: string = '';
 
@@ -57,10 +52,25 @@ export class InvestmentsComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _notificationService: NotificationService,
-    private _modalSendInformationService: ModalSendInformationService
+    private _modalSendInformationService: ModalSendInformationService,
+    private _publicService: PublicService
   ) {}
 
   ngOnInit() {
+    /**
+     *  getPageData
+     */
+    this._publicService.pageDate$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((_page: any) => {
+        this.investmentsTerm = _page.body.investmentsTerm;
+        this.minCapital = _page.body.minCapitalInvestments;
+        this.maxCapital = _page.body.maxCapitalInvestments;
+        this.daysOfTheYear = _page.body.daysOfTheYear;
+        this.investmentsParameters = _page.body.investmentsParameters;
+        this.timeToShowModal = _page.body.timeToShowModalSimulators;
+      });
+
     /**
      * Create the company form
      */
