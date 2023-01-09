@@ -50,7 +50,8 @@ export const _page: Page = {
 				{
 					id: 22,
 					title: 'Créditos',
-					subtitle: 'Obten tu...',
+					subtitle:
+						'Te mostramos las características y beneficios de nuestros productos crediticios.',
 					link: '/public/products/credits',
 					externalLink: false,
 					target: '_self',
@@ -164,7 +165,7 @@ export const _page: Page = {
 				{
 					id: 41,
 					title: 'Inversión',
-					subtitle: 'Obten tu...',
+					subtitle: 'Simula tu inversión',
 					link: '/public/simulators/investments',
 					externalLink: false,
 					target: '_self',
@@ -176,7 +177,7 @@ export const _page: Page = {
 				{
 					id: 42,
 					title: 'Crédito',
-					subtitle: 'Obten tu...',
+					subtitle: 'Simula tu crédito',
 					link: '/public/simulators/credits',
 					externalLink: false,
 					target: '_self',
@@ -201,7 +202,7 @@ export const _page: Page = {
 				{
 					id: 51,
 					title: 'Banca Virtual',
-					subtitle: 'Accede a ..',
+					subtitle: 'Accede a tu banca virtual',
 					link: '/public/services/virtual-banking',
 					externalLink: false,
 					target: '_self',

@@ -16,7 +16,7 @@ dotenv.config({
 });
 
 const whitelist: string[] = [
-	'http://localhost:4200',
+	'http://localhost:49321',
 	`http://${process.env.SERVICE_DOMAIN}`,
 	`https://${process.env.SERVICE_DOMAIN}`,
 ];

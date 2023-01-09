@@ -6,7 +6,7 @@
       <!-- It is not externalLink -->
       <mat-card *ngIf="!itemGallery.externalLink" [routerLink]="[itemGallery.link]"
         (click)="setItemGallery(itemGallery.id)"
-        class="bg-white flex flex-col items-center justify-center h-40 w-full sm:w-auto sm:min-w-60 md:min-w-60 lg:min-w-80 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+        class="bg-white flex flex-col items-center justify-center h-40 w-full sm:w-auto sm:min-w-60 sm:max-w-60 md:min-w-72 md:max-w-72 lg:min-w-96 lg:max-w-96 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
         <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
           [svgIcon]="itemGallery.icon">
         </mat-icon>
@@ -18,7 +18,7 @@
       <!-- externalLink -->
       <a *ngIf="itemGallery.externalLink" [href]="itemGallery.link" [target]="itemGallery.target!">
         <mat-card
-          class="bg-white flex flex-col items-center justify-center h-40 w-auto max-w-100 sm:min-w-40 md:min-w-60 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
+          class="bg-white flex flex-col items-center justify-center h-40 w-auto max-w-100 sm:min-w-60 sm:max-w-60 md:min-w-72 md:max-w-72 lg:min-w-96 lg:max-w-96 rounded-md hover:bg-green-600 group transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 cursor-pointer shadow-green-600">
           <mat-icon class="text-green-600 group-hover:text-white w-30 mb-4 transition-all duration-500"
             [svgIcon]="itemGallery.icon">
           </mat-icon>
