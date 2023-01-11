@@ -2,7 +2,7 @@ import { Page } from './index.type';
 /**
  * Configuration
  */
-const msToChangeCarousel: number = 3000;
+const msToChangeCarousel: number = 30000;
 const daysOfTheYear: number = 360;
 const minCapitalInvestments: number = 500;
 const maxCapitalInvestments: number = 1000000;
@@ -375,7 +375,7 @@ export const _page: Page = {
 		{
 			id: 211,
 			title: 'Cuenta de ahorro',
-			subtitle: 'Obten tu...',
+			subtitle: 'Ahorra y crece financieramente con nosotros.',
 			link: '/public/products/accounts',
 			externalLink: false,
 			target: '_self',
@@ -385,7 +385,7 @@ export const _page: Page = {
 		{
 			id: 212,
 			title: 'Ahorro soñar',
-			subtitle: 'Obten tu...',
+			subtitle: 'Ahorra y cumple tus sueños.',
 			link: '/public/products/accounts',
 			externalLink: false,
 			target: '_self',
@@ -395,7 +395,7 @@ export const _page: Page = {
 		{
 			id: 213,
 			title: 'Ahorro estudiantil',
-			subtitle: 'Obten tu...',
+			subtitle: 'El ahorro no tiene edad.',
 			link: '/public/products/accounts',
 			externalLink: false,
 			target: '_self',
@@ -405,7 +405,7 @@ export const _page: Page = {
 		{
 			id: 214,
 			title: 'Multi ahorro',
-			subtitle: 'Obten tu...',
+			subtitle: 'Abre tu cuenta multi ahorro.',
 			link: '/public/products/accounts',
 			externalLink: false,
 			target: '_self',
@@ -415,7 +415,8 @@ export const _page: Page = {
 		{
 			id: 221,
 			title: 'Crédito de consumo',
-			subtitle: 'Obten tu...',
+			subtitle:
+				'Obtén tu crédito de consumo e invierte en tus gastos personales.',
 			link: '/public/products/credits',
 			externalLink: false,
 			target: '_self',
@@ -425,7 +426,7 @@ export const _page: Page = {
 		{
 			id: 222,
 			title: 'Crédito de vivienda',
-			subtitle: 'Obten tu...',
+			subtitle: 'Obtén tu crédito y construye la Vivienda de tus sueños.',
 			link: '/public/products/credits',
 			externalLink: false,
 			target: '_self',
@@ -435,7 +436,7 @@ export const _page: Page = {
 		{
 			id: 223,
 			title: 'Microcrédito',
-			subtitle: 'Obten tu...',
+			subtitle: 'Crece con nosotros e invierte en tu negocio.',
 			link: '/public/products/credits',
 			externalLink: false,
 			target: '_self',
@@ -445,7 +446,7 @@ export const _page: Page = {
 		{
 			id: 231,
 			title: 'Plazo fijo',
-			subtitle: 'Obten tu...',
+			subtitle: 'Obtén retribución poniendo tu dinero a plazo fijo.',
 			link: '/public/products/investments',
 			externalLink: false,
 			target: '_self',
@@ -457,7 +458,7 @@ export const _page: Page = {
 		{
 			id: 21,
 			title: 'Trasferencias',
-			subtitle: 'Realiza tus pagos de manera facil y segura',
+			subtitle: 'Realiza tus pagos de manera facil y segura.',
 			link: '/public/services/transfers',
 			externalLink: false,
 			target: '_self',
@@ -840,28 +841,26 @@ export const _page: Page = {
 			},
 			selected: false,
 			html: `
-        <p>Son créditos otorgados a personas naturales destinados al pago de bienes, servicios o gastos no
-        relacionados con una actividad productiva.<br><br>
-
-        <strong>REQUISITOS</strong><br><br>
-
-        - Certificado de Asistencia al seminario de cooperativismo (viernes de 17:00 a 18:00).<br>
-        - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
-        - Copia del Impuesto Predial actual.<br>
-        - Copia de los 3 últimos roles de pago.<br>
-        - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
-
-        <strong>GARANTÍAS</strong><br><br>
-
-        * <strong>Personal</strong><br>
-        -Copia de Cédula y Papeleta del garante y del conyuge o conviviente.<br>
-        -Copia de los 3 últimos roles de pagos.<br>
-        -Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
-
-        * <strong>Hipotecaria</strong><br>
-        -Copia de la Escritura Original.<br>
-        -Registro de la propiedad actualizado (válido 30 días).</p>
-      `,
+			  <p>Son créditos otorgados a personas naturales destinados al pago de bienes, servicios o gastos personales.<br><br>
+	  
+			  <strong>REQUISITOS</strong><br><br>
+	  
+			  - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
+			  - Copia del Impuesto Predial actual.<br>
+			  - Copia de los 3 últimos roles de pago.<br>
+			  - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
+	  
+			  <strong>GARANTÍAS</strong><br><br>
+	  
+			  * <strong>Personal</strong><br>
+			  -Copia de Cédula y Papeleta del garante y del conyuge o conviviente.<br>
+			  -Copia de los 3 últimos roles de pagos.<br>
+			  -Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
+	  
+			  * <strong>Hipotecaria</strong><br>
+			  -Copia de la Escritura Original.<br>
+			  -Registro de la propiedad actualizado (válido 30 días).</p>
+			`,
 		},
 		{
 			id: 222,
@@ -872,24 +871,22 @@ export const _page: Page = {
 			},
 			selected: false,
 			html: `
-        <p>Son los créditos otorgados a personas naturales para la adquisición, construcción, reparación,
-				remodelación y mejoramiento de la vivienda propia, siempre que se encuentren amparados con
-				garantía hipotecaria.<br><br>
-
-				<strong>REQUISITOS</strong><br><br>
-
-				- Certificado de Asistencia al seminario de cooperativismo (viernes de 17:00 a 18:00).<br>
-				- Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
-				- Copia del Impuesto Predial actual.<br>
-				- Copia de los 3 últimos roles de pago.<br>
-				- Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
-
-				<strong>GARANTÍAS</strong><br><br>
-
-				- Hipotecaria<br>
-				- Copia de la Escritura Original.<br>
-				- Registro de la propiedad actualizado (válido 30 días).</p>
-      `,
+			  <p>Son los créditos otorgados a personas naturales para la adquisición, construcción, reparación,
+					  remodelación y mejoramiento de la vivienda propia.<br><br>
+	  
+					  <strong>REQUISITOS</strong><br><br>
+	  
+					  - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
+					  - Copia del Impuesto Predial actual.<br>
+					  - Copia de los 3 últimos roles de pago.<br>
+					  - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
+	  
+					  <strong>GARANTÍAS</strong><br><br>
+	  
+					  - Hipotecaria<br>
+					  - Copia de la Escritura Original.<br>
+					  - Registro de la propiedad actualizado (válido 30 días).</p>
+			`,
 		},
 		{
 			id: 223,
@@ -900,60 +897,44 @@ export const _page: Page = {
 			},
 			selected: false,
 			html: `
-        <p>Es todo crédito no superior a veinte mil dólares concedido a un prestatario, persona natural o
-				jurídica, destinado a financiar actividades en pequeña escala de producción, comercialización o
-				servicios, cuya fuente principal de pago la constituye el producto de ventas o ingresos
-				generados
-				por dichas actividades.<br><br>
-
-				Se divide en 4 tipos de microcréditos:<br><br>
-
-				<strong>1) MICROCRÉDITO MINORISTA</strong><br>
-				Son aquellas operaciones de crédito cuyo monto por operación y saldo adeudado en microcréditos a
-				la
-				institución financiera sea menor o igual a US$ 1.000, otorgadas a microempresarios que registran
-				un
-				nivel de ventas anuales inferior a US$ 100.000.<br><br>
-
-
-				<strong>2) MICROCRÉDITO DE ACUMULACIÓN SIMPLE</strong><br>
-				Son aquellas operaciones de crédito, cuyo monto por operación y saldo adeudado en microcréditos
-				a la
-				institución financiera sea superior a US$ 1.000 y hasta US$ 10.000, otorgadas a microempresarios
-				que
-				registran un nivel de ventas o ingresos anuales inferior a US$ 100.000.<br><br>
-
-				<strong>3) MICROCRÉDITO DE ACUMULACIÓN AMPLIADA</strong><br>
-				Son aquellas operaciones de crédito superiores a US$ 10.000 otorgadas a microempresarios y que
-				registran un nivel de ventas anuales inferior a US$ 100.000.<br><br>
-
-				<strong>4) MICROCRÉDITO ASO-PRODUCTIVO</strong><br>
-				Es un crédito productivo con tecnología de microcrédito, según la norma de la Junta Política y
-				Regulación Monetaria y Financiera, considerando las organizaciones de la EPS en calidad de
-				personas
-				jurídicas mediante el financiamiento de fondos procedentes de instituciones administrativas
-				afines a
-				finanzas populares.<br><br>
-
-				<strong>REQUISITOS</strong><br><br>
-
-				- Certificado de Asistencia al seminario de cooperativismo (viernes de 17:00 a 18:00).<br>
-				- Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
-				- Copia del Impuesto Predial actual.<br>
-				- Copia de los 3 últimos roles de pago.<br>
-				- Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
-
-				<strong>GARANTÍAS</strong><br><br>
-
-				* <strong>Personal</strong><br>
-				- Copia de Cédula y Papeleta del garante y del conyuge o conviviente.<br>
-				- Copia de los 3 últimos roles de pagos.<br>
-				- Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
-
-				* <strong>Hipotecaria</strong><br>
-				- Copia de la Escritura Original.<br>
-				- Registro de la propiedad actualizado (válido 30 días).</p>
-      `,
+			  <p>Emprende tu negocio o amplialo. Crece con nosotros!<br><br>
+	  
+			  <p>Puedes utilizarlo: Emprender o ampliar tu negocio, adquirir bienes para tu negocio o capital de trabajo.</p><br>
+	  
+					  Puedes acceder a:<br><br>
+	  
+					  <strong>1) MICROCRÉDITO MINORISTA</strong><br>
+					  Aplican a nuestros socios cuyas ventas anuales se encuentran hasta los 5.000 dólares.<br><br>
+	  
+	  
+					  <strong>2) MICROCRÉDITO DE ACUMULACIÓN SIMPLE</strong><br>
+					  Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 5.001 dólares hasta los 20.0000.<br><br>
+	  
+					  <strong>3) MICROCRÉDITO DE ACUMULACIÓN AMPLIADA</strong><br>
+					  Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 20.0001 dólares e inferiores a los 100.000.00 dólares.<br><br>
+	  
+					  <strong>4) MICROCRÉDITO ASO-PRODUCTIVO</strong><br>
+					  Es un crédito productivo con tecnología de microcrédito, según la norma de la Junta Política y
+					  Regulación Monetaria y Financiera, considerando las organizaciones de la EPS.<br><br>
+	  
+					  <strong>REQUISITOS</strong><br><br>
+	  
+					  - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
+					  - Copia del Impuesto Predial actual.<br>
+					  - Copia de los 3 últimos roles de pago.<br>
+					  - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
+	  
+					  <strong>GARANTÍAS</strong><br><br>
+	  
+					  * <strong>Personal</strong><br>
+					  - Copia de Cédula y Papeleta del garante y del conyuge o conviviente.<br>
+					  - Copia de los 3 últimos roles de pagos.<br>
+					  - Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
+	  
+					  * <strong>Hipotecaria</strong><br>
+					  - Copia de la Escritura Original.<br>
+					  - Registro de la propiedad actualizado (válido 30 días).</p>
+			`,
 		},
 	],
 	itemToggleInvestments: [

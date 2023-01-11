@@ -836,12 +836,10 @@ export const _page: Page = {
       },
       selected: false,
       html: `
-        <p>Son créditos otorgados a personas naturales destinados al pago de bienes, servicios o gastos no
-        relacionados con una actividad productiva.<br><br>
+        <p>Son créditos otorgados a personas naturales destinados al pago de bienes, servicios o gastos personales.<br><br>
 
         <strong>REQUISITOS</strong><br><br>
 
-        - Certificado de Asistencia al seminario de cooperativismo (viernes de 17:00 a 18:00).<br>
         - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
         - Copia del Impuesto Predial actual.<br>
         - Copia de los 3 últimos roles de pago.<br>
@@ -869,12 +867,10 @@ export const _page: Page = {
       selected: false,
       html: `
         <p>Son los créditos otorgados a personas naturales para la adquisición, construcción, reparación,
-				remodelación y mejoramiento de la vivienda propia, siempre que se encuentren amparados con
-				garantía hipotecaria.<br><br>
+				remodelación y mejoramiento de la vivienda propia.<br><br>
 
 				<strong>REQUISITOS</strong><br><br>
 
-				- Certificado de Asistencia al seminario de cooperativismo (viernes de 17:00 a 18:00).<br>
 				- Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
 				- Copia del Impuesto Predial actual.<br>
 				- Copia de los 3 últimos roles de pago.<br>
@@ -896,44 +892,28 @@ export const _page: Page = {
       },
       selected: false,
       html: `
-        <p>Es todo crédito no superior a veinte mil dólares concedido a un prestatario, persona natural o
-				jurídica, destinado a financiar actividades en pequeña escala de producción, comercialización o
-				servicios, cuya fuente principal de pago la constituye el producto de ventas o ingresos
-				generados
-				por dichas actividades.<br><br>
+        <p>Emprende tu negocio o amplialo. Crece con nosotros!<br><br>
 
-				Se divide en 4 tipos de microcréditos:<br><br>
+        <p>Puedes utilizarlo: Emprender o ampliar tu negocio, adquirir bienes para tu negocio o capital de trabajo.</p><br>
+
+				Puedes acceder a:<br><br>
 
 				<strong>1) MICROCRÉDITO MINORISTA</strong><br>
-				Son aquellas operaciones de crédito cuyo monto por operación y saldo adeudado en microcréditos a
-				la
-				institución financiera sea menor o igual a US$ 1.000, otorgadas a microempresarios que registran
-				un
-				nivel de ventas anuales inferior a US$ 100.000.<br><br>
+				Aplican a nuestros socios cuyas ventas anuales se encuentran hasta los 5.000 dólares.<br><br>
 
 
 				<strong>2) MICROCRÉDITO DE ACUMULACIÓN SIMPLE</strong><br>
-				Son aquellas operaciones de crédito, cuyo monto por operación y saldo adeudado en microcréditos
-				a la
-				institución financiera sea superior a US$ 1.000 y hasta US$ 10.000, otorgadas a microempresarios
-				que
-				registran un nivel de ventas o ingresos anuales inferior a US$ 100.000.<br><br>
+				Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 5.001 dólares hasta los 20.0000.<br><br>
 
 				<strong>3) MICROCRÉDITO DE ACUMULACIÓN AMPLIADA</strong><br>
-				Son aquellas operaciones de crédito superiores a US$ 10.000 otorgadas a microempresarios y que
-				registran un nivel de ventas anuales inferior a US$ 100.000.<br><br>
+				Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 20.0001 dólares e inferiores a los 100.000.00 dólares.<br><br>
 
 				<strong>4) MICROCRÉDITO ASO-PRODUCTIVO</strong><br>
 				Es un crédito productivo con tecnología de microcrédito, según la norma de la Junta Política y
-				Regulación Monetaria y Financiera, considerando las organizaciones de la EPS en calidad de
-				personas
-				jurídicas mediante el financiamiento de fondos procedentes de instituciones administrativas
-				afines a
-				finanzas populares.<br><br>
+				Regulación Monetaria y Financiera, considerando las organizaciones de la EPS.<br><br>
 
 				<strong>REQUISITOS</strong><br><br>
 
-				- Certificado de Asistencia al seminario de cooperativismo (viernes de 17:00 a 18:00).<br>
 				- Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
 				- Copia del Impuesto Predial actual.<br>
 				- Copia de los 3 últimos roles de pago.<br>

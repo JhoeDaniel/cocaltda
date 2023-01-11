@@ -23,13 +23,13 @@
           </mat-error>
           <!-- balance -->
           <mat-error *ngIf="creditsForm.get('balance')?.hasError('required')">
-            • Seleccione su balance
+            • Ingrese el monto solicitado.
           </mat-error>
           <mat-error *ngIf="creditsForm.get('balance')?.hasError('min')">
-            • El balance mínimo es {{minBalance}}
+            • El monto mínimo es {{minBalance}}
           </mat-error>
           <mat-error *ngIf="creditsForm.get('balance')?.hasError('max')">
-            • El balance máximo para el crédito de {{typeCreditProductSelect.name}} es {{maxBalance}}
+            • El monto máximo para el crédito de {{typeCreditProductSelect.name}} es {{maxBalance}}
           </mat-error>
           <!-- term -->
           <mat-error *ngIf="creditsForm.get('term')?.hasError('required')">
@@ -75,7 +75,7 @@
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:cash'">
             </mat-icon>
             <input class="dark:text-white dark:focus:text-white" matInput type="number" [min]="minBalance"
-              [max]="maxBalance" [formControlName]="'balance'" [placeholder]="'Ingrese el saldo solicitado'">
+              [max]="maxBalance" [formControlName]="'balance'" [placeholder]="'Ingrese el monto solicitado'">
           </mat-form-field>
         </div>
         <!-- term -->
@@ -150,7 +150,7 @@
           cuotas y monto. Las tablas presuntivas mostradas como resultado son solo referenciales,
           difieren de las tablas de amortización de los créditos otorgados por la Cooperativa de
           Ahorro y Crédito "COCA" Ltda.<br>
-          Ya que estamos sujetos a cambios de tasas de interés y parametros adicionales como seguro de
+          Estamos sujetos a cambios de tasas de interés y parametros adicionales como seguro de
           desgravamen, etc.
         </p>
       </div>
