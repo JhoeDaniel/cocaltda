@@ -43,7 +43,7 @@
           </ng-container>
           <!-- amortizationTable -->
           <mat-error *ngIf="creditsForm.get('amortizationTable')?.hasError('required')">
-            • Seleccione la tabla de amortización
+            • Seleccione el tipo de amortización
           </mat-error>
           <!-- paymentDay -->
           <mat-error *ngIf="creditsForm.get('paymentDay')?.hasError('required')">
@@ -71,7 +71,7 @@
         <!-- balance -->
         <div class="mt-8">
           <mat-form-field class="angel-mat-no-subscript w-full">
-            <mat-label class="text-lg text-white">Saldo</mat-label>
+            <mat-label class="text-lg text-white">Monto</mat-label>
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:cash'">
             </mat-icon>
             <input class="dark:text-white dark:focus:text-white" matInput type="number" [min]="minBalance"
@@ -93,7 +93,7 @@
         <!-- amortizationTable -->
         <div class="mt-8">
           <mat-form-field class="angel-mat-no-subscript w-full">
-            <mat-label class="text-lg text-white">Tabla de amortizacion</mat-label>
+            <mat-label class="text-lg text-white">Tipo de amortización</mat-label>
             <mat-select [formControlName]="'amortizationTable'">
               <ng-container *ngFor="let table of amortizationTable">
                 <mat-option [value]="table" [matTooltip]="table.description">
@@ -105,11 +105,11 @@
         <!-- paymentDay -->
         <div class="mt-8">
           <mat-form-field class="angel-mat-no-subscript w-full">
-            <mat-label class="text-lg text-white">Fecha de pago</mat-label>
+            <mat-label class="text-lg text-white">Día de pago</mat-label>
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:calendar'">
             </mat-icon>
             <input class="dark:text-white dark:focus:text-white" matInput type="number" [min]="1" [max]="28"
-              [formControlName]="'paymentDay'" [placeholder]="'Ingrese su fecha tentativa de pago'">
+              [formControlName]="'paymentDay'" [placeholder]="'Ingrese su día tentativo de pago'">
           </mat-form-field>
         </div>
       </form>

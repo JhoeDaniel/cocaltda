@@ -10,7 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./credits.component.scss'],
 })
 export class CreditsComponent implements OnInit {
-  _page: Page = _page;
+  page: Page = _page;
 
   itemToggleCredits: ItemToggle[] = _page.itemToggleCredits;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
@@ -24,6 +24,15 @@ export class CreditsComponent implements OnInit {
   constructor(private _publicService: PublicService) {}
 
   ngOnInit() {
+    /**
+     *  getPageData
+     */
+    this._publicService.pageDate$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((_page: any) => {
+        this.page = _page.body;
+        this.itemToggleCredits = this.page.itemToggleCredits;
+      });
     /**
      * idItemsGallery
      */

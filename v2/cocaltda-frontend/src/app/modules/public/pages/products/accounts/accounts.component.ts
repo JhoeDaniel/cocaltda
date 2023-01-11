@@ -10,10 +10,9 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./accounts.component.scss'],
 })
 export class AccountsComponent implements OnInit {
-  _page: Page = _page;
+  page: Page = _page;
 
   itemToggleDeposits: ItemToggle[] = _page.itemToggleDeposits;
-
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   /**
@@ -25,6 +24,15 @@ export class AccountsComponent implements OnInit {
   constructor(private _publicService: PublicService) {}
 
   ngOnInit() {
+    /**
+     *  getPageData
+     */
+    this._publicService.pageDate$
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe((_page: any) => {
+        this.page = _page.body;
+        this.itemToggleDeposits = this.page.itemToggleDeposits;
+      });
     /**
      * idItemsGallery
      */

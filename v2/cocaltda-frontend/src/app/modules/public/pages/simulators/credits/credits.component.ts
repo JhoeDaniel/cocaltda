@@ -78,6 +78,7 @@ export class CreditsComponent implements OnInit {
         this.typeCreditProduct = _page.body.typeCreditProduct;
         this.creditsTerm = _page.body.creditsTerm;
         this.amortizationTable = _page.body.amortizationTable;
+        this.daysOfTheYear = _page.body.daysOfTheYear;
         this.minBalance = _page.body.minBalanceCredit;
         this.timeToShowModal = _page.body.timeToShowModalSimulators;
       });
