@@ -24,7 +24,7 @@ export interface Page {
 	 */
 
 	investmentsTerm: InvestmentsTerm[];
-	investmentsParameters: InvestmentsParameters[];
+	investmentsParameters: InvestmentsParameters[] | any;
 	/**
 	 * Credits
 	 */
