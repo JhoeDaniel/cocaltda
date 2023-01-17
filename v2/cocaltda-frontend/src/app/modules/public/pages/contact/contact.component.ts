@@ -44,14 +44,11 @@ export class ContactComponent implements OnInit {
      * Create the company form
      */
     this.contactForm = this._formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(100)]],
-      email: [
-        '',
-        [Validators.required, Validators.email, Validators.maxLength(256)],
-      ],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.maxLength(13)]],
-      subject: ['', [Validators.required, Validators.maxLength(50)]],
-      message: ['', [Validators.required, Validators.maxLength(500)]],
+      subject: ['', [Validators.required]],
+      message: ['', [Validators.required]],
     });
   }
 

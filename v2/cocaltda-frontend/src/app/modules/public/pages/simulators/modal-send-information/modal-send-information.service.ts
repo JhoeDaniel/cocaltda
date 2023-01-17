@@ -13,7 +13,7 @@ export class ModalSendInformationService {
   ) {}
   dialogRef: any;
 
-  openModalSendInformation(subject: string, textGains: string) {
+  openModalSendInformation(subject: string, mailText: string) {
     this._layoutService.setOpenModal(true);
 
     return (this.dialogRef = this._dialog.open(ModalSendInformationComponent, {
@@ -25,7 +25,7 @@ export class ModalSendInformationService {
       panelClass: ['mat-dialog-cont', 'mx-4'],
       data: {
         subject,
-        textGains,
+        mailText,
       },
       disableClose: true,
     }));

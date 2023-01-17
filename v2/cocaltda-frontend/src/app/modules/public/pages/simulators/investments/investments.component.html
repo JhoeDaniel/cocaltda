@@ -49,7 +49,7 @@
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:cash'">
             </mat-icon>
             <input class="dark:text-white dark:focus:text-white" matInput [formControlName]="'capital'" type="number"
-              [min]="minCapital" [max]="maxCapital" [placeholder]="'Ingrese su capital a invertir'">
+              maxlength="20" [min]="minCapital" [max]="maxCapital" [placeholder]="'Ingrese su capital a invertir'">
           </mat-form-field>
         </div>
       </form>
@@ -86,6 +86,13 @@
           Ahorro y Crédito "COCA" Ltda.<br>
           Estamos sujetos a cambios de tasas de interés y parametros adicionales como seguro de
           desgravamen, etc.
+        </p><br>
+        <h4 class="text-white font-medium text-lg">NOTA ACLARATORIA:</h4>
+        <p class="text-white font-thin text-lg text-justify">Información sujeta a variaciones y verificación de la
+          Cooperativa de Ahorro y Crédito "Coca" Ltda. Los
+          cálculos ofrecidos tienen carácter orientativo y, en cualquier caso, la opertación está sujeta a variaciones y
+          aprobación posterior, po lo que no constituye una oferta de contratación que vincule a la Cooperativa de
+          Ahorro y Crédito "Coca" Ltda.
         </p>
       </div>
     </div>

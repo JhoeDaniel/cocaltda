@@ -11,7 +11,7 @@ import {
   CreditsTerm,
   FrenchDividend,
   GermanDividend,
-  TypeCreditProduct,
+  TypeCreditProduct
 } from 'app/modules/public/public.type';
 import { GlobalUtils } from 'app/utils/GlobalUtils';
 import { FullDate } from 'app/utils/utils.types';
@@ -37,6 +37,7 @@ export class CreditsComponent implements OnInit {
   showBodyTable: boolean = false;
 
   subject: string = 'Crédito';
+  mailText: string = '';
 
   idTimer: any = null;
   statusBtnGains: boolean = false;
@@ -170,6 +171,7 @@ export class CreditsComponent implements OnInit {
 
       const type: TypeCreditProduct = credits.type;
       let balance: number = credits.balance;
+      const mount: number = balance;
       const term: CreditsTerm = credits.term;
       const amortizationTable: AmortizationTable = credits.amortizationTable;
       const paymentDay: number = credits.paymentDay;
@@ -320,6 +322,13 @@ export class CreditsComponent implements OnInit {
               }${this.bodyTable}
               </table>
               `;
+
+        this.mailText = `
+          <p><strong>Tipo de credito:</strong> ${type.name}</p>
+          <p><strong>Monto:</strong> ${mount}</p>
+          <p><strong>Plazo:</strong> ${term.name}</p>
+          <p><strong>Tipo de amortización:</strong> ${amortizationTable.name}</p>
+          <p><strong>Día de pago:</strong> ${paymentDay}</p>`;
         /**
          * Show the table
          */
@@ -460,6 +469,13 @@ export class CreditsComponent implements OnInit {
         }${this.bodyTable}
                </table>
                `;
+
+        this.mailText = `
+          <p><strong>Tipo de credito:</strong> ${type.name}</p>
+          <p><strong>Monto:</strong> ${mount}</p>
+          <p><strong>Plazo:</strong> ${term.name}</p>
+          <p><strong>Tipo de amortización:</strong> ${amortizationTable.name}</p>
+          <p><strong>Día de pago:</strong> ${paymentDay}</p>`;
         /**
          * Show the table
          */
@@ -491,7 +507,7 @@ export class CreditsComponent implements OnInit {
      * openModalSendInformation
      */
     this._modalSendInformationService
-      .openModalSendInformation(this.subject, this.bodyTable)
+      .openModalSendInformation(this.subject, this.mailText)
       .afterClosed()
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(() => {

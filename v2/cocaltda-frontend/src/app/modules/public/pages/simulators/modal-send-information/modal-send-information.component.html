@@ -21,7 +21,6 @@
             <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
                 • Ingrese su correo electrónico
             </mat-error>
-            <!-- email -->
             <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
                 • Ingrese un correo electrónico válido
             </mat-error>
@@ -48,7 +47,7 @@
                 <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:mail'">
                 </mat-icon>
                 <input class="dark:text-gray-600 dark:focus:text-white lowercase placeholder:normal-case" matInput
-                    maxlength="100" [formControlName]="'email'" [placeholder]="'Ingrese su correo electrónico'"
+                    maxlength="256" [formControlName]="'email'" [placeholder]="'Ingrese su correo electrónico'"
                     [spellcheck]="false">
             </mat-form-field>
         </div>
@@ -58,7 +57,7 @@
                 <mat-label class="text-gray-600">Teléfono</mat-label>
                 <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:phone'">
                 </mat-icon>
-                <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="100"
+                <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="13"
                     [formControlName]="'phone'" [placeholder]="'Ingrese su número de teléfono'" [spellcheck]="true">
             </mat-form-field>
         </div>

@@ -59,7 +59,7 @@
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:mail'">
             </mat-icon>
             <input class="dark:text-gray-600 dark:focus:text-white lowercase placeholder:normal-case" matInput
-              maxlength="100" [formControlName]="'email'" [placeholder]="'Ingrese su correo electrónico'"
+              maxlength="256" [formControlName]="'email'" [placeholder]="'Ingrese su correo electrónico'"
               [spellcheck]="false">
           </mat-form-field>
         </div>
@@ -69,7 +69,7 @@
             <mat-label class="text-gray-600">Teléfono</mat-label>
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:phone'">
             </mat-icon>
-            <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="100" [formControlName]="'phone'"
+            <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="13" [formControlName]="'phone'"
               [placeholder]="'Ingrese su número de teléfono'" [spellcheck]="false">
           </mat-form-field>
         </div>
@@ -79,7 +79,7 @@
             <mat-label class="text-gray-600">Asunto</mat-label>
             <mat-icon matPrefix class="hidden sm:flex icon-size-5" [svgIcon]="'heroicons_outline:annotation'">
             </mat-icon>
-            <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="100"
+            <input class="dark:text-gray-600 dark:focus:text-white" matInput maxlength="50"
               [formControlName]="'subject'" [placeholder]="'Ingrese el asunto'" [spellcheck]="true">
           </mat-form-field>
         </div>
@@ -91,7 +91,7 @@
               [svgIcon]="'heroicons_outline:view-list'">
             </mat-icon>
             <textarea class="dark:text-gray-600 dark:focus:text-white" matInput cdkTextareaAutosize
-              #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="30"
+              #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="30" maxlength="500"
               [formControlName]="'message'" [placeholder]="'Ingrese una pequeña descripción de la solicitud'"
               [spellcheck]="true"></textarea>
           </mat-form-field>
@@ -162,8 +162,8 @@
         </div>
         <div #perdida class="w-full h-auto p-8 pt-0">
           <div class="bg-green-600 w-full h-auto rounded-lg p-4">
-            <h1 class="text-lg font-medium text-center text-white">Perdiste tu tarjeta?</h1>
-            <h6 class="text-white group-hover:text-green-600 text-center">¿Te puedes comunicar a los siguientes numeros.
+            <h1 class="text-lg font-medium text-center text-white">¿Perdiste tu tarjeta?</h1>
+            <h6 class="text-white group-hover:text-green-600 text-center">Te puedes comunicar a los siguientes numeros.
             </h6>
             <a class="flex mt-1 transition ease-in-out delay-150 hover:translate-x-2 hover:scale-100 duration-300 group"
               href="tel:042596000">

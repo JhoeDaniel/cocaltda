@@ -22,7 +22,7 @@ export class ModalSendInformationComponent implements OnInit {
   nameUserMailer: string = environment.nameUserMailer;
   passwordUserMailer: string = environment.passwordUserMailer;
 
-  textGains: string = '';
+  mailText: string = '';
   subject: string = '';
   /**
    * Alert
@@ -47,18 +47,15 @@ export class ModalSendInformationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.textGains = this._data.textGains;
+    this.mailText = this._data.mailText;
     this.subject = this._data.subject;
     /**
      * Create the company form
      */
     this.contactForm = this._formBuilder.group({
-      name: ['', [Validators.required, Validators.maxLength(100)]],
-      email: [
-        '',
-        [Validators.required, Validators.email, Validators.maxLength(256)],
-      ],
-      phone: ['', [Validators.required, Validators.maxLength(13)]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required]],
     });
   }
   /**
@@ -99,7 +96,7 @@ export class ModalSendInformationComponent implements OnInit {
                   name: contact.name.toUpperCase(),
                   email: contact.email.toLowerCase(),
                   subject: this.subject,
-                  message: this.textGains,
+                  message: this.mailText,
                 };
 
                 this._contactService
