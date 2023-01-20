@@ -11,7 +11,7 @@ import {
   CreditsTerm,
   FrenchDividend,
   GermanDividend,
-  TypeCreditProduct
+  TypeCreditProduct,
 } from 'app/modules/public/public.type';
 import { GlobalUtils } from 'app/utils/GlobalUtils';
 import { FullDate } from 'app/utils/utils.types';
@@ -281,13 +281,14 @@ export class CreditsComponent implements OnInit {
           <td class="p-2 text-sm sm:text-base">${_paymentDate}</td>
           <td class="p-2 text-sm sm:text-base">${_germanDividend[
             index
+          ].balance!.toFixed(2)}</td>
+          <td class="p-2 text-sm sm:text-base">${_germanDividend[
+            index
           ].capital!.toFixed(2)}</td>
           <td class="p-2 text-sm sm:text-base">${
             _germanDividend[index].calculateDays
           }</td>
-          <td class="p-2 text-sm sm:text-base">${_germanDividend[
-            index
-          ].balance!.toFixed(2)}</td>
+      
           <td class="p-2 text-sm sm:text-base">${_germanDividend[
             index
           ].interest!.toFixed(2)}</td>
@@ -304,18 +305,18 @@ export class CreditsComponent implements OnInit {
                   ? `<tr>
               <td class="p-2 text-green-600 font-bold">D</td>
               <td class="p-2 text-green-600 font-bold">F</td>
-              <td class="p-2 text-green-600 font-bold">CA</td>
-              <td class="p-2 text-green-600 font-bold">D</td>
               <td class="p-2 text-green-600 font-bold">S</td>
+              <td class="p-2 text-green-600 font-bold">CA</td>
+              <td class="p-2 text-green-600 font-bold">DI</td>
               <td class="p-2 text-green-600 font-bold">I</td>
               <td class="p-2 text-green-600 font-bold">C</td>
             </tr>`
                   : ` <tr>
                   <td class="p-2 text-green-600 font-bold">Dividendo</td>
                   <td class="p-2 text-green-600 font-bold">Fecha Pago</td>
+                  <td class="p-2 text-green-600 font-bold">Saldo</td>
                   <td class="p-2 text-green-600 font-bold">Capital</td>
                   <td class="p-2 text-green-600 font-bold">Días</td>
-                  <td class="p-2 text-green-600 font-bold">Saldo</td>
                   <td class="p-2 text-green-600 font-bold">Interés</td>
                   <td class="p-2 text-green-600 font-bold">Cuota</td>
                 </tr>`
@@ -373,17 +374,17 @@ export class CreditsComponent implements OnInit {
         /**
          * cuota
          */
-        let cuota: number =
-          balance *
-          (type.interest /
-            100 /
-            (1 - Math.pow(1 + type.interest / 100, -term.valueOfMonts)));
+        let cuota: number = 0;
 
         /**
          * interest
          */
         let interest: number = balance * (type.interest / 100);
         let capital = balance / term.valueOfMonts;
+
+        let remainingPayments: number = term.valueOfMonts;
+        const monthlyInterest: number = type.interest / 100 / 12;
+        let factorCapital: number = 0;
 
         for (let index = 0; index < term.valueOfMonts; index++) {
           /**
@@ -401,14 +402,22 @@ export class CreditsComponent implements OnInit {
           /**
            * interest
            */
-          if (index != 0) {
-            interest = balance * (type.interest / 100);
-          }
+          interest = balance * monthlyInterest;
 
+          /**
+           * Factor Capital
+           */
+          factorCapital =
+            (Math.pow(1 + monthlyInterest, remainingPayments) - 1) /
+            monthlyInterest;
           /**
            * capital
            */
-          capital = cuota - interest;
+          capital = balance * (1 / factorCapital);
+          /**
+           * couta
+           */
+          cuota = capital + interest;
 
           /**
            * Assemble the german dividend
@@ -416,8 +425,10 @@ export class CreditsComponent implements OnInit {
           _frenchDividend.push({
             id: index,
             paymentDate,
+            remainingPayments,
             cuota,
             interest,
+            factorCapital,
             capital,
             balance,
           });
@@ -437,12 +448,15 @@ export class CreditsComponent implements OnInit {
             `<tr>
            <td class="p-2">${_frenchDividend[index].id + 1}</td>
            <td class="p-2">${_paymentDate}</td>
-           <td class="p-2">${_frenchDividend[index].cuota.toFixed(2)}</td>
-           <td class="p-2">${_frenchDividend[index].interest.toFixed(2)}</td>
+           <td class="p-2">${_frenchDividend[index].balance.toFixed(2)}</td>
            <td class="p-2">${_frenchDividend[index].capital.toFixed(2)}</td>
-           <td class="p-2">${_frenchDividend[index].balance.toFixed(
-             2
-           )}</td></tr>`;
+          <td class="p-2">${_frenchDividend[index].interest.toFixed(2)}</td>
+          <td class="p-2">${_frenchDividend[index].cuota.toFixed(2)}</td>
+           </tr>`;
+          /**
+           * Rest the remainingPayments
+           */
+          remainingPayments -= 1;
         }
         /**
          * Put the header table
@@ -453,18 +467,18 @@ export class CreditsComponent implements OnInit {
             ? `<tr>
         <td class="p-2 text-green-600 font-bold">D</td>
         <td class="p-2 text-green-600 font-bold">F</td>
-        <td class="p-2 text-green-600 font-bold">C</td>
-        <td class="p-2 text-green-600 font-bold">I</td>
-        <td class="p-2 text-green-600 font-bold">CA</td>
         <td class="p-2 text-green-600 font-bold">S</td>
+        <td class="p-2 text-green-600 font-bold">CA</td>
+        <td class="p-2 text-green-600 font-bold">I</td>
+        <td class="p-2 text-green-600 font-bold">C</td>
       </tr>`
             : ` <tr>
-            <td class="p-2 text-green-600 font-bold">Dividendo</td>
-                 <td class="p-2 text-green-600 font-bold">Fecha Pago</td>
-                 <td class="p-2 text-green-600 font-bold">Cuota</td>
-                 <td class="p-2 text-green-600 font-bold">Interés</td>
-                 <td class="p-2 text-green-600 font-bold">Capital</td>
+                 <td class="p-2 text-green-600 font-bold">Dividendo</td>
+                 <td class="p-2 text-green-600 font-bold">Fecha pago</td>
                  <td class="p-2 text-green-600 font-bold">Saldo</td>
+                 <td class="p-2 text-green-600 font-bold">Capital</td>
+                 <td class="p-2 text-green-600 font-bold">Interés</td>
+                 <td class="p-2 text-green-600 font-bold">Cuota</td>
           </tr>`
         }${this.bodyTable}
                </table>

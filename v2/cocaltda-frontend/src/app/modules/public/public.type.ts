@@ -173,8 +173,10 @@ export interface GermanDividend {
 export interface FrenchDividend {
   id: number;
   paymentDate: Date;
+  remainingPayments: number;
   cuota: number;
   interest: number;
+  factorCapital: number;
   capital: number;
   balance: number;
 }
