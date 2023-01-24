@@ -64,7 +64,7 @@ export const _page: Page = {
 					id: 23,
 					title: 'Inversiones',
 					subtitle:
-						'Genera más ganancia de tus ahorros con una taza de interés mayor al ahorro, manejamos las mejores tazas de interés del mercado.',
+						'Genera más ganancia de tus ahorros con una tasa de interés mayor al ahorro, manejamos las mejores tasas de interés del mercado.',
 					link: '/public/products/investments',
 					externalLink: false,
 					target: '_self',
@@ -89,7 +89,7 @@ export const _page: Page = {
 				{
 					id: 31,
 					title: 'Transferencias',
-					subtitle: 'Realiza tus pagos de manera facil y segura',
+					subtitle: 'Realiza tus pagos de manera fácil y segura',
 					link: '/public/services/transfers',
 					externalLink: false,
 					target: '_self',
@@ -228,7 +228,7 @@ export const _page: Page = {
 					id: 53,
 					title: 'Control de Lavado de Activos',
 					subtitle:
-						'Somos controlados por la Unidad de Analisis Financiero y Económico',
+						'Somos controlados por la Unidad de Análisis Financiero y Económico',
 					link: 'https://www.uafe.gob.ec/',
 					externalLink: true,
 					target: '_blank',
@@ -241,7 +241,7 @@ export const _page: Page = {
 					id: 54,
 					title: 'Control de Productos y Servicios',
 					subtitle:
-						'Somos controlados por la Superintendencia de Economía Popular y Solicitaria',
+						'Somos controlados por la Superintendencia de Economía Popular y Solidaria',
 					link: 'https://www.seps.gob.ec/',
 					externalLink: true,
 					target: '_blank',
@@ -458,7 +458,7 @@ export const _page: Page = {
 		{
 			id: 21,
 			title: 'Trasferencias',
-			subtitle: 'Realiza tus pagos de manera facil y segura.',
+			subtitle: 'Realiza tus pagos de manera fácil y segura.',
 			link: '/public/services/transfers',
 			externalLink: false,
 			target: '_self',
@@ -565,7 +565,7 @@ export const _page: Page = {
 			id: 5,
 			title: 'Control de Lavado de Activos',
 			description:
-				'Somos controlados por la Unidad de Analisis Financiero y Económico.',
+				'Somos controlados por la Unidad de Análisis Financiero y Económico.',
 			titleBtn: 'Sitio Web Oficial',
 			srcImage: 'assets/images/static/cards/uafe.jpg',
 			matTooltipBtn: 'Visitar sitio web oficial',
@@ -628,7 +628,7 @@ export const _page: Page = {
         <strong>REQUISITOS</strong><br><br>
 
         <strong>Persona Natural.</strong><br>
-        - Copia de la cédula de ciudadanía o pasarporte (actualizado).<br>
+        - Copia de la cédula de ciudadanía o pasaporte (actualizado).<br>
         - Copia del Certificado de Votación (actualizado).<br>
         - Copia de la última planilla de un servicio básico (luz, agua o teléfono).<br>
         - Depósito inicial para la apertura de cuenta $50,00.<br>
@@ -677,21 +677,21 @@ export const _page: Page = {
 			selected: false,
 			html: `
         <p>Es un producto donde el socio se compromete al aporte de una cuota fija recurrente, en un tiempo
-				establecido rigiéndose por un contrato. Por otro lado, la cooperativa incentiva a sus ahorristas
-				a cumplir sus metas a través de bonificaciones por el cumplimiento de condiciones
-				pactadas.<br><br>
+                establecido rigiéndose por un contrato. Por otro lado, la cooperativa incentiva a sus ahorristas
+                a cumplir sus metas a través de bonificaciones por el cumplimiento de condiciones
+                pactadas.<br><br>
 
-				<strong>CARACTERÍSTICAS</strong><br><br>
+                <strong>CARACTERÍSTICAS</strong><br><br>
 
-				- Está habilitado para personas naturales.<br>
-				- El aporte mínimo es de $10,00 dólares mensuales.<br>
-				- Tiene un contrato de 6 hasta 120 meses.<br>
-				<br>
+                - Está habilitado para personas naturales.<br>
+                - El aporte mínimo es de $10,00 dólares mensuales.<br>
+                - Tiene un contrato de 6 hasta 120 meses.<br>
+                <br>
 
-				<strong>REQUISITOS</strong><br><br>
+                <strong>REQUISITOS</strong><br><br>
 
-				- Copia de la cédula del titular o representante legal (actualizada).<br>
-				- Copia de un servicio básico.<br></p>
+                - Copia de la cédula del titular o representante legal (actualizada).<br>
+                - Copia de un servicio básico.<br></p>
         <h1 #title
           class="w-full bg-green-600 md:bg-transparent py-4 md:py-0 rounded-md text-white  text-center my-4 font-medium text-2xl md:text-gray-600">
           Tipo de plan
@@ -727,23 +727,23 @@ export const _page: Page = {
 			selected: false,
 			html: `
         <p>Es una cuenta de ahorros especial que permite a los padres enseñar a sus hijos el valor y la
-				importancia de ahorrar para su futuro y alcanzar sus metas y a su vez asegura el futuro
-				estudiantil de los suyos.<br><br>
+                importancia de ahorrar para su futuro y alcanzar sus metas y a su vez asegura el futuro
+                estudiantil de los suyos.<br><br>
 
-				<strong>CARACTERÍSTICAS</strong><br><br>
+                <strong>CARACTERÍSTICAS</strong><br><br>
 
-				- Dirigido a las personas menores de edad.<br>
-				- No son socios de la Cooperativa.<br>
-				- Su representante debe ser un mayor de edad (papá, mamá o familiares).<br>
-				- No existe límite de depósito.<br>
-				- Depósito inicial para la apertura de cuenta Ahorro es de $10,00.<br><br>
+                - Dirigido a las personas menores de edad.<br>
+                - No son socios de la Cooperativa.<br>
+                - Su representante debe ser un mayor de edad (papá, mamá o familiares).<br>
+                - No existe límite de depósito.<br>
+                - Depósito inicial para la apertura de cuenta Ahorro es de $10,00.<br><br>
 
-				<strong>REQUISITOS</strong><br><br>
+                <strong>REQUISITOS</strong><br><br>
 
-				- Copia de la cédula de ciudadanía del menor de edad (actualizada).<br>
-				- Copia de la cédula de ciudadanía del Representante (actualizada).<br>
-				- Copia del Certificado de Votación del Representante (actualizado).<br>
-				- Copia de la última planilla de un servicio básico (luz, agua o teléfono).</p>
+                - Copia de la cédula de ciudadanía del menor de edad (actualizada).<br>
+                - Copia de la cédula de ciudadanía del Representante (actualizada).<br>
+                - Copia del Certificado de Votación del Representante (actualizado).<br>
+                - Copia de la última planilla de un servicio básico (luz, agua o teléfono).</p>
         <h1 #title
           class="w-full bg-green-600 md:bg-transparent py-4 md:py-0 rounded-md text-white  text-center my-4 font-medium text-2xl md:text-gray-600">
           Tasas de interés
@@ -841,26 +841,26 @@ export const _page: Page = {
 			},
 			selected: false,
 			html: `
-			  <p>Son créditos otorgados a personas naturales destinados al pago de bienes, servicios o gastos personales.<br><br>
-	  
-			  <strong>REQUISITOS</strong><br><br>
-	  
-			  - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
-			  - Copia del Impuesto Predial actual.<br>
-			  - Copia de los 3 últimos roles de pago.<br>
-			  - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
-	  
-			  <strong>GARANTÍAS</strong><br><br>
-	  
-			  * <strong>Personal</strong><br>
-			  -Copia de Cédula y Papeleta del garante y del conyuge o conviviente.<br>
-			  -Copia de los 3 últimos roles de pagos.<br>
-			  -Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
-	  
-			  * <strong>Hipotecaria</strong><br>
-			  -Copia de la Escritura Original.<br>
-			  -Registro de la propiedad actualizado (válido 30 días).</p>
-			`,
+              <p>Son créditos otorgados a personas naturales destinados al pago de bienes, servicios o gastos personales.<br><br>
+      
+              <strong>REQUISITOS</strong><br><br>
+      
+              - Copia de Cédula y Certificado de Votación del solicitante y del cónyuge o conviviente.<br>
+              - Copia del Impuesto Predial actual.<br>
+              - Copia de los 3 últimos roles de pago.<br>
+              - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
+      
+              <strong>GARANTÍAS</strong><br><br>
+      
+              * <strong>Personal</strong><br>
+              -Copia de Cédula y Papeleta del garante y del cónyuge o conviviente.<br>
+              -Copia de los 3 últimos roles de pagos.<br>
+              -Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
+      
+              * <strong>Hipotecaria</strong><br>
+              -Copia de la Escritura Original.<br>
+              -Registro de la propiedad actualizado (válido 30 días).</p>
+            `,
 		},
 		{
 			id: 222,
@@ -871,22 +871,22 @@ export const _page: Page = {
 			},
 			selected: false,
 			html: `
-			  <p>Son los créditos otorgados a personas naturales para la adquisición, construcción, reparación,
-					  remodelación y mejoramiento de la vivienda propia.<br><br>
-	  
-					  <strong>REQUISITOS</strong><br><br>
-	  
-					  - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
-					  - Copia del Impuesto Predial actual.<br>
-					  - Copia de los 3 últimos roles de pago.<br>
-					  - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
-	  
-					  <strong>GARANTÍAS</strong><br><br>
-	  
-					  - Hipotecaria<br>
-					  - Copia de la Escritura Original.<br>
-					  - Registro de la propiedad actualizado (válido 30 días).</p>
-			`,
+              <p>Son los créditos otorgados a personas naturales para la adquisición, construcción, reparación,
+                      remodelación y mejoramiento de la vivienda propia.<br><br>
+      
+                      <strong>REQUISITOS</strong><br><br>
+      
+                      - Copia de Cédula y Certificado de Votación del solicitante y del cónyuge o conviviente.<br>
+                      - Copia del Impuesto Predial actual.<br>
+                      - Copia de los 3 últimos roles de pago.<br>
+                      - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
+      
+                      <strong>GARANTÍAS</strong><br><br>
+      
+                      - Hipotecaria<br>
+                      - Copia de la Escritura Original.<br>
+                      - Registro de la propiedad actualizado (válido 30 días).</p>
+            `,
 		},
 		{
 			id: 223,
@@ -897,44 +897,44 @@ export const _page: Page = {
 			},
 			selected: false,
 			html: `
-			  <p>Emprende tu negocio o amplialo. Crece con nosotros!<br><br>
-	  
-			  <p>Puedes utilizarlo: Emprender o ampliar tu negocio, adquirir bienes para tu negocio o capital de trabajo.</p><br>
-	  
-					  Puedes acceder a:<br><br>
-	  
-					  <strong>1) MICROCRÉDITO MINORISTA</strong><br>
-					  Aplican a nuestros socios cuyas ventas anuales se encuentran hasta los 5.000 dólares.<br><br>
-	  
-	  
-					  <strong>2) MICROCRÉDITO DE ACUMULACIÓN SIMPLE</strong><br>
-					  Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 5.001 dólares hasta los 20.0000.<br><br>
-	  
-					  <strong>3) MICROCRÉDITO DE ACUMULACIÓN AMPLIADA</strong><br>
-					  Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 20.0001 dólares e inferiores a los 100.000.00 dólares.<br><br>
-	  
-					  <strong>4) MICROCRÉDITO ASO-PRODUCTIVO</strong><br>
-					  Es un crédito productivo con tecnología de microcrédito, según la norma de la Junta Política y
-					  Regulación Monetaria y Financiera, considerando las organizaciones de la EPS.<br><br>
-	  
-					  <strong>REQUISITOS</strong><br><br>
-	  
-					  - Copia de Cédula y Certificado de Votación del solicitante y del conyuge o conviviente.<br>
-					  - Copia del Impuesto Predial actual.<br>
-					  - Copia de los 3 últimos roles de pago.<br>
-					  - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
-	  
-					  <strong>GARANTÍAS</strong><br><br>
-	  
-					  * <strong>Personal</strong><br>
-					  - Copia de Cédula y Papeleta del garante y del conyuge o conviviente.<br>
-					  - Copia de los 3 últimos roles de pagos.<br>
-					  - Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
-	  
-					  * <strong>Hipotecaria</strong><br>
-					  - Copia de la Escritura Original.<br>
-					  - Registro de la propiedad actualizado (válido 30 días).</p>
-			`,
+              <p>Emprende tu negocio o amplíalo. ¡Crece con nosotros!<br><br>
+      
+              <p>Puedes utilizarlo: Emprender o ampliar tu negocio, adquirir bienes para tu negocio o capital de trabajo.</p><br>
+      
+                      Puedes acceder a:<br><br>
+      
+                      <strong>1) MICROCRÉDITO MINORISTA</strong><br>
+                      Aplican a nuestros socios cuyas ventas anuales se encuentran hasta los 5.000 dólares.<br><br>
+      
+      
+                      <strong>2) MICROCRÉDITO DE ACUMULACIÓN SIMPLE</strong><br>
+                      Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 5.001 dólares hasta los 20.0000.<br><br>
+      
+                      <strong>3) MICROCRÉDITO DE ACUMULACIÓN AMPLIADA</strong><br>
+                      Aplican a nuestros socios cuyas ventas anuales se encuentran desde los 20.0001 dólares e inferiores a los 100.000.00 dólares.<br><br>
+      
+                      <strong>4) MICROCRÉDITO ASO-PRODUCTIVO</strong><br>
+                      Es un crédito productivo con tecnología de microcrédito, según la norma de la Junta Política y
+                      Regulación Monetaria y Financiera, considerando las organizaciones de la EPS.<br><br>
+      
+                      <strong>REQUISITOS</strong><br><br>
+      
+                      - Copia de Cédula y Certificado de Votación del solicitante y del cónyuge o conviviente.<br>
+                      - Copia del Impuesto Predial actual.<br>
+                      - Copia de los 3 últimos roles de pago.<br>
+                      - Copia de planilla de pago de servicios básicos (agua, luz o teléfono).<br><br>
+      
+                      <strong>GARANTÍAS</strong><br><br>
+      
+                      * <strong>Personal</strong><br>
+                      - Copia de Cédula y Papeleta del garante y del cónyuge o conviviente.<br>
+                      - Copia de los 3 últimos roles de pagos.<br>
+                      - Copia del RUC y de las 3 últimas declaraciones y/o RISE.<br><br>
+      
+                      * <strong>Hipotecaria</strong><br>
+                      - Copia de la Escritura Original.<br>
+                      - Registro de la propiedad actualizado (válido 30 días).</p>
+            `,
 		},
 	],
 	itemToggleInvestments: [
