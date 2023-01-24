@@ -16,7 +16,7 @@ export const _page: Page = {
 			title: 'Institución',
 			subtitle: '',
 			link: '/public/institution',
-			externalLink: true,
+			externalLink: false,
 			target: '_self',
 			actived: false,
 			icon: 'static:history',
