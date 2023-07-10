@@ -5,11 +5,16 @@
     </div>
     <div class="carousel__content">
         <ng-container *ngFor="let section of items;">
-            <div class="carousel__content-item"
+            <div *ngIf="!section.link" class="carousel__content-item"
                 [ngStyle]="{'background-image': 'url(' + (this.isScreenSmall ? section.images.mobile : section.images.desktop ) + ')', 'margin-left': section.marginLeft + '%' }">
-                <h1> {{section.title!.first}} <span> {{section.title!.second}}</span></h1>
+                <h1> {{section.title!.first}} <span> {{section.title!.second}}</span></h1> <br>
                 <p> {{section.subtitle}} </p>
             </div>
+            <a *ngIf="section.link" class="carousel__content-item" [href]="section.link!" target="_blank"
+                [ngStyle]="{'background-image': 'url(' + (this.isScreenSmall ? section.images.mobile : section.images.desktop ) + ')', 'margin-left': section.marginLeft + '%' }">
+                <h1> {{section.title!.first}} <span> {{section.title!.second}}</span></h1> <br>
+                <p> {{section.subtitle}} </p>
+            </a>
         </ng-container>
     </div>
     <div class="carousel__steps">

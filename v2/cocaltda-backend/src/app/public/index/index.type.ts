@@ -10,6 +10,7 @@ export interface Page {
 	itemToggleCredits: ItemToggle[];
 	itemToggleDeposits: ItemToggle[];
 	itemToggleInvestments: ItemToggle[];
+	itemTogglePayments: ItemToggle[];
 	/**
 	 * Configuration
 	 */

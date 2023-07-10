@@ -100,7 +100,7 @@ export const _page: Page = {
 				},
 				{
 					id: 32,
-					title: 'Pagos',
+					title: 'Pagos complementarios',
 					subtitle:
 						'Punto de servicio de recaudación autorizada; cancela tus servicios básicos, entre otros.',
 					link: '/public/services/payments',
@@ -286,7 +286,7 @@ export const _page: Page = {
 				second: '',
 			},
 			subtitle: '',
-			link: 'https://cocaltda.fin.ec/',
+			link: '',
 			images: {
 				desktop: 'assets/images/carousel/1.jpg',
 				mobile: 'assets/images/carousel/1Mobile.jpg',
@@ -299,7 +299,7 @@ export const _page: Page = {
 				second: '',
 			},
 			subtitle: '',
-			link: 'https://cocaltda.fin.ec/',
+			link: '',
 			images: {
 				desktop: 'assets/images/carousel/2.jpg',
 				mobile: 'assets/images/carousel/2Mobile.jpg',
@@ -312,7 +312,7 @@ export const _page: Page = {
 				second: '',
 			},
 			subtitle: '',
-			link: 'https://cocaltda.fin.ec/',
+			link: '',
 			images: {
 				desktop: 'assets/images/carousel/3.jpg',
 				mobile: 'assets/images/carousel/3Mobile.jpg',
@@ -325,7 +325,7 @@ export const _page: Page = {
 				second: '',
 			},
 			subtitle: '',
-			link: 'https://cocaltda.fin.ec/',
+			link: '',
 			images: {
 				desktop: 'assets/images/carousel/4.jpg',
 				mobile: 'assets/images/carousel/4Mobile.jpg',
@@ -338,7 +338,7 @@ export const _page: Page = {
 				second: '',
 			},
 			subtitle: '',
-			link: 'https://cocaltda.fin.ec/',
+			link: '',
 			images: {
 				desktop: 'assets/images/carousel/5.jpg',
 				mobile: 'assets/images/carousel/5Mobile.jpg',
@@ -351,7 +351,7 @@ export const _page: Page = {
 				second: '',
 			},
 			subtitle: '',
-			link: 'https://cocaltda.fin.ec/',
+			link: '',
 			images: {
 				desktop: 'assets/images/carousel/6.jpg',
 				mobile: 'assets/images/carousel/6Mobile.jpg',
@@ -956,6 +956,78 @@ export const _page: Page = {
         - El socio deberá proporcionar la copia de su cédula a color.<br>
         - Copia de la última planilla de un servicio básico (luz, agua o teléfono).<br>
         Suscribir el documento representativo de su inversión.</p>`,
+		},
+	],
+	itemTogglePayments: [
+		{
+			id: 241,
+			title: 'Pago de nómina',
+			icon: 'mat_outline:document_scanner',
+			images: {
+				mobile: 'assets/images/static/mobilePagoDeNomina.jpg',
+			},
+			selected: false,
+			html: `
+        <p>Se simplifica el proceso mensual de cancelación de los colaboradores de empresas públicas o privadas. Además, se transforma a los trabajadores y empleados en socios de la Cooperativa de Ahorro y Crédito Coca Ltda., quienes tendrán acceso inmediato a todos los servicios, beneficios y productos de la institución.<br><br>
+
+        <strong>REQUISITOS</strong><br><br>
+
+        - Cuenta de ahorros activa de la empresa pública o privada.<br>
+        - Correo electrónico (Empleador).<br>
+        - Cuenta de ahorro activa en la COAC Coca Ltda.<br>
+        - Nómina en formato Excel.<br><br>
+
+        <strong>BENEFICIOS</strong><br><br>
+
+		- Se realizan transferencias de sueldos sin generar ningún costo adicional.<br>
+        - No se aplican costos por el mantenimiento de la cuenta..<br>
+        - La disponibilidad de los fondos está garantizada a nivel nacional a través de Cajeros Automáticos BANRED y de nuestra Banca Virtual.<br></p>`,
+		},
+		{
+			id: 242,
+			title: 'Recargas móviles',
+			icon: 'mat_outline:smartphone',
+			images: {
+				mobile: 'assets/images/static/mobileRecargasMoviles.jpg',
+			},
+			selected: false,
+			html: `
+        <p>La institución ofrece a sus socios, clientes y usuarios la conveniencia de realizar recargas electrónicas de las operadoras de telefonía móvil Claro, CNT y Movistar como parte de sus servicios, sin aplicar cargos adicionales. Esto les permite recargar sus teléfonos móviles de manera fácil y rápida, sin incurrir en costos adicionales por la transacción.<br><br>
+
+        <strong>MONTOS</strong><br><br>
+
+        - El solicitante puede elegir el valor que desee, siempre y cuando sea un número entero.<br><br>
+
+        <strong>HORARIOS</strong><br><br>
+
+        - Nuestras oficinas están abiertas de lunes a viernes de 8:30 a.m. a 4:30 p.m.</p>`,
+		},
+		{
+			id: 243,
+			title: 'Punto de pago',
+			icon: 'mat_outline:payment',
+			images: {
+				mobile: 'assets/images/static/mobilePuntoDePago.jpg',
+			},
+			selected: false,
+			html: `
+        <p>Con el fin de proporcionar un mejor servicio y satisfacer las necesidades de nuestros socios, clientes y usuarios, a través de nuestras ventanillas podrás realizar las siguientes acciones:<br><br>
+
+        - Pagar los planes telefónicos.<br>
+        - Cancelar el consumo telefónico.<br>
+        - Realizar pagos a empresas como AVON, AZZORTI, BELCORP, ORIFLAME, YANBAL, L-BEL, NIVI, LEONISA, L-EUDINE, NATURES GARDEN, OMNILIFE.<br>
+        - Realizar pagos de tarjetas de crédito como Pacificard, Mastercard y Visacash (Banco del Pacífico).<br>
+        - Recaudar impuestos del SRI, incluyendo Impuesto a la Renta, IVA, RISE y Matriculación vehicular.<br>
+        - Pagar multas a la Comisión y Agencia de Tránsito.<br>
+        - Realizar pagos a la ANT para renovación de licencia y matrícula.<br>
+        - Cancelar planillas de servicios básicos como luz, agua o teléfono.<br>
+        - Además, contamos con otros pagos disponibles.<br><br>
+
+        Estas son algunas de las acciones que podrás realizar a través de nuestras ventanillas, en nuestro compromiso de brindarte un servicio completo y satisfactorio.<br><br>
+
+        <strong>HORARIOS</strong><br><br>
+
+        - Nuestras oficinas están abiertas de lunes a viernes de 8:30 a.m. a 4:30 p.m.</p>`,
 		},
 	],
 	/**
