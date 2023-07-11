@@ -32,7 +32,6 @@ export class AccountsComponent implements OnInit {
       .subscribe((_page: any) => {
         this.page = _page.body;
         this.itemToggleDeposits = this.page.itemToggleDeposits;
-        console.log(this.itemToggleDeposits);
       });
     /**
      * idItemsGallery

@@ -32,7 +32,6 @@ export class PaymentsComponent implements OnInit {
       .subscribe((_page: any) => {
         this.page = _page.body;
         this.itemTogglePayments = this.page.itemTogglePayments;
-        console.log(this.itemTogglePayments);
       });
     /**
      * idItemsGallery
